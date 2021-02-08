@@ -17,6 +17,7 @@ class IntroViewController: UIViewController, FUIAuthDelegate, UIGestureRecognize
     @IBOutlet weak var swipeLable: UILabel! //swipeLabel
     let authUI = FUIAuth.defaultAuthUI() //authUI
     let db = Firestore.firestore() //db
+    let stoarage = Firestore.firestore() //storage
     var handle: AuthStateDidChangeListenerHandle! //handle
     
     //viewDidLoad
