@@ -13,8 +13,11 @@ class AppSettingViewController: UIViewController {
     
     //values
     @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var profileImageOutline: UIImageView!
     let authUI = FUIAuth.defaultAuthUI()
     let db = Firestore.firestore()
+    let storage = Storage.storage()
     
     //viewDidLoad
     override func viewDidLoad() {
@@ -28,8 +31,11 @@ class AppSettingViewController: UIViewController {
                 print("success")
                 let dbName = document.get("userName")
                 self.userName.text = dbName as! String
+                let dbStorageRef = document.get("userImage")
+                let storageRef = self.storage.reference(withPath: "\(dbStorageRef!)")
+                self.profileImage.sd_setImage(with: storageRef)
             } else {
-                print("Document does not exist")
+                print("Image does not exist")
             }
         }//docRef
     }//viewDidLoad
@@ -73,7 +79,6 @@ class AppSettingViewController: UIViewController {
         }//handler
         ))//addAction
         self.present(alert, animated: false, completion: nil)
-
     }//changeUserName
     
     
