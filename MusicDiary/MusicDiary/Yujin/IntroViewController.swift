@@ -17,20 +17,21 @@ class IntroViewController: UIViewController, FUIAuthDelegate, UIGestureRecognize
     @IBOutlet weak var swipeLable: UILabel! //swipeLabel
     let authUI = FUIAuth.defaultAuthUI() //authUI
     let db = Firestore.firestore() //db
-    let stoarage = Firestore.firestore() //storage
+    let storage = Storage.storage() //storage
     var handle: AuthStateDidChangeListenerHandle! //handle
     
     //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         //logoImageView GIF start
+        /*
         do{
             let gif = try UIImage(gifName: "spongeBob.gif")
             self.logoImageView.setGifImage(gif, loopCount: -1)
         } catch {
             print("not loaded")
         }
-        
+        */
         //swipeGestureControl
         let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeGestured(_:)))
         swipeGestureRecognizer.direction = UISwipeGestureRecognizer.Direction.up
@@ -62,10 +63,12 @@ class IntroViewController: UIViewController, FUIAuthDelegate, UIGestureRecognize
                         //let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                         //print("Document data: \(dataDescription)")
                     } else {
-                        print("Document does not exist")
+                        print("User does not exist")
+                        let storageRef = self.storage.reference()
+                        let imageRef = storageRef.child("Icon material-person.png")
                         self.db.collection("Users").document("\(currentUser.uid)").setData(["userDiaryList" : [],
                              "userID" : "\(currentUser.uid)",
-                             "userImage" : "",
+                             "userImage" : "\(imageRef.fullPath)",
                              "userName" : "\(currentUser.displayName!)"])
                         print("UserDataSaved")
                     }
