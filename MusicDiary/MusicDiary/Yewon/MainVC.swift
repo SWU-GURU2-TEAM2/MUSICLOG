@@ -12,7 +12,8 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseUI
 
-var centerDocID:String!
+//center에 있는 docID 전달 변수 (수정 예정)
+var centerDocID = "IxLlj4mK2DKPIoBA9Qjp"
 
 class MainVC:UIViewController {
     let db = Firestore.firestore()
