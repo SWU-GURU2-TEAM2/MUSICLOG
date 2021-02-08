@@ -12,10 +12,13 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseUI
 
+var centerDocID:String!
+
 class MainVC:UIViewController {
     let db = Firestore.firestore()
     var diaryData = [QueryDocumentSnapshot]()
     var getDiaryList = [String]()
+    var diaryID = [String]()
     @IBOutlet weak var mainCarousel: ScalingCarouselView!
     let authUI = FUIAuth.defaultAuthUI()
     
@@ -32,12 +35,26 @@ class MainVC:UIViewController {
             }
             if let snapshot = snapshot {
                 for getDoc in snapshot.documents {
-                    print("\(getDoc.documentID) => \(getDoc.data()["userDiaryList"])")
+                    //print("\(getDoc.documentID) => \(getDoc.data()["userDiaryList"])")
                     self.getDiaryList = getDoc.data()["userDiaryList"] as! [String]
                 }
                 self.mainCarousel.reloadData()
             }
         }
+        //getDiaryList
+        db.collection("Users").addSnapshotListener { (snapshot, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            if let snapshot = snapshot {
+                for change in snapshot.documentChanges {
+                    print("getDiary\(change.document.data())")
+                }
+            }
+            
+        }
+        
         //Diary>data
         db.collection("Diary").order(by: "date").getDocuments { (snapshot, error) in
             if let error = error {
@@ -46,13 +63,13 @@ class MainVC:UIViewController {
             }
             if let snapshot = snapshot {
                 for document in snapshot.documents {
-                    print("\(document.documentID) => \(document.data())")
+                    //print("\(document.documentID) => \(document.data())")
                     self.diaryData.append(document)
                 }
                 self.mainCarousel.reloadData()
             }
         }
-        //change listener
+        //diaryData change listener
         db.collection("Diary").order(by: "date").addSnapshotListener { (snapshot, error) in
             if let error = error {
                 print(error)
@@ -60,13 +77,15 @@ class MainVC:UIViewController {
             }
             if let snapshot = snapshot {
                 for change in snapshot.documentChanges {
-                    print(change.document.data())
+                    //print(change.document.data())
                     let docID = change.document.documentID
                     let document = change.document
                     
                     if self.newDiary(document) {
                         self.diaryData.append(document)
-                        self.mainCarousel.reloadData()
+                        self.diaryID.append(docID)
+                        print("add diary")
+                        //self.mainCarousel.reloadItems(at: [IndexPath(item: self.getDiaryList.count-1, section: 0)])
                     }
                 }
             }
@@ -91,7 +110,7 @@ class MainVC:UIViewController {
 
         ref = db.collection("Diary").addDocument(data: [
             "diaryImageUrl":"",
-            "diaryName":"test2",
+            "diaryName":"oppa",
             "diaryMusicTitle":"",
             "diaryMusicArtist":"",
             "memberList":[],
@@ -108,6 +127,10 @@ class MainVC:UIViewController {
         db.collection("Users").document("TNrcZtxj42Mfqq2KRy1A").updateData([
             "userDiaryList": FieldValue.arrayUnion([ref!.documentID])
         ])
+        self.name()
+    }
+    func name() {
+        print("ggg:")
         db.collection("Users").getDocuments { (snapshot, error) in
             if let error = error {
                 print(error)
@@ -120,12 +143,29 @@ class MainVC:UIViewController {
                 }
             }
         }
-        
     }
     
     @IBAction func moveToWrite(_ sender: UIButton) {
-        
+//        guard let mainCurrentCenterIndex = mainCarousel.currentCenterCellIndex?.row
+//        else {
+//            return
+//        }
+//        centerDocID = diaryID[mainCurrentCenterIndex]
+//        print(centerDocID)
+//        let vc = UIStoryboard(name: "JungbinStoryboard", bundle: nil).instantiateViewController(identifier: "appSettingView")
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: true, completion:  nil)
     }
+    
+    @IBAction func moveToSetting(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "YujinStoryboard", bundle: nil).instantiateViewController(identifier: "appSettingView")
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion:  nil)
+    }
+    
+    
+    
+    
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -154,7 +194,7 @@ extension CarouselDatasource: UICollectionViewDataSource {
         //date insert 0000년 00일 00일 형식으로 지정 필요
         let starDate = data0Fdiary["date"]
         //image insert
-        
+        //print("Image Url : \(data0Fdiary["diaryImageUrl"])")
         //carouselCell.mainStartDate.text = startDate
         carouselCell.setNeedsLayout()
         carouselCell.layoutIfNeeded()
@@ -166,11 +206,7 @@ extension CarouselDatasource: UICollectionViewDataSource {
 typealias CarouselDelegate = MainVC
 extension MainVC: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let mainCurrentCenterIndex = mainCarousel.currentCenterCellIndex?.row
-        else {
-            return
-            
-        }
+        
     }
 }
 
