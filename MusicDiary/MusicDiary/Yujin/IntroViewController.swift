@@ -51,11 +51,15 @@ class IntroViewController: UIViewController, FUIAuthDelegate, UIGestureRecognize
             if let currentUser = auth.currentUser {
                 //currentUser 정보 넘겨주기
                 //로그인한 유저 -> 기존 사용자 체크, 다음 뷰로 넘어감
+                let ad = UIApplication.shared.delegate as? AppDelegate
+                //appDelegate에 저장
+                ad?.currentUID = currentUser.uid
+                
                 let docRef = self.db.collection("Users").document("\(currentUser.uid)")
                 docRef.getDocument { (document, error) in
                     if let document = document, document.exists {
-                        let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                        print("Document data: \(dataDescription)")
+                        //let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                        //print("Document data: \(dataDescription)")
                     } else {
                         print("Document does not exist")
                         self.db.collection("Users").document("\(currentUser.uid)").setData(["userDiaryList" : [],

@@ -19,6 +19,8 @@ class AppSettingViewController: UIViewController {
     //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        //let ad = UIApplication.shared.delegate as? AppDelegate
+        //print("\(ad!.currentUID)")
         let currentUser = authUI?.auth?.currentUser
         let docRef = db.collection("Users").document("\(currentUser!.uid)")
         docRef.getDocument { (document, error) in
