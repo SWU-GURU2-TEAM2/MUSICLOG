@@ -205,11 +205,10 @@
                                     <action selector="logOutAction:" destination="VVX-D9-LjD" eventType="touchUpInside" id="iiC-PK-dMx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K3f-zZ-jlT">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K3f-zZ-jlT">
                                 <rect key="frame" x="20" y="215" width="152" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="이름 바꾸기"/>
+                                <state key="normal" title="이름 바꾸기" image="AppSetting_edit"/>
                                 <connections>
                                     <action selector="changeUserName:" destination="VVX-D9-LjD" eventType="touchUpInside" id="IWf-Ef-7fc"/>
                                 </connections>
@@ -242,6 +241,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AppSetting_edit" width="9.5" height="9.5"/>
         <image name="spongeBob.gif" width="480" height="270"/>
         <systemColor name="systemBackgroundColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
