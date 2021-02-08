@@ -112,7 +112,7 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
                         DispatchQueue.main.async {
                             self.goDetailBtn.isEnabled = true
                             self.titleLabel.alpha = 1
-                            self.titleLabel.text = self.todayContentList[0].musicTitle
+                            self.titleLabel.text = self.todayContentList[0].conentText
                             self.imageView.image = UIImage(data: data!)
                             
                         }
