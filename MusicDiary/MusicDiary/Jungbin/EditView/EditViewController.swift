@@ -39,9 +39,11 @@ class EditViewController: UIViewController, SendDataDelegate {
     override func viewDidLoad() {
        
         super.viewDidLoad()
-        
+        imageVIew.layer.cornerRadius = imageVIew.frame.width / 2
+        imageVIew.clipsToBounds = true
+        writeView.backgroundColor = UIColor(patternImage: UIImage(named: "Write_underBG")!)
         presentData()
-        //placeholderSetting()
+//        placeholderSetting()
         
     }
     @IBAction func tapSaveBtn(_ sender: Any) {

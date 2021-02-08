@@ -26,7 +26,7 @@ class WriteViewController:UIViewController, SendDataDelegate{
         imageView.layer.cornerRadius = imageView.frame.width / 2
         imageView.clipsToBounds = true
         //topView.backgroundColor = UIColor(patternImage: UIImage(named: "Write_topBG")!)
-
+        placeholderSetting()
         underView.backgroundColor = UIColor(patternImage: UIImage(named: "Write_underBG")!)
 //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification , object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification , object: nil)
