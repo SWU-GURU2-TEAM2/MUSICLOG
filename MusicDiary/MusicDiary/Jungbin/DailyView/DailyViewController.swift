@@ -10,10 +10,9 @@ import FSCalendar
 import Firebase
 
 var currentDairyId = "IxLlj4mK2DKPIoBA9Qjp"
+var currentContentData = ContentData()
 
 class DailyViewController: UIViewController, FSCalendarDelegate {
-    
-    var todayContentList:[ContentData] = [ContentData()]
     var datesWithEvent = [Date(), Date()-86400]
     @IBOutlet weak var noDataLabel: UILabel!
     @IBOutlet weak var calendar: FSCalendar!
@@ -23,10 +22,15 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         imageView.layer.cornerRadius = imageView.frame.width / 2
         imageView.clipsToBounds = true
         noDataLabel.alpha = 0
+        titleLabel.numberOfLines = 6
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        //titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.alpha = 0
+        goDetailBtn.alpha = 0
         calendar.delegate = self
         //calendar.appearance.backgroundColors =
         getContentsListForDaily(date: Date())
@@ -47,6 +51,8 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
     
     @IBAction func goDetail(_ sender: Any) {
         print("go detail")
+
+        
     }
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         return UIImage(contentsOfFile: "Daily_calendarHeader")
@@ -74,7 +80,6 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
         let db = Firestore.firestore()
         let calendar = Calendar.current
         
-        self.todayContentList = []
         // .whereField("date", isLessThan: calendar.startOfDay(for: date)+86400)
         db.collection("Diary").document("\(currentDairyId)").collection("Contents") .whereField("date", isGreaterThanOrEqualTo: calendar.startOfDay(for: date)).whereField("date", isLessThan: calendar.startOfDay(for: date)+86400).getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -83,36 +88,35 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
                 for document in querySnapshot!.documents {
                     
                     let getContent = document.data()
-                    let newCD = ContentData(
+                    currentContentData = ContentData(
                         authorID: getContent["authorID"] as! String,
                         conentText: getContent["contentText"] as! String,
                         musicTitle: getContent["musicTitle"] as! String,
                         musicArtist: getContent["musicArtist"] as! String,
                         musicCoverUrl: URL(string: (getContent["musicCoverUrl"]! as? String)!),
                         date: getContent["date"] as? Date)
-                    self.todayContentList.append(newCD)
-                    //print("\(document.documentID) => \(document.data())")
                     
                     
                 }
-                print("today content list: ", self.todayContentList)
-                if self.todayContentList.count == 0 {
+                print("today content list: ", currentContentData)
+                if currentContentData.conentText == "" {
                     
                     DispatchQueue.main.async {
                         self.noDataLabel.alpha = 1
                         self.titleLabel.alpha = 0
-                        self.imageView.alpha = 0
+                        self.goDetailBtn.alpha = 0
                         self.goDetailBtn.isEnabled = false
+                        self.imageView.alpha = 0
                     }
                 }
-                
-                
                 else {
-                    DispatchQueue.global().async { let data = try? Data(contentsOf: self.todayContentList[0].musicCoverUrl!)
+                    DispatchQueue.global().async { let data = try? Data(contentsOf: currentContentData.musicCoverUrl!)
                         DispatchQueue.main.async {
                             self.goDetailBtn.isEnabled = true
+                            self.goDetailBtn.alpha = 1
                             self.titleLabel.alpha = 1
-                            self.titleLabel.text = self.todayContentList[0].musicTitle
+                            self.imageView.alpha = 1
+                            self.titleLabel.text = currentContentData.conentText
                             self.imageView.image = UIImage(data: data!)
                             
                         }
