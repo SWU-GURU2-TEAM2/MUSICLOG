@@ -26,7 +26,11 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
         imageView.layer.cornerRadius = imageView.frame.width / 2
         imageView.clipsToBounds = true
         noDataLabel.alpha = 0
+        titleLabel.numberOfLines = 6
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        //titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.alpha = 0
+        goDetailBtn.alpha = 0
         calendar.delegate = self
         //calendar.appearance.backgroundColors =
         getContentsListForDaily(date: Date())
@@ -101,17 +105,18 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
                     DispatchQueue.main.async {
                         self.noDataLabel.alpha = 1
                         self.titleLabel.alpha = 0
-                        self.imageView.alpha = 0
+                        self.goDetailBtn.alpha = 0
                         self.goDetailBtn.isEnabled = false
+                        self.imageView.alpha = 0
                     }
                 }
-                
-                
                 else {
                     DispatchQueue.global().async { let data = try? Data(contentsOf: self.todayContentList[0].musicCoverUrl!)
                         DispatchQueue.main.async {
                             self.goDetailBtn.isEnabled = true
+                            self.goDetailBtn.alpha = 1
                             self.titleLabel.alpha = 1
+                            self.imageView.alpha = 1
                             self.titleLabel.text = self.todayContentList[0].conentText
                             self.imageView.image = UIImage(data: data!)
                             

@@ -20,6 +20,7 @@ class EditViewController: UIViewController, SendDataDelegate {
                 self.imageVIew.image = UIImage(data: data!)
                 self.titleLabel.text = self.getMusic.musicTitle
                 self.artistLabel.text = self.getMusic.musicArtist
+                newCD.musicCoverUrl = self.getMusic.musicCoverUrl!
             }
         }
         
@@ -51,7 +52,7 @@ class EditViewController: UIViewController, SendDataDelegate {
         docRef.updateData( [
             "contentText":"\(textView.text!)",
             "musicArtist":"\(artistLabel.text!)",
-            "musicCoverUrl":String(describing: newContent.musicCoverUrl!),
+            "musicCoverUrl":String(describing: newCD.musicCoverUrl!),
             "musicTitle":"\(titleLabel.text!)"
         ]) { err in
             if let err = err {
