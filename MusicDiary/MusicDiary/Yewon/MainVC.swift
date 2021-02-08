@@ -12,10 +12,13 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseUI
 
+var centerDocID:String!
+
 class MainVC:UIViewController {
     let db = Firestore.firestore()
     var diaryData = [QueryDocumentSnapshot]()
     var getDiaryList = [String]()
+    var diaryID = [String]()
     @IBOutlet weak var mainCarousel: ScalingCarouselView!
     let authUI = FUIAuth.defaultAuthUI()
     
@@ -80,6 +83,7 @@ class MainVC:UIViewController {
                     
                     if self.newDiary(document) {
                         self.diaryData.append(document)
+                        self.diaryID.append(docID)
                         print("add diary")
                         //self.mainCarousel.reloadItems(at: [IndexPath(item: self.getDiaryList.count-1, section: 0)])
                     }
@@ -142,7 +146,12 @@ class MainVC:UIViewController {
     }
     
     @IBAction func moveToWrite(_ sender: UIButton) {
-        print("writeView gogogo")
+//        guard let mainCurrentCenterIndex = mainCarousel.currentCenterCellIndex?.row
+//        else {
+//            return
+//        }
+//        centerDocID = diaryID[mainCurrentCenterIndex]
+//        print(centerDocID)
 //        let vc = UIStoryboard(name: "JungbinStoryboard", bundle: nil).instantiateViewController(identifier: "appSettingView")
 //        vc.modalPresentationStyle = .fullScreen
 //        self.present(vc, animated: true, completion:  nil)
@@ -197,11 +206,7 @@ extension CarouselDatasource: UICollectionViewDataSource {
 typealias CarouselDelegate = MainVC
 extension MainVC: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let mainCurrentCenterIndex = mainCarousel.currentCenterCellIndex?.row
-        else {
-            return
-            
-        }
+        
     }
 }
 
