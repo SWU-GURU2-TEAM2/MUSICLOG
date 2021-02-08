@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var userList = [UserStructure]()
     var diaryList = [DiaryStructure]()
     var tempDiary = [ContentData]()
+    var currentUID = String()
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
