@@ -48,6 +48,29 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
     }
     
     @IBAction func editDairyName(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "다이어리 이름 변경", message: "변경할 이름을 입력해 주세요.", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.text = self.diaryNameLabel.text
+        }//addTextField
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            if let changedName = alert.textFields![0].text, changedName != ""{
+                let docRef = self.db.collection("Diary").document("\(currentDairyId)")
+                docRef.updateData([
+                    "diaryName": "\(changedName)"
+                ]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Document successfully updated")
+                    }
+                }
+                self.diaryNameLabel.text = changedName
+            }//changedName
+        }//handler
+        ))//addAction
+        self.present(alert, animated: false, completion: nil)
+        
     }
     @IBAction func backBtn(_ sender: Any) {
         self.dismiss(animated: true)
