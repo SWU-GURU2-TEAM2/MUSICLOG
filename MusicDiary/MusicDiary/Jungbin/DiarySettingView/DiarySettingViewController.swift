@@ -102,10 +102,11 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
                         if let document = document, document.exists {
                             let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                             print("그런 유저 있음!")
-                            //멤버 추가하는 액션
+                            self.addUser(targetID: friendID)
+                            self.viewDidLoad()
                         } else {
                             print("그런 유저 없음")
-                            let notUser = UIAlertController(title: "⁉️", message: "존재하지 않는 유저입니다 🥲 다시 검색해 볼까요?", preferredStyle: UIAlertController.Style.alert)
+                            let notUser = UIAlertController(title: "⁉️", message: "존재하지 않는 유저입니다 🥲\n다시 검색해 볼까요?", preferredStyle: UIAlertController.Style.alert)
                             let ok = UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
                             notUser.addAction(ok)
                             self.present(notUser, animated: true)
@@ -119,7 +120,10 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
         }//handler
         ))//addAction
         self.present(alert, animated: false, completion: nil)
-        
+    }
+    func addUser(targetID: String) {
+        db.collection("Diary").document(currentDairyId).updateData(["memberList" : FieldValue.arrayUnion([targetID])])
+        db.collection("Users").document(targetID).updateData(["userDiaryList" : FieldValue.arrayUnion([currentDairyId])])
     }
     func presentDiaryDataForSetting() { // 다이어리 '한개!!!' 의 다어어리 정보 가져오는거임!!!
         var docRef = db.collection("Diary").document("\(currentDairyId)")
