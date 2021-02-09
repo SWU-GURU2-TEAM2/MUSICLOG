@@ -14,7 +14,12 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
             titleLabel.text = getMusic.musicTitle
             artistLabel.text = getMusic.musicArtist
             DispatchQueue.global().async { let data = try? Data(contentsOf: self.getMusic.musicCoverUrl!)
-                DispatchQueue.main.async { self.imageView.image = UIImage(data: data!) }
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(data: data!)
+                    self.db.collection("Diary").document(currentDairyId).updateData(["diaryMusicTitle" : self.getMusic.musicTitle])
+                    self.db.collection("Diary").document(currentDairyId).updateData(["diaryMusicArtist" : self.getMusic.musicArtist])
+                    self.db.collection("Diary").document(currentDairyId).updateData(["diaryImageUrl" : data!])
+                }
             }          
             
     }
@@ -48,11 +53,79 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
     }
     
     @IBAction func editDairyName(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "다이어리 이름 변경", message: "변경할 이름을 입력해 주세요.", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.text = self.diaryNameLabel.text
+        }//addTextField
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            if let changedName = alert.textFields![0].text, changedName != ""{
+                let docRef = self.db.collection("Diary").document("\(currentDairyId)")
+                docRef.updateData([
+                    "diaryName": "\(changedName)"
+                ]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Document successfully updated")
+                    }
+                }
+                self.diaryNameLabel.text = changedName
+            }//changedName
+        }//handler
+        ))//addAction
+        self.present(alert, animated: false, completion: nil)
+        
     }
     @IBAction func backBtn(_ sender: Any) {
         self.dismiss(animated: true)
     }
     @IBAction func tapAddUserBtn(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "친구 검색", message: "같이 사용할 친구의 아이디를 입력해 주세요 👥", preferredStyle: .alert)
+        alert.addTextField()
+        
+        alert.addAction(UIAlertAction(title: "검색", style: .default, handler: { (action) in
+            if let friendID = alert.textFields![0].text, friendID != ""{
+                
+                var isMember:Bool = false
+                let docRef = self.db.collection("Users").document("\(friendID)")
+                for mem in self.newMemberList {
+                    if mem.userId == friendID {
+                        // 이미 다이어리 멤버임
+                        // 경고메시지 후 종료
+                        isMember = true
+                        let alreadyMemAlert = UIAlertController(title: "⁉️", message: "이미 이 다이어리의 멤버입니다!", preferredStyle: UIAlertController.Style.alert)
+                        let ok = UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
+                        alreadyMemAlert.addAction(ok)
+                        self.present(alreadyMemAlert, animated: true)
+                        break
+                    }
+                }
+                if isMember == false {
+                    docRef.getDocument { (document, error) in
+                        if let document = document, document.exists {
+                            let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                            print("그런 유저 있음!")
+                            self.addUser(targetID: friendID)
+                            self.viewDidLoad()
+                        } else {
+                            print("그런 유저 없음")
+                            let notUser = UIAlertController(title: "⁉️", message: "존재하지 않는 유저입니다 🥲\n다시 검색해 볼까요?", preferredStyle: UIAlertController.Style.alert)
+                            let ok = UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
+                            notUser.addAction(ok)
+                            self.present(notUser, animated: true)
+                        }
+                    }
+                }
+            }
+        }
+        ))
+        self.present(alert, animated: false, completion: nil)
+    }
+    func addUser(targetID: String) {
+        db.collection("Diary").document(currentDairyId).updateData(["memberList" : FieldValue.arrayUnion([targetID])])
+        db.collection("Users").document(targetID).updateData(["userDiaryList" : FieldValue.arrayUnion([currentDairyId])])
     }
     func presentDiaryDataForSetting() { // 다이어리 '한개!!!' 의 다어어리 정보 가져오는거임!!!
         var docRef = db.collection("Diary").document("\(currentDairyId)")
@@ -61,7 +134,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
             if let document = document, document.exists {
                 let dataDescription = document.data()
                 //newContent.musicCoverUrl = URL(string: (dataDescription!["musicCoverUrl"]! as? String)!)
-
+   
                 self.newDiaryData.diaryName = dataDescription!["diaryName"] as? String
                 self.newDiaryData.diaryMusicTitle = dataDescription!["diaryMusicTitle"] as? String
                 self.newDiaryData.diaryMusicArtist = dataDescription!["diaryMusicArtist"] as? String

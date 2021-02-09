@@ -39,24 +39,29 @@ class DetailViewController: UIViewController {
         
     }
     
+    @IBAction func tapSharedBtn(_ sender: Any) {
+    }
     @IBAction func tapDeleteBtn(_ sender: Any) {
-        // EDIT
-        //        let calendar = Calendar.current
-        //        var docRef = db.collection("Diary").document("\(currentDairyId)").collection("Contents").document("\(currentContentID)")
-        //
-        //        docRef.updateData( [
-        //            "contentText":"\(textView.text!)",
-        //            "musicArtist":"\(artistLabel.text!)",
-        //            "musicCoverUrl":String(describing: newCD.musicCoverUrl!),
-        //            "musicTitle":"\(titleLabel.text!)"
-        //        ]) { err in
-        //            if let err = err {
-        //                print("Error adding document: \(err)")
-        //            } else {
-        //                print("Document updated with ID: \(docRef.documentID)")
-        //            }
-        //        }
-        //        self.dismiss(animated: true)
+        
+        let alert = UIAlertController(title: "삭제", message: "정말로 삭제하시겠어요? 💁🏻", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "안 할래요 📛", style: .cancel)
+        let ok = UIAlertAction(title: "삭제할래요", style: .default) { (_) in
+            var docRef = self.db.collection("Diary").document("\(currentDairyId)").collection("Contents").document("\(currentContentID)")
+            docRef.delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                }
+            }
+            self.dismiss(animated: true)
+        }
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        self.present(alert, animated: true)
+        
+        
+      
         
     }
     @IBAction func tapVIew(_ sender: Any) {

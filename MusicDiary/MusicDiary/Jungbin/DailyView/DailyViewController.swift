@@ -12,6 +12,7 @@ import Firebase
 var currentDairyId = "hPP6YvFvsilOPYoAlmJs"
 var currentDairyUserList:[String]!
 var currentContentData = ContentData()
+var currentContentID:String?
 
 class DailyViewController: UIViewController, FSCalendarDelegate {
     var datesWithEvent = [Date(), Date()-86400]
@@ -97,7 +98,7 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
                         musicArtist: getContent["musicArtist"] as! String,
                         musicCoverUrl: URL(string: (getContent["musicCoverUrl"]! as? String)!),
                         date: getContent["date"] as? Date)
-                    
+                    currentContentID = document.documentID
                     
                 }
                 print("today content list: ", currentContentData)

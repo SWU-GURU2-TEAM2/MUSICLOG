@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Write_save.png",
+      "filename" : "DiarySetting_addUserBtn.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Write_save@2x.png",
+      "filename" : "DiarySetting_addUserBtn@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Write_save@3x.png",
+      "filename" : "DiarySetting_addUserBtn@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
