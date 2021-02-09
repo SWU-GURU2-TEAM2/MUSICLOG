@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		17731DD525C2607C00A16494 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17731DD425C2607C00A16494 /* MainVC.swift */; };
 		17BF998125C25E8C0041CBF4 /* YewonStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17BF998025C25E8C0041CBF4 /* YewonStoryboard.storyboard */; };
-		17EF483225CDD5E2009FF352 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF483125CDD5E2009FF352 /* DetailVC.swift */; };
 		5C0DC0EE25C67E2500D766FB /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC0ED25C67E2500D766FB /* WriteViewController.swift */; };
 		5C0DC0F125C67E4F00D766FB /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC0F025C67E4F00D766FB /* DailyViewController.swift */; };
 		5C0DC10525C69DC800D766FB /* UserStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC10425C69DC800D766FB /* UserStructure.swift */; };
@@ -40,7 +39,6 @@
 /* Begin PBXFileReference section */
 		17731DD425C2607C00A16494 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		17BF998025C25E8C0041CBF4 /* YewonStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = YewonStoryboard.storyboard; sourceTree = "<group>"; };
-		17EF483125CDD5E2009FF352 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		5C0DC0ED25C67E2500D766FB /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		5C0DC0F025C67E4F00D766FB /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
 		5C0DC10425C69DC800D766FB /* UserStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStructure.swift; sourceTree = "<group>"; };
@@ -89,7 +87,6 @@
 			children = (
 				17BF998025C25E8C0041CBF4 /* YewonStoryboard.storyboard */,
 				17731DD425C2607C00A16494 /* MainVC.swift */,
-				17EF483125CDD5E2009FF352 /* DetailVC.swift */,
 			);
 			path = Yewon;
 			sourceTree = "<group>";
@@ -363,7 +360,6 @@
 				17731DD525C2607C00A16494 /* MainVC.swift in Sources */,
 				5C93B37025C051400067A723 /* SceneDelegate.swift in Sources */,
 				5C0DC0F125C67E4F00D766FB /* DailyViewController.swift in Sources */,
-				17EF483225CDD5E2009FF352 /* DetailVC.swift in Sources */,
 				5C0DC0EE25C67E2500D766FB /* WriteViewController.swift in Sources */,
 				5C2A1BE425CF9A320044E10C /* EditViewController.swift in Sources */,
 			);
