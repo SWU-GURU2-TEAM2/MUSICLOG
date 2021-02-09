@@ -10,6 +10,6 @@ import UIKit
 public struct UserStructure {
     var userName: String?
     var userId: String?
-    var userImage: UIImage?
-    var userDiaryList: [Int]?
+    var userImage: URL?
+    var userDiaryList: [String]?
 }
