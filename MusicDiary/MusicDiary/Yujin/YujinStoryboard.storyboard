@@ -257,6 +257,7 @@
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppSetting_profile" translatesAutoresizingMaskIntoConstraints="NO" id="4Kl-oA-PaJ">
                                 <rect key="frame" x="152" y="139" width="147" height="128"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="4Kl-oA-PaJ" secondAttribute="height" multiplier="1:1" id="gdz-vs-2oy"/>
                                 </constraints>

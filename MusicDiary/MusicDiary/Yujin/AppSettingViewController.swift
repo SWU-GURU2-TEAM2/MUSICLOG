@@ -43,7 +43,7 @@ class AppSettingViewController: UIViewController {
                 let dbName = document.get("userName")
                 self.userName.text = dbName as! String
                 let dbStorageRef = document.get("userImage")
-                let storageRef = self.storage.reference(withPath: "\(dbStorageRef!)")
+                let storageRef = self.storage.reference(withPath: "profileImages/\(dbStorageRef!)")
                 self.profileImage.sd_setImage(with: storageRef)
             } else {
                 print("Image does not exist")
@@ -147,5 +147,34 @@ extension AppSettingViewController: UIImagePickerControllerDelegate, UINavigatio
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         print("OKKKKKKKKKKKK")
         self.imagePicker.dismiss(animated: true, completion: nil)
-    }
+        guard let selectedImage = info[.originalImage] as? UIImage else {
+            return
+        }
+        profileImage.image = selectedImage
+        if let data = selectedImage.pngData() {
+            let imageRef = storage.reference().child("profileImages/\(currentUID)Profile.png")
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/png"
+            let uploadTask = imageRef.putData(data, metadata: metadata) { (metadata, error) in
+              guard let metadata = metadata else {
+                return
+              }
+              imageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                  return
+                }
+              }//downloadURL
+            }//uploadTask
+        }//data
+        let docRef = db.collection("Users").document("\(currentUID)")
+        docRef.updateData([
+            "userImage": "\(currentUID)Profile.png"
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }//didFinishPickingMediaWithInfo
 }
