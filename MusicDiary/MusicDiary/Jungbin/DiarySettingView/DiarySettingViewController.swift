@@ -14,7 +14,12 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
             titleLabel.text = getMusic.musicTitle
             artistLabel.text = getMusic.musicArtist
             DispatchQueue.global().async { let data = try? Data(contentsOf: self.getMusic.musicCoverUrl!)
-                DispatchQueue.main.async { self.imageView.image = UIImage(data: data!) }
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(data: data!)
+                    self.db.collection("Diary").document(currentDairyId).updateData(["diaryMusicTitle" : self.getMusic.musicTitle])
+                    self.db.collection("Diary").document(currentDairyId).updateData(["diaryMusicArtist" : self.getMusic.musicArtist])
+                    self.db.collection("Diary").document(currentDairyId).updateData(["diaryImageUrl" : data!])
+                }
             }          
             
     }
@@ -113,12 +118,9 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
                         }
                     }
                 }
-                
-                
-                
-            }//changedName
-        }//handler
-        ))//addAction
+            }
+        }
+        ))
         self.present(alert, animated: false, completion: nil)
     }
     func addUser(targetID: String) {
@@ -132,7 +134,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
             if let document = document, document.exists {
                 let dataDescription = document.data()
                 //newContent.musicCoverUrl = URL(string: (dataDescription!["musicCoverUrl"]! as? String)!)
-
+   
                 self.newDiaryData.diaryName = dataDescription!["diaryName"] as? String
                 self.newDiaryData.diaryMusicTitle = dataDescription!["diaryMusicTitle"] as? String
                 self.newDiaryData.diaryMusicArtist = dataDescription!["diaryMusicArtist"] as? String
