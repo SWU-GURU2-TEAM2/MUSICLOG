@@ -604,9 +604,9 @@
                                         </connections>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygm-tP-NYu">
-                                        <rect key="frame" x="34" y="331" width="69" height="30"/>
+                                        <rect key="frame" x="8" y="343" width="72" height="72"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="사용자 추가"/>
+                                        <state key="normal" backgroundImage="DiarySetting_addUserBtn"/>
                                         <connections>
                                             <action selector="tapAddUserBtn:" destination="4mU-Ws-LEl" eventType="touchUpInside" id="VSH-bV-Wzl"/>
                                         </connections>
@@ -812,6 +812,7 @@
         <image name="Daily_setting" width="51" height="51"/>
         <image name="DairySetting_BG" width="346" height="405"/>
         <image name="DairySetting_editBtn" width="14" height="14"/>
+        <image name="DiarySetting_addUserBtn" width="72" height="72"/>
         <image name="DiarySetting_userBG" width="72" height="72"/>
         <image name="Write_musicCircle" width="265" height="265"/>
         <image name="Write_save" width="82" height="82"/>
