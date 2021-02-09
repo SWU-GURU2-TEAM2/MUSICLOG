@@ -27,6 +27,7 @@ class MainVC:UIViewController {
     @IBAction func moveToWrite(_ sender: UIButton) {
         
         //center Diary 해당 날짜에 콘텐츠 있으면 안보이게
+        
     }
     @IBAction func moveToSetting(_ sender: UIButton) {
         let vc = UIStoryboard(name: "YujinStoryboard", bundle: nil).instantiateViewController(identifier: "appSettingView")
@@ -116,6 +117,7 @@ class MainCell: ScalingCarouselCell {
     @IBOutlet weak var mainDiaryImaage: UIImageView!
     @IBOutlet weak var mainDiaryName: UILabel!
     @IBOutlet weak var mainStartDate: UILabel!
+    @IBOutlet weak var mainMemberInfo: UIImageView!
 }
 
 typealias CarouselDatasource = MainVC
@@ -138,6 +140,14 @@ extension CarouselDatasource: UICollectionViewDataSource {
 //        DispatchQueue.global().async { let data = try? Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
 //            DispatchQueue.main.async { carouselCell.mainDiaryImaage.image = UIImage(data: data!) }
 //            }
+        //Share? Single?
+        let memberList = diaryData[indexPath.row].memberList!.count
+        if memberList >= 2 {
+            carouselCell.mainMemberInfo.setImage(UIImage(named: "ShareDiary.png")!)
+        } else {
+            carouselCell.mainMemberInfo.setImage(UIImage(named: "SingleDiary.png")!)
+        }
+        
         carouselCell.setNeedsLayout()
         carouselCell.layoutIfNeeded()
         
