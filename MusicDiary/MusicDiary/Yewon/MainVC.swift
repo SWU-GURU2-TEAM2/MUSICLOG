@@ -124,22 +124,17 @@ extension CarouselDatasource: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let carouselCell = collectionView.dequeueReusableCell(withReuseIdentifier: "carouselCell", for: indexPath) as! MainCell
-        //let diaryCount = diaryData[indexPath.row]
-        //let data0Fdiary = diaryCount.data()
-        //diary name insert
         carouselCell.mainDiaryName.text = diaryData[indexPath.row].diaryName
-        
-        //이미지 넣기, 날짜 넣기
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "yyyy년 MM월 dd일"
+        let start_date = dateFormater.string(from: self.diaryData[indexPath.row].date!)
+        carouselCell.mainStartDate.text = start_date
+        //이미지 넣기
         
         //carouselCell.mainDiaryImaage.image = UIImage(data: try! Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!))
 //        DispatchQueue.global().async { let data = try? Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
 //            DispatchQueue.main.async { carouselCell.mainDiaryImaage.image = UIImage(data: data!) }
 //            }
-        //date insert 0000년 00일 00일 형식으로 지정 필요
-       // let starDate = data0Fdiary["date"]
-        //image insert
-        //print("Image Url : \(data0Fdiary["diaryImageUrl"])")
-        //carouselCell.mainStartDate.text = startDate
         carouselCell.setNeedsLayout()
         carouselCell.layoutIfNeeded()
         
