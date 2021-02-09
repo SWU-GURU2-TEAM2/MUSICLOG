@@ -56,7 +56,7 @@ class IntroViewController: UIViewController, FUIAuthDelegate, UIGestureRecognize
                     } else {
                         print("User does not exist")
                         let storageRef = self.storage.reference()
-                        let imageRef = storageRef.child("progileImages/Icon material-person@3x.png")
+                        let imageRef = storageRef.child("profileImages/Icon material-person@3x.png")
                         self.db.collection("Users").document("\(currentUser.uid)").setData(["userDiaryList" : [],
                              "userID" : "\(currentUser.uid)",
                              "userImage" : "\(imageRef.fullPath)",
@@ -65,7 +65,7 @@ class IntroViewController: UIViewController, FUIAuthDelegate, UIGestureRecognize
                     }
                 }
                 
-                let vc = UIStoryboard(name: "YujinStoryboard", bundle: nil).instantiateViewController(identifier: "appSettingView")
+                let vc = UIStoryboard(name: "YewonStoryboard", bundle: nil).instantiateViewController(identifier: "YewonMainView")
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true, completion:  nil)
             } else {
