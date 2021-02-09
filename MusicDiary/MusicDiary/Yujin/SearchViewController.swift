@@ -143,3 +143,14 @@ extension SearchViewController: UITableViewDelegate{
 //        print(selectedMusicData.musicCoverUrl)
     }//didSelectRowAt
 }//SearchViewController
+
+class SearchBoardViewController: UIViewController{
+    
+    @IBOutlet weak var searchView: UIView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
