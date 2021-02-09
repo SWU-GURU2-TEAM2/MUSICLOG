@@ -37,8 +37,9 @@ class MainVC:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.diaryData = []
         //Users에서 diaryList 필드 읽어오기
-        db.collection("Users").document("h1jETajvj6NiFtA9qSE1VRjQ7AP2").getDocument { (document, error) in
+        db.collection("Users").document(currentUID).getDocument { (document, error) in
             if let document = document, document.exists {
                 let dataDescription = document.data()
                 self.getDiaryList = (dataDescription!["userDiaryList"] as? [String])!
@@ -47,25 +48,26 @@ class MainVC:UIViewController {
                 for currentDId in self.getDiaryList {
                     let docRef = self.db.collection("Diary").document("\(currentDId)")
                     var newDiaryData = DiaryStructure()
-                    docRef.getDocument { (document, error) in
+                    docRef.getDocument { [self] (document, error) in
                         if let document = document, document.exists {
                             let dataDescriptions = document.data()
-                            let calendar = Calendar.current
+                            newDiaryData.diaryId = dataDescriptions!["diaryID"] as? String
                             newDiaryData.diaryName = dataDescriptions!["diaryName"] as? String
                             newDiaryData.diaryMusicTitle = dataDescriptions!["diaryMusicTitle"] as? String
                             newDiaryData.diaryMusicArtist = dataDescriptions!["diaryMusicArtist"] as? String
-                            newDiaryData.diaryImageUrl = URL(string: (dataDescriptions!["diaryImageUrl"]! as? String)!)
+                            //newDiaryData.diaryImageUrl = URL(string: ((dataDescriptions!["diaryImageUrl"]! as? String)!))
                             newDiaryData.date = Date(timeIntervalSince1970: TimeInterval((dataDescriptions!["date"] as! Timestamp).seconds))
                             newDiaryData.memberList = dataDescriptions!["memberList"] as? [String]
                             
                             self.diaryData.append(newDiaryData)
                             self.diaryData.sort {$0.date! < $1.date!}   //date에 따라 정렬
-                            self.mainCarousel.reloadData()
+                            
                         } else {
                             print("Document does not exist")
                             
                         }
-                        
+                        self.mainCarousel.reloadData()
+
                     }
                 }
             }
@@ -83,7 +85,8 @@ class MainVC:UIViewController {
             "diaryMusicTitle":"",
             "diaryMusicArtist":"",
             "memberList":[currentUID],
-            "date":date
+            "date":date,
+            "diaryID":""
             ]){ err in
             if let err = err {
                 print("Error adding document: \(err)")
@@ -91,7 +94,16 @@ class MainVC:UIViewController {
                 print("Document added with ID: \(ref!.documentID)")
                 
                 //Diary 필드에 새 다이어리 documentID 추가 update
+                self.db.collection("Diary").document(ref!.documentID).updateData(["diaryID":ref!.documentID]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Document successfully updated")
+                    }
+                }
+
                 
+                //Users diaryList update
                 self.db.collection("Users").document(currentUID).updateData(["userDiaryList": FieldValue.arrayUnion([ref!.documentID])])
                 self.viewDidLoad()
             }
