@@ -20,6 +20,7 @@ class DiarySettingViewController: UIViewController {
         imageView.layer.cornerRadius = imageView.frame.width / 2
         imageView.clipsToBounds = true
         presentDiaryDataForSetting()
+
     }
     
     @IBAction func goSearchBtn(_ sender: Any) {
