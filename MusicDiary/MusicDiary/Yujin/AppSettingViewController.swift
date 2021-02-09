@@ -13,19 +13,28 @@ class AppSettingViewController: UIViewController {
     
     //values
     @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userUID: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileImageOutline: UIImageView!
     let authUI = FUIAuth.defaultAuthUI()
     let db = Firestore.firestore()
     let storage = Storage.storage()
+    let ad = UIApplication.shared.delegate as! AppDelegate
     
     //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let ad = UIApplication.shared.delegate as? AppDelegate
-        //print("\(ad!.currentUID)")
-        let currentUser = authUI?.auth?.currentUser
-        let docRef = db.collection("Users").document("\(currentUser!.uid)")
+        //uidSetting
+        userUID.text = currentUID
+        //profileImageSetting
+        profileImage.layer.cornerRadius = self.profileImage.frame.width / 2.5
+        //profileImage tap action setting
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileTouched(_:)))
+        profileImage.addGestureRecognizer(tapGestureRecognizer)
+        profileImage.isUserInteractionEnabled = true
+        
+        //userDataLoading
+        let docRef = db.collection("Users").document("\(currentUID)")
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 print("success")
@@ -49,6 +58,8 @@ class AppSettingViewController: UIViewController {
         } catch {
             print("logoutError")
         }
+        //self.ad.currentUID = ""
+        currentUID = ""
         let vc = UIStoryboard(name: "YujinStoryboard", bundle: nil).instantiateViewController(identifier: "IntroView")
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion:  nil)
@@ -81,5 +92,14 @@ class AppSettingViewController: UIViewController {
         self.present(alert, animated: false, completion: nil)
     }//changeUserName
     
+    @IBAction func uidCopied(_ sender: Any) {
+        UIPasteboard.general.string = currentUID
+    }
+    
+    @objc func profileTouched(_ sender: Any) {
+        print("touched")
+        let storageRef = storage.reference()
+        
+    }
     
 }
