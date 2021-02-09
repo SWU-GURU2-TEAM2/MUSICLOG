@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 import FirebaseUI
 import FirebaseFirestore
 
@@ -20,6 +21,7 @@ class AppSettingViewController: UIViewController {
     let db = Firestore.firestore()
     let storage = Storage.storage()
     let ad = UIApplication.shared.delegate as! AppDelegate
+    var imagePicker: UIImagePickerController!
     
     //viewDidLoad
     override func viewDidLoad() {
@@ -27,7 +29,7 @@ class AppSettingViewController: UIViewController {
         //uidSetting
         userUID.text = currentUID
         //profileImageSetting
-        profileImage.layer.cornerRadius = self.profileImage.frame.width / 2.5
+        profileImage.layer.cornerRadius = self.profileImage.frame.width / 2.8
         //profileImage tap action setting
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileTouched(_:)))
         profileImage.addGestureRecognizer(tapGestureRecognizer)
@@ -96,10 +98,54 @@ class AppSettingViewController: UIViewController {
         UIPasteboard.general.string = currentUID
     }
     
+}
+
+extension AppSettingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     @objc func profileTouched(_ sender: Any) {
         print("touched")
         let storageRef = storage.reference()
-        
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let actionCancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        actionSheet.addAction(actionCancel)
+        let actionGallary = UIAlertAction(title: "갤러리", style: .default) { (action) in
+            switch PHPhotoLibrary.authorizationStatus() {
+            case .authorized:
+                print("authOK")
+                self.showGallary()
+            case .notDetermined:
+                print("notDT")
+                PHPhotoLibrary.requestAuthorization(for: .readWrite) { (status) in }
+            default:
+                print("default")
+                let alertVC = UIAlertController(title: "권한 필요", message: "설정에서 변경하세요.", preferredStyle: .alert)
+                let actionSetting = UIAlertAction(title: "OK", style: .default) { (action) in
+                    print("OKSet")
+                    if let appSetting = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(appSetting, options: [:], completionHandler: nil)
+                    }
+                }
+                let actionCancel = UIAlertAction(title: "CANCEL", style: .cancel) { (action) in
+                    print("cancelset")
+                }
+                alertVC.addAction(actionCancel)
+                alertVC.addAction(actionSetting)
+                self.present(alertVC, animated: true, completion: nil)
+            }
+        }
+        actionSheet.addAction(actionGallary)
+        present(actionSheet, animated: true, completion: nil)
     }
     
+    func showGallary () {
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("OKKKKKKKKKKKK")
+        self.imagePicker.dismiss(animated: true, completion: nil)
+    }
 }
