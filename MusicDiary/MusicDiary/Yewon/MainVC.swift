@@ -147,7 +147,6 @@ typealias CarouselDelegate = MainVC
 extension MainVC: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let currentCenterIndex = mainCarousel.currentCenterCellIndex?.row else { return }
-        print(currentCenterIndex)
         //center Cell 의 documentID 저장해둬야함
         //self.diaryData[currentCenterIndex]
     }
