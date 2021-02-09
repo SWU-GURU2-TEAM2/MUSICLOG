@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "Write_topBG.png",
+      "filename" : "DairySetting_editBtn.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Write_topBG@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Write_topBG@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
