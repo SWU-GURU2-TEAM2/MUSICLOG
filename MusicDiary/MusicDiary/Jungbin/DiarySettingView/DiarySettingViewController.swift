@@ -11,10 +11,16 @@ import Firebase
 class DiarySettingViewController: UIViewController {
     let db = Firestore.firestore()
 
+    @IBOutlet weak var diaryLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBAction func tapView(_ sender: Any) {
-        // 저 장 후!!!!
+    @IBOutlet weak var artistLabel: UILabel!
+    
+    @IBAction func goSearchBtn(_ sender: Any) {
         self.dismiss(animated: true)
+    }
+    @IBAction func editDairyName(_ sender: Any) {
+    }
+    @IBAction func backBtn(_ sender: Any) {
     }
     @IBAction func tapAddUserBtn(_ sender: Any) {
     }
