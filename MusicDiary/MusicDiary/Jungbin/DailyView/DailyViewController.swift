@@ -10,6 +10,7 @@ import FSCalendar
 import Firebase
 
 var currentDairyId = "IxLlj4mK2DKPIoBA9Qjp"
+var currentDairyUserList:[String]!
 var currentContentData = ContentData()
 
 class DailyViewController: UIViewController, FSCalendarDelegate {
@@ -19,6 +20,7 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var goDetailBtn: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,12 +48,12 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
         calendar.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.backgroundColor = UIColor.white.withAlphaComponent(0)
-    
+        
     }
     
     @IBAction func goDetail(_ sender: Any) {
         print("go detail")
-
+        
         
     }
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
@@ -79,14 +81,14 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
     func getContentsListForDaily(date: Date) {
         let db = Firestore.firestore()
         let calendar = Calendar.current
-        
+        currentContentData.musicTitle = ""
         // .whereField("date", isLessThan: calendar.startOfDay(for: date)+86400)
         db.collection("Diary").document("\(currentDairyId)").collection("Contents") .whereField("date", isGreaterThanOrEqualTo: calendar.startOfDay(for: date)).whereField("date", isLessThan: calendar.startOfDay(for: date)+86400).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    
+                    print("지금 읽어오는 문서: ", document)
                     let getContent = document.data()
                     currentContentData = ContentData(
                         authorID: getContent["authorID"] as! String,
@@ -99,7 +101,7 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
                     
                 }
                 print("today content list: ", currentContentData)
-                if currentContentData.conentText == "" {
+                if currentContentData.musicTitle == "" {
                     
                     DispatchQueue.main.async {
                         self.noDataLabel.alpha = 1
