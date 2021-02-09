@@ -10,6 +10,8 @@ import FirebaseUI
 import SwiftyGif
 import FirebaseFirestore
 
+var currentUID = ""
+
 class IntroViewController: UIViewController, FUIAuthDelegate, UIGestureRecognizerDelegate {
     
     //values
@@ -23,15 +25,6 @@ class IntroViewController: UIViewController, FUIAuthDelegate, UIGestureRecognize
     //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        //logoImageView GIF start
-        /*
-        do{
-            let gif = try UIImage(gifName: "spongeBob.gif")
-            self.logoImageView.setGifImage(gif, loopCount: -1)
-        } catch {
-            print("not loaded")
-        }
-        */
         //swipeGestureControl
         let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeGestured(_:)))
         swipeGestureRecognizer.direction = UISwipeGestureRecognizer.Direction.up
@@ -46,7 +39,7 @@ class IntroViewController: UIViewController, FUIAuthDelegate, UIGestureRecognize
     }//viewDidDisappear
     
     //swipeGesture
-    @IBAction func swipeGestured(_ sender: Any) {
+    @objc func swipeGestured(_ sender: Any) {
         print("swiped")
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             //만약 로그인 했다면
@@ -56,7 +49,7 @@ class IntroViewController: UIViewController, FUIAuthDelegate, UIGestureRecognize
                 let ad = UIApplication.shared.delegate as? AppDelegate
                 //appDelegate에 저장
                 ad?.currentUID = currentUser.uid
-                
+                currentUID = currentUser.uid
                 let docRef = self.db.collection("Users").document("\(currentUser.uid)")
                 docRef.getDocument { (document, error) in
                     if let document = document, document.exists {
@@ -65,7 +58,7 @@ class IntroViewController: UIViewController, FUIAuthDelegate, UIGestureRecognize
                     } else {
                         print("User does not exist")
                         let storageRef = self.storage.reference()
-                        let imageRef = storageRef.child("Icon material-person.png")
+                        let imageRef = storageRef.child("Icon material-person@3x.png")
                         self.db.collection("Users").document("\(currentUser.uid)").setData(["userDiaryList" : [],
                              "userID" : "\(currentUser.uid)",
                              "userImage" : "\(imageRef.fullPath)",
