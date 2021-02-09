@@ -38,6 +38,7 @@ class MainVC:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.diaryData = []
+        
         //Users에서 diaryList 필드 읽어오기
         db.collection("Users").document(currentUID).getDocument { (document, error) in
             if let document = document, document.exists {
@@ -55,7 +56,7 @@ class MainVC:UIViewController {
                             newDiaryData.diaryName = dataDescriptions!["diaryName"] as? String
                             newDiaryData.diaryMusicTitle = dataDescriptions!["diaryMusicTitle"] as? String
                             newDiaryData.diaryMusicArtist = dataDescriptions!["diaryMusicArtist"] as? String
-                            //newDiaryData.diaryImageUrl = URL(string: ((dataDescriptions!["diaryImageUrl"] as! String)))
+                            //newDiaryData.diaryImageUrl = URL(string: ((dataDescriptions!["diaryImageUrl"])) as! String)
                             newDiaryData.date = Date(timeIntervalSince1970: TimeInterval((dataDescriptions!["date"] as! Timestamp).seconds))
                             newDiaryData.memberList = dataDescriptions!["memberList"] as? [String]
                             
@@ -102,6 +103,7 @@ class MainVC:UIViewController {
         }
     }
     
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         mainCarousel.deviceRotated()
@@ -130,7 +132,8 @@ extension CarouselDatasource: UICollectionViewDataSource {
         let start_date = dateFormater.string(from: self.diaryData[indexPath.row].date!)
         carouselCell.mainStartDate.text = start_date
         //이미지 넣기
-        
+        carouselCell.mainDiaryImaage.layer.cornerRadius = carouselCell.mainDiaryImaage.frame.width / 2
+        carouselCell.mainDiaryImaage.clipsToBounds = true
         //carouselCell.mainDiaryImaage.image = UIImage(data: try! Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!))
 //        DispatchQueue.global().async { let data = try? Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
 //            DispatchQueue.main.async { carouselCell.mainDiaryImaage.image = UIImage(data: data!) }

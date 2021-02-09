@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +18,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Fyk-ZM-Zzg" customClass="ScalingCarouselView" customModule="ScalingCarousel">
                                 <rect key="frame" x="0.0" y="194" width="414" height="518"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="k6W-WE-KgN">
                                     <size key="itemSize" width="206" height="327"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -34,26 +33,37 @@
                                             <rect key="frame" x="0.0" y="0.0" width="268" height="509"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gY5-Fl-BN1">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainCell" translatesAutoresizingMaskIntoConstraints="NO" id="gY5-Fl-BN1">
                                                     <rect key="frame" x="0.0" y="0.0" width="268" height="509"/>
-                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diary Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoy-mq-mEZ">
-                                                    <rect key="frame" x="0.0" y="308" width="268" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainCellImageOut" translatesAutoresizingMaskIntoConstraints="NO" id="SI3-gY-rRK">
+                                                    <rect key="frame" x="51.5" y="47" width="165" height="165"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="SI3-gY-rRK" secondAttribute="height" multiplier="1:1" id="iXd-Oy-5Pn"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wd1-Uq-q59">
-                                                    <rect key="frame" x="40" y="40" width="188" height="188"/>
+                                                    <rect key="frame" x="60.5" y="56" width="147" height="147"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Wd1-Uq-q59" secondAttribute="height" multiplier="1:1" id="N5e-tJ-Wf6"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DiaryDateBox" translatesAutoresizingMaskIntoConstraints="NO" id="Wcx-2e-Q2a">
+                                                    <rect key="frame" x="47.5" y="224" width="173" height="112"/>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DiaryNameBox" translatesAutoresizingMaskIntoConstraints="NO" id="VbI-iQ-63S">
+                                                    <rect key="frame" x="52.5" y="235" width="163" height="74"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diary Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoy-mq-mEZ">
+                                                    <rect key="frame" x="0.0" y="262" width="268" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCz-Vz-2kg">
-                                                    <rect key="frame" x="0.0" y="339" width="268" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <rect key="frame" x="0.0" y="304.5" width="268" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -61,17 +71,26 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="gY5-Fl-BN1" secondAttribute="bottom" id="2vp-qt-k13"/>
                                                 <constraint firstAttribute="trailing" secondItem="Yoy-mq-mEZ" secondAttribute="trailing" id="5cM-VW-iHB"/>
-                                                <constraint firstItem="Wd1-Uq-q59" firstAttribute="top" secondItem="iCV-Go-Ppk" secondAttribute="top" constant="40" id="DgZ-Ke-UGN"/>
+                                                <constraint firstAttribute="trailing" secondItem="SI3-gY-rRK" secondAttribute="trailing" constant="51.5" id="9qC-ER-wiC"/>
+                                                <constraint firstItem="Wd1-Uq-q59" firstAttribute="top" secondItem="iCV-Go-Ppk" secondAttribute="top" constant="56" id="DgZ-Ke-UGN"/>
+                                                <constraint firstItem="SI3-gY-rRK" firstAttribute="top" secondItem="iCV-Go-Ppk" secondAttribute="top" constant="47" id="FD0-JQ-Lmq"/>
                                                 <constraint firstItem="fCz-Vz-2kg" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" id="I1D-nL-Azu"/>
                                                 <constraint firstItem="Yoy-mq-mEZ" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" id="K6V-qo-ucf"/>
                                                 <constraint firstItem="gY5-Fl-BN1" firstAttribute="top" secondItem="iCV-Go-Ppk" secondAttribute="top" id="N4n-OM-lr8"/>
-                                                <constraint firstAttribute="trailing" secondItem="Wd1-Uq-q59" secondAttribute="trailing" constant="40" id="QOO-6E-bKf"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wd1-Uq-q59" secondAttribute="trailing" constant="60.5" id="QOO-6E-bKf"/>
                                                 <constraint firstAttribute="trailing" secondItem="gY5-Fl-BN1" secondAttribute="trailing" id="SYP-0e-Iq0"/>
-                                                <constraint firstItem="Wd1-Uq-q59" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="40" id="Y9I-4U-nQh"/>
-                                                <constraint firstItem="Yoy-mq-mEZ" firstAttribute="top" secondItem="Wd1-Uq-q59" secondAttribute="bottom" constant="80" id="bVY-OD-Jia"/>
+                                                <constraint firstItem="Wd1-Uq-q59" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="60.5" id="Y9I-4U-nQh"/>
+                                                <constraint firstAttribute="trailing" secondItem="VbI-iQ-63S" secondAttribute="trailing" constant="52.5" id="YZf-O3-9pY"/>
+                                                <constraint firstItem="Wcx-2e-Q2a" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="47.5" id="ZSd-t9-rQY"/>
+                                                <constraint firstItem="SI3-gY-rRK" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="51.5" id="a00-1F-gJS"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wcx-2e-Q2a" secondAttribute="trailing" constant="47.5" id="asE-ft-auk"/>
+                                                <constraint firstItem="Yoy-mq-mEZ" firstAttribute="top" secondItem="Wd1-Uq-q59" secondAttribute="bottom" constant="59" id="bVY-OD-Jia"/>
+                                                <constraint firstItem="VbI-iQ-63S" firstAttribute="top" secondItem="iCV-Go-Ppk" secondAttribute="top" constant="235" id="faq-ue-T9k"/>
+                                                <constraint firstItem="VbI-iQ-63S" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="52.5" id="j2h-9V-cgX"/>
                                                 <constraint firstItem="gY5-Fl-BN1" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" id="qIS-Bw-GdO"/>
                                                 <constraint firstAttribute="trailing" secondItem="fCz-Vz-2kg" secondAttribute="trailing" id="wIc-hI-gWF"/>
-                                                <constraint firstItem="fCz-Vz-2kg" firstAttribute="top" secondItem="Yoy-mq-mEZ" secondAttribute="bottom" constant="10" id="yPw-Tf-RAN"/>
+                                                <constraint firstItem="Wcx-2e-Q2a" firstAttribute="top" secondItem="Wd1-Uq-q59" secondAttribute="bottom" constant="21" id="wXd-Q8-sXe"/>
+                                                <constraint firstItem="fCz-Vz-2kg" firstAttribute="top" secondItem="Yoy-mq-mEZ" secondAttribute="bottom" constant="28" id="yPw-Tf-RAN"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="268" height="509"/>
@@ -94,9 +113,9 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GvI-L6-JJx">
-                                <rect key="frame" x="347" y="44" width="49" height="30"/>
+                                <rect key="frame" x="347" y="34" width="51" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Setting"/>
+                                <state key="normal" backgroundImage="Daily_setting"/>
                                 <connections>
                                     <action selector="moveToSetting:" destination="xHz-IV-Kcc" eventType="touchUpInside" id="goM-Zy-iPM"/>
                                 </connections>
@@ -110,15 +129,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMP-2S-VWT">
-                                <rect key="frame" x="188.5" y="832" width="37" height="30"/>
-                                <state key="normal" title="Write"/>
+                                <rect key="frame" x="181.5" y="811" width="51" height="51"/>
+                                <state key="normal" title="Write" backgroundImage="Daily_home"/>
                                 <connections>
                                     <action selector="moveToWrite:" destination="xHz-IV-Kcc" eventType="touchUpInside" id="pDT-sv-492"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OLp-ow-XIG"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Fyk-ZM-Zzg" firstAttribute="leading" secondItem="HeF-Fq-ui5" secondAttribute="leading" id="Mp1-bo-PUq"/>
                             <constraint firstItem="UMP-2S-VWT" firstAttribute="bottom" secondItem="OLp-ow-XIG" secondAttribute="bottom" id="RRW-5w-XTw"/>
@@ -138,8 +157,11 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="Daily_home" width="51" height="51"/>
+        <image name="Daily_setting" width="51" height="51"/>
+        <image name="DiaryDateBox" width="173" height="112"/>
+        <image name="DiaryNameBox" width="157" height="74"/>
+        <image name="MainCell" width="268" height="509"/>
+        <image name="MainCellImageOut" width="165" height="165"/>
     </resources>
 </document>
