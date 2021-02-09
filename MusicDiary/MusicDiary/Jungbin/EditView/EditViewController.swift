@@ -20,6 +20,7 @@ class EditViewController: UIViewController, SendDataDelegate {
                 self.imageVIew.image = UIImage(data: data!)
                 self.titleLabel.text = self.getMusic.musicTitle
                 self.artistLabel.text = self.getMusic.musicArtist
+                newCD.musicCoverUrl = self.getMusic.musicCoverUrl!
             }
         }
         
@@ -38,9 +39,11 @@ class EditViewController: UIViewController, SendDataDelegate {
     override func viewDidLoad() {
        
         super.viewDidLoad()
-        
+        imageVIew.layer.cornerRadius = imageVIew.frame.width / 2
+        imageVIew.clipsToBounds = true
+        writeView.backgroundColor = UIColor(patternImage: UIImage(named: "Write_underBG")!)
         presentData()
-        //placeholderSetting()
+//        placeholderSetting()
         
     }
     @IBAction func tapSaveBtn(_ sender: Any) {
@@ -51,7 +54,7 @@ class EditViewController: UIViewController, SendDataDelegate {
         docRef.updateData( [
             "contentText":"\(textView.text!)",
             "musicArtist":"\(artistLabel.text!)",
-            "musicCoverUrl":String(describing: newContent.musicCoverUrl!),
+            "musicCoverUrl":String(describing: newCD.musicCoverUrl!),
             "musicTitle":"\(titleLabel.text!)"
         ]) { err in
             if let err = err {

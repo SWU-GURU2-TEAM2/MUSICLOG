@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-var newContent = ContentData(authorID: "userID123", conentText: "", musicTitle: "", musicArtist: "", musicCoverUrl: URL(fileURLWithPath: "https://"), date: Date())
+var newContent = ContentData(authorID: "\(currentUID)", conentText: "", musicTitle: "", musicArtist: "", musicCoverUrl: URL(fileURLWithPath: "https://"), date: Date())
 
 class WriteViewController:UIViewController, SendDataDelegate{
     
@@ -25,8 +25,8 @@ class WriteViewController:UIViewController, SendDataDelegate{
         super.viewDidLoad()
         imageView.layer.cornerRadius = imageView.frame.width / 2
         imageView.clipsToBounds = true
-        topView.backgroundColor = UIColor(patternImage: UIImage(named: "Write_topBG")!)
-
+        //topView.backgroundColor = UIColor(patternImage: UIImage(named: "Write_topBG")!)
+        placeholderSetting()
         underView.backgroundColor = UIColor(patternImage: UIImage(named: "Write_underBG")!)
 //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification , object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification , object: nil)
@@ -49,7 +49,7 @@ class WriteViewController:UIViewController, SendDataDelegate{
         var ref: DocumentReference? = nil
         
         print("newContent in Save: ", newContent)
-        ref = db.collection("Diary/IxLlj4mK2DKPIoBA9Qjp/Contents").addDocument(data: [
+        ref = db.collection("Diary/hPP6YvFvsilOPYoAlmJs/Contents").addDocument(data: [
             "authorID": "\(newContent.authorID!)",
             "contentText":"\(newContent.conentText!)",
             "date":newContent.date!,

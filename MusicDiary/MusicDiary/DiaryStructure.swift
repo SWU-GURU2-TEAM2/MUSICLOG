@@ -14,11 +14,7 @@ struct DiaryStructure {
     var diaryImageUrl: URL?
     var diaryMusicTitle:String?
     var diaryMusicArtist: String?
-<<<<<<< Updated upstream
-    var memberList: [Int]?
-=======
     var memberList: [String]?
     var date: Date?
->>>>>>> Stashed changes
     
 }
