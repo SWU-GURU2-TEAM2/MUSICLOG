@@ -8,7 +8,6 @@
 import UIKit
 import Firebase
 
-var currentContentID = "3QlbFquOKWsqCLOTDpTv"
 var newCD = ContentData()
 
 class EditViewController: UIViewController, SendDataDelegate {
@@ -37,6 +36,8 @@ class EditViewController: UIViewController, SendDataDelegate {
     
     
     override func viewDidLoad() {
+        print("current Diary id: ", currentDairyId)
+        print("current content id: ", currentContentID!)
        
         super.viewDidLoad()
         imageVIew.layer.cornerRadius = imageVIew.frame.width / 2
@@ -47,9 +48,7 @@ class EditViewController: UIViewController, SendDataDelegate {
         
     }
     @IBAction func tapSaveBtn(_ sender: Any) {
-        // EDIT
-        let calendar = Calendar.current
-        var docRef = db.collection("Diary").document("\(currentDairyId)").collection("Contents").document("\(currentContentID)")
+        let docRef = db.collection("Diary").document("\(currentDairyId)").collection("Contents").document("\(currentContentID!)")
 
         docRef.updateData( [
             "contentText":"\(textView.text!)",
@@ -76,7 +75,7 @@ class EditViewController: UIViewController, SendDataDelegate {
         self.dismiss(animated: true)
     }
     func presentData() {
-        var docRef = db.collection("Diary").document("\(currentDairyId)").collection("Contents").document("\(currentContentID)")
+        let docRef = db.collection("Diary").document("\(currentDairyId)").collection("Contents").document("\(currentContentID!)")
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {

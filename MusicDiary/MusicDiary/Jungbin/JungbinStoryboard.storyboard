@@ -160,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="01G-eX-cE5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-413.04347826086962" y="68.973214285714278"/>
+            <point key="canvasLocation" x="-409" y="69"/>
         </scene>
         <!--Write View Controller-->
         <scene sceneID="HHf-9j-gWu">
@@ -311,7 +311,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="387" y="117"/>
+            <point key="canvasLocation" x="1114" y="69"/>
         </scene>
         <!--editView-->
         <scene sceneID="oha-4A-zWL">
@@ -750,11 +750,33 @@
                                         <rect key="frame" x="221" y="387" width="67" height="67"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" backgroundImage="Write_save">
+                                        <state key="normal" backgroundImage="Detail_removeBtn">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="tapDeleteBtn:" destination="WXc-vh-yZv" eventType="touchUpInside" id="BIh-CP-Z5d"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avc-ia-L37">
+                                        <rect key="frame" x="111" y="387" width="67" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" backgroundImage="Detail_shareBtn">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapSharedBtn:" destination="WXc-vh-yZv" eventType="touchUpInside" id="EY5-ki-jWw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRJ-Vr-Ex6">
+                                        <rect key="frame" x="0.0" y="387" width="67" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" backgroundImage="Detail_editBtn">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="d7d-rI-jWH" kind="presentation" modalPresentationStyle="fullScreen" id="0x8-Jj-Hg9"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -804,6 +826,9 @@
             <point key="canvasLocation" x="387" y="-539"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0x8-Jj-Hg9"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="AppSetting_backButton" width="51" height="51"/>
         <image name="Daily_calendarBG" width="316" height="219"/>
@@ -812,6 +837,9 @@
         <image name="Daily_page" width="313" height="160"/>
         <image name="Daily_setting" width="51" height="51"/>
         <image name="DairySetting_editBtn" width="14" height="14"/>
+        <image name="Detail_editBtn" width="74" height="74"/>
+        <image name="Detail_removeBtn" width="74" height="74"/>
+        <image name="Detail_shareBtn" width="74" height="74"/>
         <image name="DiarySetting_BG" width="346" height="405"/>
         <image name="DiarySetting_addUserBtn" width="72" height="72"/>
         <image name="DiarySetting_userBG" width="72" height="72"/>
