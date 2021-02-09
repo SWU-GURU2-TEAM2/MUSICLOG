@@ -8,9 +8,9 @@
 import UIKit
 import Firebase
 
-func presentDiaryData() { // 다이어리 '한개!!!' 의 다어어리 정보 가져오는거임!!!
+func presentDiaryData(currentDId: String) -> DiaryStructure { // 다이어리 '한개!!!' 의 다어어리 정보 가져오는거임!!!
     let db = Firestore.firestore()
-    var docRef = db.collection("Diary").document("\(currentDairyId)")
+    var docRef = db.collection("Diary").document("\(currentDId)")
     var newDiaryData = DiaryStructure()
     docRef.getDocument { (document, error) in
         if let document = document, document.exists {
@@ -24,7 +24,8 @@ func presentDiaryData() { // 다이어리 '한개!!!' 의 다어어리 정보 �
             newDiaryData.memberList = dataDescription!["memberList"] as? [String]
 
             print("new data: ", newDiaryData)
-
+            return newDiaryData
+            
             // 여기 밑에부터는 데이터 가져와서 어케 띄우고 하는거임 (지금 있는건 이미지뷰 띄우기)
             
             
