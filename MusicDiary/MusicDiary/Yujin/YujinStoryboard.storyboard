@@ -274,7 +274,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppSetting_barMyPage" translatesAutoresizingMaskIntoConstraints="NO" id="kp3-sB-lCt">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppSetting_titleBox" translatesAutoresizingMaskIntoConstraints="NO" id="kp3-sB-lCt">
                                 <rect key="frame" x="20" y="82" width="385" height="28"/>
                             </imageView>
                         </subviews>
@@ -324,13 +324,13 @@
         <image name="AppSetting_backButton" width="51" height="51"/>
         <image name="AppSetting_barID" width="312" height="43"/>
         <image name="AppSetting_barLogout" width="312" height="43"/>
-        <image name="AppSetting_barMyPage" width="352" height="87"/>
         <image name="AppSetting_barName" width="312" height="43"/>
         <image name="AppSetting_copy" width="8.5" height="9.5"/>
         <image name="AppSetting_edit" width="9.5" height="9.5"/>
         <image name="AppSetting_logout" width="11.5" height="10"/>
         <image name="AppSetting_profile" width="41.5" height="41.5"/>
         <image name="AppSetting_profileOutline" width="164" height="164"/>
+        <image name="AppSetting_titleBox" width="352" height="87"/>
         <image name="Intro_arrow" width="50.5" height="20"/>
         <image name="Intro_logo" width="271" height="272"/>
         <image name="Intro_titleBox" width="273" height="100"/>

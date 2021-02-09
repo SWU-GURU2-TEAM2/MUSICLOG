@@ -98,6 +98,8 @@ class AppSettingViewController: UIViewController {
     
     @objc func profileTouched(_ sender: Any) {
         print("touched")
+        let storageRef = storage.reference()
+        
     }
     
 }
