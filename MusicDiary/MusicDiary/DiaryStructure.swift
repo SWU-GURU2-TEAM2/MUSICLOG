@@ -14,6 +14,6 @@ struct DiaryStructure {
     var diaryImageUrl: URL?
     var diaryMusicTitle:String?
     var diaryMusicArtist: String?
-    var memberList: [Int]?
+    var memberList: [String]?
     
 }

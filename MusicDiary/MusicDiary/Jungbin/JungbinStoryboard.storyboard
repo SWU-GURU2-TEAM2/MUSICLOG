@@ -508,17 +508,11 @@
                                             <action selector="goSearchBtn:" destination="4mU-Ws-LEl" eventType="touchUpInside" id="npB-hH-sVf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygm-tP-NYu">
-                                        <rect key="frame" x="51" y="347" width="69" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="사용자 추가"/>
-                                        <connections>
-                                            <action selector="tapAddUserBtn:" destination="4mU-Ws-LEl" eventType="touchUpInside" id="VSH-bV-Wzl"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4GW-E2-yQb">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4GW-E2-yQb">
                                         <rect key="frame" x="66" y="156" width="167" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="lCh-8Y-mb4"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -533,18 +527,54 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wfs-Xb-bJW">
-                                        <rect key="frame" x="66" y="178" width="167" height="17"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wfs-Xb-bJW">
+                                        <rect key="frame" x="66" y="177" width="167" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="RAR-fI-37c"/>
+                                            <constraint firstAttribute="width" constant="167" id="STs-1P-dt5"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b8t-5t-e7a">
+                                        <rect key="frame" x="123" y="263" width="189" height="152"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="189" id="Zzi-vA-IuX"/>
+                                            <constraint firstAttribute="height" constant="152" id="jDg-NZ-lcs"/>
+                                        </constraints>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="57" id="biB-m2-iqN">
+                                                <rect key="frame" x="0.0" y="28" width="189" height="57"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="biB-m2-iqN" id="Tsw-pb-WNz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="189" height="57"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygm-tP-NYu">
+                                        <rect key="frame" x="34" y="331" width="69" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="사용자 추가"/>
+                                        <connections>
+                                            <action selector="tapAddUserBtn:" destination="4mU-Ws-LEl" eventType="touchUpInside" id="VSH-bV-Wzl"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="uFn-62-WG6" secondAttribute="trailing" constant="30" id="0Jz-9T-goG"/>
+                                    <constraint firstItem="Wfs-Xb-bJW" firstAttribute="leading" secondItem="PZl-0z-m4i" secondAttribute="leading" constant="66" id="Aui-ek-cYb"/>
                                     <constraint firstItem="uFn-62-WG6" firstAttribute="top" secondItem="l2x-KL-roj" secondAttribute="bottom" constant="55" id="BSS-pX-zhS"/>
                                     <constraint firstItem="8FA-cR-jKg" firstAttribute="top" secondItem="PZl-0z-m4i" secondAttribute="top" constant="140" id="Z5D-it-wP2"/>
+                                    <constraint firstItem="8FA-cR-jKg" firstAttribute="leading" secondItem="4GW-E2-yQb" secondAttribute="trailing" constant="8" symbolic="YES" id="ZUJ-YU-jj2"/>
+                                    <constraint firstAttribute="trailing" secondItem="b8t-5t-e7a" secondAttribute="trailing" constant="30" id="a0J-jy-cXn"/>
+                                    <constraint firstItem="4GW-E2-yQb" firstAttribute="top" secondItem="PZl-0z-m4i" secondAttribute="top" constant="156" id="d1t-UC-iyG"/>
+                                    <constraint firstAttribute="bottom" secondItem="b8t-5t-e7a" secondAttribute="bottom" constant="13" id="f55-gK-qBb"/>
+                                    <constraint firstItem="Wfs-Xb-bJW" firstAttribute="top" secondItem="4GW-E2-yQb" secondAttribute="bottom" id="fcl-nS-wRD"/>
+                                    <constraint firstItem="4GW-E2-yQb" firstAttribute="leading" secondItem="Wfs-Xb-bJW" secondAttribute="leading" id="k8j-M2-JEy"/>
                                     <constraint firstItem="TqO-Yy-epc" firstAttribute="leading" secondItem="PZl-0z-m4i" secondAttribute="leading" constant="34" id="nMu-Du-efK"/>
                                     <constraint firstAttribute="trailing" secondItem="8FA-cR-jKg" secondAttribute="trailing" constant="30" id="nnM-HN-akH"/>
                                     <constraint firstItem="TqO-Yy-epc" firstAttribute="top" secondItem="PZl-0z-m4i" secondAttribute="top" constant="35" id="uq0-Rm-5RH"/>
@@ -577,7 +607,8 @@
                     </view>
                     <connections>
                         <outlet property="artistLabel" destination="Wfs-Xb-bJW" id="FQs-e3-loR"/>
-                        <outlet property="diaryLabel" destination="TqO-Yy-epc" id="KY4-Z3-e5T"/>
+                        <outlet property="diaryNameLabel" destination="TqO-Yy-epc" id="qPs-2d-s8o"/>
+                        <outlet property="imageView" destination="8FA-cR-jKg" id="XuA-8a-F5P"/>
                         <outlet property="titleLabel" destination="4GW-E2-yQb" id="GOH-g4-qyp"/>
                     </connections>
                 </viewController>
