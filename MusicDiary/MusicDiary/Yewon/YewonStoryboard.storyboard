@@ -106,7 +106,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add Diary"/>
                                 <connections>
-                                    <action selector="addDiary:" destination="xHz-IV-Kcc" eventType="touchUpInside" id="sDa-Ww-YWl"/>
+                                    <action selector="addDiary:" destination="xHz-IV-Kcc" eventType="touchUpInside" id="PPt-WF-mTR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMP-2S-VWT">

@@ -15,5 +15,6 @@ struct DiaryStructure {
     var diaryMusicTitle:String?
     var diaryMusicArtist: String?
     var memberList: [String]?
+    var date: Date?
     
 }
