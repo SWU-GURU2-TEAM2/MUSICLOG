@@ -13,7 +13,7 @@ import FirebaseAuth
 import FirebaseUI
 
 //center에 있는 docID 전달 변수 (수정 예정)
-var centerDocID = "IxLlj4mK2DKPIoBA9Qjp"
+var centerDocID:String!
 
 class MainVC:UIViewController {
     let db = Firestore.firestore()
@@ -55,13 +55,13 @@ class MainVC:UIViewController {
                             newDiaryData.diaryName = dataDescriptions!["diaryName"] as? String
                             newDiaryData.diaryMusicTitle = dataDescriptions!["diaryMusicTitle"] as? String
                             newDiaryData.diaryMusicArtist = dataDescriptions!["diaryMusicArtist"] as? String
-                            //newDiaryData.diaryImageUrl = URL(string: ((dataDescriptions!["diaryImageUrl"]! as? String)!))
+                            //newDiaryData.diaryImageUrl = URL(string: ((dataDescriptions!["diaryImageUrl"] as! String)))
                             newDiaryData.date = Date(timeIntervalSince1970: TimeInterval((dataDescriptions!["date"] as! Timestamp).seconds))
                             newDiaryData.memberList = dataDescriptions!["memberList"] as? [String]
                             
                             self.diaryData.append(newDiaryData)
                             self.diaryData.sort {$0.date! < $1.date!}   //date에 따라 정렬
-                            
+                            print(diaryData)
                         } else {
                             print("Document does not exist")
                             
@@ -93,16 +93,8 @@ class MainVC:UIViewController {
             } else {
                 print("Document added with ID: \(ref!.documentID)")
                 
-                //Diary 필드에 새 다이어리 documentID 추가 update
-                self.db.collection("Diary").document(ref!.documentID).updateData(["diaryID":ref!.documentID]) { err in
-                    if let err = err {
-                        print("Error updating document: \(err)")
-                    } else {
-                        print("Document successfully updated")
-                    }
-                }
-
-                
+                //Diary 필드에 새 다이어리 documentID update
+                self.db.collection("Diary").document(ref!.documentID).updateData(["diaryID":ref!.documentID])
                 //Users diaryList update
                 self.db.collection("Users").document(currentUID).updateData(["userDiaryList": FieldValue.arrayUnion([ref!.documentID])])
                 self.viewDidLoad()
@@ -159,8 +151,9 @@ typealias CarouselDelegate = MainVC
 extension MainVC: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let currentCenterIndex = mainCarousel.currentCenterCellIndex?.row else { return }
-        //center Cell 의 documentID 저장해둬야함
-        //self.diaryData[currentCenterIndex]
+        //center Cell 의 documentID 저장
+        centerDocID = self.getDiaryList[currentCenterIndex]
+        
     }
 }
 
