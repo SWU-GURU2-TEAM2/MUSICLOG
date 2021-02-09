@@ -53,12 +53,10 @@ class IntroViewController: UIViewController, FUIAuthDelegate, UIGestureRecognize
                 let docRef = self.db.collection("Users").document("\(currentUser.uid)")
                 docRef.getDocument { (document, error) in
                     if let document = document, document.exists {
-                        //let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                        //print("Document data: \(dataDescription)")
                     } else {
                         print("User does not exist")
                         let storageRef = self.storage.reference()
-                        let imageRef = storageRef.child("Icon material-person@3x.png")
+                        let imageRef = storageRef.child("progileImages/Icon material-person@3x.png")
                         self.db.collection("Users").document("\(currentUser.uid)").setData(["userDiaryList" : [],
                              "userID" : "\(currentUser.uid)",
                              "userImage" : "\(imageRef.fullPath)",
