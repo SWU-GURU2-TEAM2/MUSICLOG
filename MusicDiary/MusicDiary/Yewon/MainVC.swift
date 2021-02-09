@@ -78,7 +78,7 @@ class MainVC:UIViewController {
         let date = Date()
         
         ref = self.db.collection("Diary").addDocument(data: [
-            "diaryImageUrl":"",
+            "diaryImageUrl":"https://firebasestorage.googleapis.com/v0/b/musicdiary-a095d.appspot.com/o/defaltDiaryImg.png?alt=media&token=1556a66e-c81f-4aad-ba96-8b25d6ab5dfc",
             "diaryName":"new Diary",
             "diaryMusicTitle":"",
             "diaryMusicArtist":"",
