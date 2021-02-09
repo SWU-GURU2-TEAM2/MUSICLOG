@@ -9,7 +9,7 @@ import UIKit
 import FSCalendar
 import Firebase
 
-var currentDairyId = "IxLlj4mK2DKPIoBA9Qjp"
+var currentDairyId = "hPP6YvFvsilOPYoAlmJs"
 var currentDairyUserList:[String]!
 var currentContentData = ContentData()
 

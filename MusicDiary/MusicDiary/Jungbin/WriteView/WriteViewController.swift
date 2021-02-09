@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-var newContent = ContentData(authorID: "userID123", conentText: "", musicTitle: "", musicArtist: "", musicCoverUrl: URL(fileURLWithPath: "https://"), date: Date())
+var newContent = ContentData(authorID: "\(currentUID)", conentText: "", musicTitle: "", musicArtist: "", musicCoverUrl: URL(fileURLWithPath: "https://"), date: Date())
 
 class WriteViewController:UIViewController, SendDataDelegate{
     
@@ -49,7 +49,7 @@ class WriteViewController:UIViewController, SendDataDelegate{
         var ref: DocumentReference? = nil
         
         print("newContent in Save: ", newContent)
-        ref = db.collection("Diary/IxLlj4mK2DKPIoBA9Qjp/Contents").addDocument(data: [
+        ref = db.collection("Diary/hPP6YvFvsilOPYoAlmJs/Contents").addDocument(data: [
             "authorID": "\(newContent.authorID!)",
             "contentText":"\(newContent.conentText!)",
             "date":newContent.date!,
