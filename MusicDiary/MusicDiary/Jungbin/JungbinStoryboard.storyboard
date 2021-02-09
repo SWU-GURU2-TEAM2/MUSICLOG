@@ -537,23 +537,73 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b8t-5t-e7a">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b8t-5t-e7a">
                                         <rect key="frame" x="123" y="263" width="189" height="152"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="tintColor" red="0.96855288743972778" green="0.96897071599960327" blue="0.95681661367416382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="189" id="Zzi-vA-IuX"/>
                                             <constraint firstAttribute="height" constant="152" id="jDg-NZ-lcs"/>
                                         </constraints>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="57" id="biB-m2-iqN">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" focusStyle="custom" rowHeight="57" id="biB-m2-iqN" customClass="UserTableViewCell" customModule="MusicDiary" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="189" height="57"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="biB-m2-iqN" id="Tsw-pb-WNz">
                                                     <rect key="frame" x="0.0" y="0.0" width="189" height="57"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DiarySetting_userBG" translatesAutoresizingMaskIntoConstraints="NO" id="TMz-bo-o2H">
+                                                            <rect key="frame" x="0.0" y="3" width="55" height="50"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="55" id="p3b-zU-Rur"/>
+                                                                <constraint firstAttribute="height" constant="50" id="qWo-Uk-nm3"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5D-hg-kM6">
+                                                            <rect key="frame" x="63" y="21" width="110" height="15"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="15" id="Uhj-5F-yEX"/>
+                                                                <constraint firstAttribute="width" constant="110" id="mXu-gd-okk"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WgK-fW-nhh">
+                                                            <rect key="frame" x="16" y="16" width="24" height="24"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="H30-yx-2bm"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="UYN-6S-b5b"/>
+                                                                <constraint firstAttribute="height" constant="24" id="Zif-h3-Asg"/>
+                                                                <constraint firstAttribute="width" constant="24" id="n7X-Z0-wCZ"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="X5D-hg-kM6" secondAttribute="bottom" constant="10" id="5OT-7t-89E"/>
+                                                        <constraint firstAttribute="bottom" secondItem="TMz-bo-o2H" secondAttribute="bottom" constant="4" id="8aq-wv-c2n"/>
+                                                        <constraint firstItem="X5D-hg-kM6" firstAttribute="top" secondItem="Tsw-pb-WNz" secondAttribute="topMargin" constant="10" id="AXK-1o-Lv5"/>
+                                                        <constraint firstItem="WgK-fW-nhh" firstAttribute="top" secondItem="Tsw-pb-WNz" secondAttribute="top" constant="16" id="F2w-Ln-CnN"/>
+                                                        <constraint firstItem="TMz-bo-o2H" firstAttribute="top" secondItem="Tsw-pb-WNz" secondAttribute="top" constant="3" id="Ffp-lT-pjB"/>
+                                                        <constraint firstItem="WgK-fW-nhh" firstAttribute="leading" secondItem="Tsw-pb-WNz" secondAttribute="leading" constant="16" id="ieW-Fd-yyV"/>
+                                                        <constraint firstItem="TMz-bo-o2H" firstAttribute="leading" secondItem="Tsw-pb-WNz" secondAttribute="leading" id="jiH-Be-VEb"/>
+                                                        <constraint firstAttribute="bottom" secondItem="WgK-fW-nhh" secondAttribute="bottom" constant="17" id="qgl-se-VY6"/>
+                                                        <constraint firstItem="X5D-hg-kM6" firstAttribute="leading" secondItem="TMz-bo-o2H" secondAttribute="trailing" constant="8" symbolic="YES" id="woB-rF-mW1"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" red="0.96855288743972778" green="0.96897071599960327" blue="0.95681661367416382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <outlet property="profileImageView" destination="TMz-bo-o2H" id="4xE-9f-cYL"/>
+                                                    <outlet property="userNameLabel" destination="X5D-hg-kM6" id="IkO-3y-89s"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="4mU-Ws-LEl" id="jda-eA-S4f"/>
+                                            <outlet property="delegate" destination="4mU-Ws-LEl" id="bQ0-nJ-hgp"/>
+                                        </connections>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygm-tP-NYu">
                                         <rect key="frame" x="34" y="331" width="69" height="30"/>
@@ -609,6 +659,7 @@
                         <outlet property="artistLabel" destination="Wfs-Xb-bJW" id="FQs-e3-loR"/>
                         <outlet property="diaryNameLabel" destination="TqO-Yy-epc" id="qPs-2d-s8o"/>
                         <outlet property="imageView" destination="8FA-cR-jKg" id="XuA-8a-F5P"/>
+                        <outlet property="tableView" destination="b8t-5t-e7a" id="20a-X4-pFE"/>
                         <outlet property="titleLabel" destination="4GW-E2-yQb" id="GOH-g4-qyp"/>
                     </connections>
                 </viewController>
@@ -763,6 +814,7 @@
         <image name="Daily_setting" width="51" height="51"/>
         <image name="DairySetting_BG" width="346" height="405"/>
         <image name="DairySetting_editBtn" width="14" height="14"/>
+        <image name="DiarySetting_userBG" width="72" height="72"/>
         <image name="Write_musicCircle" width="265" height="265"/>
         <image name="Write_save" width="82" height="82"/>
         <image name="Write_topBG" width="288" height="131"/>
