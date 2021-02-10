@@ -20,7 +20,7 @@ class MainVC:UIViewController {
     var diaryData: [DiaryStructure] = []
     var getDiaryList = [String]()
     var content_date:Date?
-
+    
     //MARK: -IBDulet
     
     @IBOutlet weak var mainCarousel: ScalingCarouselView!
@@ -60,14 +60,12 @@ class MainVC:UIViewController {
                             newDiaryData.diaryName = dataDescriptions!["diaryName"] as? String
                             newDiaryData.diaryMusicTitle = dataDescriptions!["diaryMusicTitle"] as? String
                             newDiaryData.diaryMusicArtist = dataDescriptions!["diaryMusicArtist"] as? String
-                            
-                            newDiaryData.diaryImageUrl = dataDescriptions!["diaryImageUrl"] as? URL
-                            //newDiaryData.diaryImageUrl = URL(string: (dataDescriptions!["diaryImageUrl"] as? String)!)
-                            
+                            newDiaryData.diaryImageUrl = URL(string: (dataDescriptions!["diaryImageUrl"]! as? String)!)
                             newDiaryData.date = Date(timeIntervalSince1970: TimeInterval((dataDescriptions!["date"] as! Timestamp).seconds))
                             newDiaryData.memberList = dataDescriptions!["memberList"] as? [String]
                             
                             self.diaryData.append(newDiaryData)
+                            //print("URL : ", URL(string: ((dataDescriptions!["diaryImageUrl"] as? String)!)))
                             self.diaryData.sort {$0.date! < $1.date!}   //date에 따라 정렬
                             print(diaryData)
                         } else {
@@ -90,10 +88,10 @@ class MainVC:UIViewController {
                 print("Document does not exist")
             }
         }
-
-//        //오늘 작성한 글이 있다면 writeBtn 안 보이게
-//        let today = dateFormater.string(from: Date())
-//        //if today == content_date {writeBtn.alpha = 0}
+        
+        //        //오늘 작성한 글이 있다면 writeBtn 안 보이게
+        //        let today = dateFormater.string(from: Date())
+        //        //if today == content_date {writeBtn.alpha = 0}
         
     }
     
@@ -165,18 +163,18 @@ extension CarouselDatasource: UICollectionViewDataSource {
         //이미지 넣기
         carouselCell.mainDiaryImaage.layer.cornerRadius = carouselCell.mainDiaryImaage.frame.width / 2
         carouselCell.mainDiaryImaage.clipsToBounds = true
-        //carouselCell.mainDiaryImaage.image = UIImage(data: try! Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!))
-        //        DispatchQueue.global().async { let data = try? Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-        //            DispatchQueue.main.async { carouselCell.mainDiaryImaage.image = UIImage(data: data!) }
-        //            }
+        carouselCell.mainDiaryImaage.image = UIImage(data: try! Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!))
+        DispatchQueue.global().async { let data = try? Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            DispatchQueue.main.async { carouselCell.mainDiaryImaage.image = UIImage(data: data!) }
+        }
         
         //Share? Single?
         let memberList = diaryData[indexPath.row].memberList!.count
-//        if memberList >= 2 {
-//            carouselCell.mainMemberInfo.setImage(UIImage(named: "ShareDiary.png")!)
-//        } else {
-//            carouselCell.mainMemberInfo.setImage(UIImage(named: "SingleDiary.png")!)
-//        }
+        //        if memberList >= 2 {
+        //            carouselCell.mainMemberInfo.setImage(UIImage(named: "ShareDiary.png")!)
+        //        } else {
+        //            carouselCell.mainMemberInfo.setImage(UIImage(named: "SingleDiary.png")!)
+        //        }
         
         carouselCell.setNeedsLayout()
         carouselCell.layoutIfNeeded()
