@@ -167,14 +167,18 @@ extension AppSettingViewController: UIImagePickerControllerDelegate, UINavigatio
             }//uploadTask
         }//data
         let docRef = db.collection("Users").document("\(currentUID)")
-        docRef.updateData([
-            "userImage": "\(currentUID)Profile.png"
-        ]) { err in
-            if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                print("Document successfully updated")
+        let imageRef = storage.reference(withPath: "profileImages/\(currentUID)Profile.png")
+        imageRef.downloadURL { (url, error) in
+            docRef.updateData([
+                "userImage": String(describing: url)
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
             }
         }
+        
     }//didFinishPickingMediaWithInfo
 }

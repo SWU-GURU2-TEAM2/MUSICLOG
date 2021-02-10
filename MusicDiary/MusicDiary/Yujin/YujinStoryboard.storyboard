@@ -182,20 +182,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbX-gi-KIi">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbX-gi-KIi">
                                 <rect key="frame" x="20" y="44" width="51" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Search_backButton"/>
                                 <connections>
                                     <action selector="backButtonPressed:" destination="W8A-9t-Lgr" eventType="touchUpInside" id="84q-Ke-pn7"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6wj-Bo-Ns3">
-                                <rect key="frame" x="44" y="103" width="327" height="721"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6wj-Bo-Ns3">
+                                <rect key="frame" x="49" y="125" width="316" height="721"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search_background" translatesAutoresizingMaskIntoConstraints="NO" id="JhK-CN-m2Z">
+                                        <rect key="frame" x="0.0" y="0.0" width="316" height="721"/>
+                                    </imageView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="721" id="AxG-C1-g7z"/>
-                                    <constraint firstAttribute="width" constant="316" id="plN-Jt-dcs"/>
+                                    <constraint firstAttribute="bottom" secondItem="JhK-CN-m2Z" secondAttribute="bottom" id="4US-xs-oO8"/>
+                                    <constraint firstAttribute="width" constant="316" id="5AN-L3-wNQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="JhK-CN-m2Z" secondAttribute="trailing" id="P3J-8B-xDV"/>
+                                    <constraint firstItem="JhK-CN-m2Z" firstAttribute="top" secondItem="6wj-Bo-Ns3" secondAttribute="top" id="lNt-cD-c3u"/>
+                                    <constraint firstAttribute="height" constant="721" id="ld8-Dz-DgB"/>
+                                    <constraint firstItem="JhK-CN-m2Z" firstAttribute="leading" secondItem="6wj-Bo-Ns3" secondAttribute="leading" id="le7-eM-S4L"/>
                                     <constraint firstAttribute="width" secondItem="6wj-Bo-Ns3" secondAttribute="height" multiplier="316:721" id="ze1-l5-aCO"/>
                                 </constraints>
                             </view>
@@ -203,7 +210,10 @@
                         <viewLayoutGuide key="safeArea" id="Tq8-9g-7We"/>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="6wj-Bo-Ns3" firstAttribute="bottom" secondItem="Tq8-9g-7We" secondAttribute="bottom" constant="20" id="5ic-Ir-E0a"/>
+                            <constraint firstItem="6wj-Bo-Ns3" firstAttribute="centerX" secondItem="U6m-I3-l0R" secondAttribute="centerX" id="45E-bT-AFL"/>
+                            <constraint firstItem="6wj-Bo-Ns3" firstAttribute="top" secondItem="gbX-gi-KIi" secondAttribute="bottom" constant="30" id="8tG-WA-chh"/>
+                            <constraint firstItem="gbX-gi-KIi" firstAttribute="leading" secondItem="U6m-I3-l0R" secondAttribute="leadingMargin" id="bep-TH-z3p"/>
+                            <constraint firstAttribute="bottom" secondItem="6wj-Bo-Ns3" secondAttribute="bottom" constant="50" id="znT-GW-X0q"/>
                         </constraints>
                     </view>
                     <connections>
@@ -370,6 +380,7 @@
         <image name="Intro_logo" width="271" height="272"/>
         <image name="Intro_titleBox" width="273" height="100"/>
         <image name="Search_backButton" width="51" height="51"/>
+        <image name="Search_background" width="316" height="721"/>
         <image name="Search_confirmButton" width="86" height="86"/>
         <image name="Search_searchBar" width="208" height="47"/>
         <image name="spongeBob.gif" width="480" height="270"/>
