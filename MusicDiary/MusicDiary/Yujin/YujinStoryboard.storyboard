@@ -76,55 +76,75 @@
             <objects>
                 <viewController storyboardIdentifier="SearchView" id="IPH-9v-jSQ" customClass="SearchViewController" customModule="MusicDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gdu-Q0-s9v">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="316" height="721"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F10-QX-onl">
-                                <rect key="frame" x="0.0" y="126" width="414" height="738"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search_background2" translatesAutoresizingMaskIntoConstraints="NO" id="ip0-IC-WwC">
+                                <rect key="frame" x="0.0" y="0.0" width="316" height="721"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F10-QX-onl">
+                                <rect key="frame" x="0.0" y="81" width="316" height="640"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="separatorColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchResultCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchResultCell" rowHeight="121" id="8JM-ad-Hus" customClass="SearchResultCell" customModule="MusicDiary" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="121"/>
+                                        <rect key="frame" x="0.0" y="28" width="316" height="121"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8JM-ad-Hus" id="G1h-jo-oVv">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="121"/>
+                                        <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8JM-ad-Hus" id="G1h-jo-oVv">
+                                            <rect key="frame" x="0.0" y="0.0" width="316" height="121"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="albumImage" image="spongeBob.gif" translatesAutoresizingMaskIntoConstraints="NO" id="Cll-7m-EDr">
-                                                    <rect key="frame" x="20" y="13" width="95" height="95"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JSi-hG-RsN">
+                                                    <rect key="frame" x="112" y="16" width="178" height="71"/>
+                                                    <color key="backgroundColor" red="0.66274509803921566" green="0.6588235294117647" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="Cll-7m-EDr" secondAttribute="height" multiplier="1:1" id="lhA-Nf-QE5"/>
+                                                        <constraint firstAttribute="width" constant="178" id="6LT-2c-ddO"/>
+                                                        <constraint firstAttribute="height" constant="71" id="M9Z-li-jMm"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="songName" text="노래제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auB-wO-glD">
-                                                    <rect key="frame" x="117" y="38" width="62.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="songName" text="노래제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auB-wO-glD">
+                                                    <rect key="frame" x="127" y="33" width="150" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="MrM-3v-X6W"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="artist" text="가수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wax-zq-b5b">
-                                                    <rect key="frame" x="117" y="61" width="62.5" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="artist" text="가수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wax-zq-b5b">
+                                                    <rect key="frame" x="127" y="50" width="150" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="w6y-S6-dEb"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="albumImage" image="spongeBob.gif" translatesAutoresizingMaskIntoConstraints="NO" id="Cll-7m-EDr">
+                                                    <rect key="frame" x="26" y="16" width="71" height="71"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="71" id="0iN-7L-e6G"/>
+                                                        <constraint firstAttribute="width" constant="71" id="VZp-oz-oF0"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Wax-zq-b5b" secondAttribute="trailing" constant="2" id="6H0-PE-PC8"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="auB-wO-glD" secondAttribute="trailing" constant="2" id="8Bl-85-J1P"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Cll-7m-EDr" secondAttribute="bottom" constant="2" id="KXE-bd-15t"/>
-                                                <constraint firstItem="Wax-zq-b5b" firstAttribute="leading" secondItem="Cll-7m-EDr" secondAttribute="trailing" constant="5" id="Ri8-Xs-WtE"/>
-                                                <constraint firstItem="Cll-7m-EDr" firstAttribute="top" secondItem="G1h-jo-oVv" secondAttribute="topMargin" constant="2" id="V0w-vo-1Rz"/>
-                                                <constraint firstItem="Cll-7m-EDr" firstAttribute="leading" secondItem="G1h-jo-oVv" secondAttribute="leadingMargin" id="j4H-JL-zrj"/>
-                                                <constraint firstItem="auB-wO-glD" firstAttribute="leading" secondItem="Cll-7m-EDr" secondAttribute="trailing" constant="5" id="nLf-d9-fA5"/>
-                                                <constraint firstItem="auB-wO-glD" firstAttribute="top" secondItem="G1h-jo-oVv" secondAttribute="topMargin" constant="5" id="o0E-XZ-1oa"/>
-                                                <constraint firstItem="Wax-zq-b5b" firstAttribute="top" secondItem="auB-wO-glD" secondAttribute="bottom" constant="2" id="zdv-Ay-zja"/>
+                                                <constraint firstItem="Cll-7m-EDr" firstAttribute="leading" secondItem="G1h-jo-oVv" secondAttribute="leadingMargin" constant="10" id="3Dq-4P-3TM"/>
+                                                <constraint firstItem="Wax-zq-b5b" firstAttribute="leading" secondItem="Cll-7m-EDr" secondAttribute="trailing" constant="30" id="OMb-vM-BVZ"/>
+                                                <constraint firstItem="Cll-7m-EDr" firstAttribute="top" secondItem="G1h-jo-oVv" secondAttribute="topMargin" constant="5" id="Sag-bc-nv8"/>
+                                                <constraint firstItem="Wax-zq-b5b" firstAttribute="top" secondItem="auB-wO-glD" secondAttribute="bottom" constant="2" id="Wl6-Ie-IhX"/>
+                                                <constraint firstItem="auB-wO-glD" firstAttribute="leading" secondItem="Cll-7m-EDr" secondAttribute="trailing" constant="30" id="dRu-65-IEr"/>
+                                                <constraint firstItem="JSi-hG-RsN" firstAttribute="top" secondItem="G1h-jo-oVv" secondAttribute="topMargin" constant="5" id="gca-Lp-vBD"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="JSi-hG-RsN" secondAttribute="trailing" constant="10" id="jPU-Wj-hmR"/>
+                                                <constraint firstItem="auB-wO-glD" firstAttribute="top" secondItem="G1h-jo-oVv" secondAttribute="topMargin" constant="22" id="qju-Ti-EL2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="dataBackground" destination="JSi-hG-RsN" id="ZmE-Ym-C8B"/>
                                             <outlet property="musicArtist" destination="Wax-zq-b5b" id="Yd7-UL-vq0"/>
-                                            <outlet property="musicCover" destination="Cll-7m-EDr" id="5yH-Fo-OIQ"/>
+                                            <outlet property="musicCover" destination="Cll-7m-EDr" id="EfV-xX-wzw"/>
                                             <outlet property="musicTitle" destination="auB-wO-glD" id="Vxs-Ct-0yr"/>
                                         </connections>
                                     </tableViewCell>
@@ -135,21 +155,27 @@
                                 </connections>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="cC7-r0-zRs">
-                                <rect key="frame" x="120" y="388" width="174" height="174"/>
+                                <rect key="frame" x="116" y="337" width="84" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cC7-r0-zRs" secondAttribute="height" multiplier="1:1" id="twy-em-Zdr"/>
                                 </constraints>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrJ-09-Cb1">
-                                <rect key="frame" x="306" y="34" width="96" height="86"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrJ-09-Cb1">
+                                <rect key="frame" x="230" y="0.0" width="86" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="MrJ-09-Cb1" secondAttribute="height" multiplier="1:1" id="WTd-Ef-wRp"/>
+                                </constraints>
                                 <state key="normal" image="Search_confirmButton"/>
                                 <connections>
                                     <action selector="searchButtonPressed:" destination="IPH-9v-jSQ" eventType="touchUpInside" id="qo9-sz-fck"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="searchTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="오늘의 음악은 무엇인가요?" textAlignment="natural" minimumFontSize="17" background="Search_searchBar" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HOL-qm-71F">
-                                <rect key="frame" x="20" y="49" width="292" height="56"/>
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="searchTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="오늘의 음악은 무엇인가요?" textAlignment="natural" minimumFontSize="17" background="Search_searchBar" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HOL-qm-71F">
+                                <rect key="frame" x="24" y="24" width="208" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="208" id="cwe-f9-GnA"/>
+                                    <constraint firstAttribute="height" constant="47" id="e11-jy-4bs"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -157,11 +183,21 @@
                         <viewLayoutGuide key="safeArea" id="Say-IT-0HO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="HOL-qm-71F" firstAttribute="leading" secondItem="Gdu-Q0-s9v" secondAttribute="leading" constant="2" id="4NI-3X-i0D"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cC7-r0-zRs" secondAttribute="trailing" constant="100" id="615-UR-Wo2"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="cC7-r0-zRs" secondAttribute="bottom" constant="300" id="YaH-CJ-FHF"/>
-                            <constraint firstItem="cC7-r0-zRs" firstAttribute="leading" secondItem="Gdu-Q0-s9v" secondAttribute="leadingMargin" constant="100" id="iIb-AI-BtX"/>
-                            <constraint firstItem="HOL-qm-71F" firstAttribute="top" secondItem="Say-IT-0HO" secondAttribute="top" constant="5" id="w9c-rw-ccM"/>
+                            <constraint firstItem="cC7-r0-zRs" firstAttribute="leading" secondItem="Say-IT-0HO" secondAttribute="leading" constant="116" id="CGL-Hz-DJ1"/>
+                            <constraint firstItem="HOL-qm-71F" firstAttribute="top" secondItem="Gdu-Q0-s9v" secondAttribute="top" constant="24" id="Pib-5f-6Cj"/>
+                            <constraint firstItem="Say-IT-0HO" firstAttribute="bottom" secondItem="cC7-r0-zRs" secondAttribute="bottom" constant="300" id="Q2x-Ib-oQU"/>
+                            <constraint firstItem="F10-QX-onl" firstAttribute="leading" secondItem="ip0-IC-WwC" secondAttribute="leading" id="T5S-E4-PBV"/>
+                            <constraint firstItem="MrJ-09-Cb1" firstAttribute="top" secondItem="Gdu-Q0-s9v" secondAttribute="top" id="Y0w-K6-6DR"/>
+                            <constraint firstItem="ip0-IC-WwC" firstAttribute="bottom" secondItem="Say-IT-0HO" secondAttribute="bottom" id="ZGk-Yz-442"/>
+                            <constraint firstItem="cC7-r0-zRs" firstAttribute="centerX" secondItem="ip0-IC-WwC" secondAttribute="centerX" id="bDE-Un-G46"/>
+                            <constraint firstItem="F10-QX-onl" firstAttribute="top" secondItem="HOL-qm-71F" secondAttribute="bottom" constant="10" id="bcA-us-sj6"/>
+                            <constraint firstItem="ip0-IC-WwC" firstAttribute="top" secondItem="Gdu-Q0-s9v" secondAttribute="top" id="em2-y8-DJd"/>
+                            <constraint firstItem="F10-QX-onl" firstAttribute="bottom" secondItem="ip0-IC-WwC" secondAttribute="bottom" id="fET-Kv-j8f"/>
+                            <constraint firstItem="ip0-IC-WwC" firstAttribute="leading" secondItem="Say-IT-0HO" secondAttribute="leading" id="h9Q-jL-TZZ"/>
+                            <constraint firstItem="ip0-IC-WwC" firstAttribute="trailing" secondItem="Say-IT-0HO" secondAttribute="trailing" id="is8-QT-iho"/>
+                            <constraint firstItem="HOL-qm-71F" firstAttribute="leading" secondItem="Say-IT-0HO" secondAttribute="leading" constant="24" id="mxf-fY-koU"/>
+                            <constraint firstItem="MrJ-09-Cb1" firstAttribute="trailing" secondItem="Say-IT-0HO" secondAttribute="trailing" id="vJ7-fV-g7O"/>
+                            <constraint firstItem="cC7-r0-zRs" firstAttribute="centerX" secondItem="F10-QX-onl" secondAttribute="centerX" id="xvV-cA-h1D"/>
                         </constraints>
                     </view>
                     <connections>
@@ -172,53 +208,46 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hT-9d-PNe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="63.768115942028992" y="858.48214285714278"/>
+            <point key="canvasLocation" x="140.57971014492756" y="857.47767857142856"/>
         </scene>
         <!--Search Board View Controller-->
         <scene sceneID="0hE-48-gfb">
             <objects>
-                <viewController storyboardIdentifier="SearchBoardView" id="W8A-9t-Lgr" customClass="SearchBoardViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchBoardView" id="W8A-9t-Lgr" customClass="SearchBoardViewController" customModule="MusicDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U6m-I3-l0R">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbX-gi-KIi">
-                                <rect key="frame" x="20" y="44" width="51" height="51"/>
+                                <rect key="frame" x="23" y="63" width="51" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gbX-gi-KIi" secondAttribute="height" multiplier="1:1" id="vig-Ob-4MQ"/>
+                                </constraints>
                                 <state key="normal" image="Search_backButton"/>
                                 <connections>
                                     <action selector="backButtonPressed:" destination="W8A-9t-Lgr" eventType="touchUpInside" id="84q-Ke-pn7"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6wj-Bo-Ns3">
-                                <rect key="frame" x="49" y="125" width="316" height="721"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search_background" translatesAutoresizingMaskIntoConstraints="NO" id="JhK-CN-m2Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="316" height="721"/>
-                                    </imageView>
-                                </subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8LZ-ps-hfN">
+                                <rect key="frame" x="49" y="131" width="316" height="721"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="JhK-CN-m2Z" secondAttribute="bottom" id="4US-xs-oO8"/>
-                                    <constraint firstAttribute="width" constant="316" id="5AN-L3-wNQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="JhK-CN-m2Z" secondAttribute="trailing" id="P3J-8B-xDV"/>
-                                    <constraint firstItem="JhK-CN-m2Z" firstAttribute="top" secondItem="6wj-Bo-Ns3" secondAttribute="top" id="lNt-cD-c3u"/>
-                                    <constraint firstAttribute="height" constant="721" id="ld8-Dz-DgB"/>
-                                    <constraint firstItem="JhK-CN-m2Z" firstAttribute="leading" secondItem="6wj-Bo-Ns3" secondAttribute="leading" id="le7-eM-S4L"/>
-                                    <constraint firstAttribute="width" secondItem="6wj-Bo-Ns3" secondAttribute="height" multiplier="316:721" id="ze1-l5-aCO"/>
+                                    <constraint firstAttribute="height" constant="721" id="ct4-Ve-lpf"/>
+                                    <constraint firstAttribute="width" constant="316" id="ydm-0z-Uz1"/>
                                 </constraints>
-                            </view>
+                                <connections>
+                                    <segue destination="IPH-9v-jSQ" kind="embed" id="zcO-Qv-rCd"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Tq8-9g-7We"/>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="6wj-Bo-Ns3" firstAttribute="centerX" secondItem="U6m-I3-l0R" secondAttribute="centerX" id="45E-bT-AFL"/>
-                            <constraint firstItem="6wj-Bo-Ns3" firstAttribute="top" secondItem="gbX-gi-KIi" secondAttribute="bottom" constant="30" id="8tG-WA-chh"/>
-                            <constraint firstItem="gbX-gi-KIi" firstAttribute="leading" secondItem="U6m-I3-l0R" secondAttribute="leadingMargin" id="bep-TH-z3p"/>
-                            <constraint firstAttribute="bottom" secondItem="6wj-Bo-Ns3" secondAttribute="bottom" constant="50" id="znT-GW-X0q"/>
+                            <constraint firstItem="Tq8-9g-7We" firstAttribute="bottom" secondItem="8LZ-ps-hfN" secondAttribute="bottom" constant="10" id="VjM-g2-vjI"/>
+                            <constraint firstItem="8LZ-ps-hfN" firstAttribute="centerX" secondItem="U6m-I3-l0R" secondAttribute="centerX" id="YM2-aP-btu"/>
+                            <constraint firstItem="gbX-gi-KIi" firstAttribute="top" secondItem="Tq8-9g-7We" secondAttribute="top" constant="19" id="azl-bg-Ufo"/>
+                            <constraint firstItem="gbX-gi-KIi" firstAttribute="leading" secondItem="Tq8-9g-7We" secondAttribute="leading" constant="23" id="uBL-xN-lm7"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="searchView" destination="6wj-Bo-Ns3" id="ymW-Gf-LUU"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhy-wb-rTF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -380,7 +409,7 @@
         <image name="Intro_logo" width="271" height="272"/>
         <image name="Intro_titleBox" width="273" height="100"/>
         <image name="Search_backButton" width="51" height="51"/>
-        <image name="Search_background" width="316" height="721"/>
+        <image name="Search_background2" width="316" height="721"/>
         <image name="Search_confirmButton" width="86" height="86"/>
         <image name="Search_searchBar" width="208" height="47"/>
         <image name="spongeBob.gif" width="480" height="270"/>

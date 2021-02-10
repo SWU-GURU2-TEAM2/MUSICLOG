@@ -61,7 +61,7 @@ class IntroViewController: UIViewController, FUIAuthDelegate, UIGestureRecognize
                     }
                 }
                 
-                let vc = UIStoryboard(name: "YewonStoryboard", bundle: nil).instantiateViewController(identifier: "YewonMainView")
+                let vc = UIStoryboard(name: "YujinStoryboard", bundle: nil).instantiateViewController(identifier: "SearchBoardView")
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true, completion:  nil)
             } else {
