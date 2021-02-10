@@ -56,6 +56,9 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
         
     }
     
+    @IBAction func goMain(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBAction func goDetail(_ sender: Any) {
         print("go detail")
         

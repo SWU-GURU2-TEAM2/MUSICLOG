@@ -3,7 +3,7 @@
 //  MusicDiary
 //
 //  Created by 1v1 on 2021/02/07.
-//
+// 다이어리 세팅 다이어리 음악 추가 버튼 작동. 유저 추가 새로고침
 
 import UIKit
 import Firebase
@@ -108,6 +108,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
                             let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                             print("그런 유저 있음!")
                             self.addUser(targetID: friendID)
+                            self.tableView.reloadData()
                             self.viewDidLoad()
                         } else {
                             print("그런 유저 없음")

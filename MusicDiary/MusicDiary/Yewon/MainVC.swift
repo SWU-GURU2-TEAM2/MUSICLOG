@@ -6,22 +6,15 @@
 //
 
 import UIKit
-import WebKit
 import ScalingCarousel
 import FirebaseFirestore
-import FirebaseAuth
-import FirebaseUI
-
-//centerCell docID 전달 변수
-var centerDocID:String!
-var centerIndex:Int!
 
 class MainVC:UIViewController {
     let db = Firestore.firestore()
     var diaryData: [DiaryStructure] = []
     var getDiaryList = [String]()
     
-    //MARK: -IBDulet
+    //MARK: ---------------------IBDulet
     
     @IBOutlet weak var mainCarousel: ScalingCarouselView!
     @IBOutlet weak var writeBtn: UIButton!
@@ -29,16 +22,16 @@ class MainVC:UIViewController {
     @IBAction func moveToWrite(_ sender: UIButton) {
         
         //center Diary 해당 날짜에 콘텐츠 있으면 안보이게
-        
-        
+        let vc = UIStoryboard(name: "JungbinStoryboard", bundle: nil).instantiateViewController(identifier: "WriteView")
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion:  nil)
     }
     @IBAction func moveToSetting(_ sender: UIButton) {
         let vc = UIStoryboard(name: "YujinStoryboard", bundle: nil).instantiateViewController(identifier: "appSettingView")
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion:  nil)
-        
     }
-    //MARK: -viewDidLoad
+    //MARK: ----------------viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,10 +69,9 @@ class MainVC:UIViewController {
                 }
             }
         }
-        //hideWrite()
     }
     
-    //MARK: -ADD Diary
+    //MARK: ------------------ADD Diary
     
     @IBAction func addDiary(_ sender: UIButton) {
         //firebase에 다이어리 증가 + 유저 다이어리 리스트에도 추가 됨
@@ -112,12 +104,36 @@ class MainVC:UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
         mainCarousel.deviceRotated()
     }
-    //MARK: -Func
-    func hideWrite () {
-        
+    //MARK: -----------------------Func
+    func hideWrite (date:Date) {
+        var author:String = ""
+        let calendar = Calendar.current
+        db.collection("Diary").document("\(currentDairyId)").collection("Contents").whereField("date", isGreaterThanOrEqualTo: calendar.startOfDay(for: date)).whereField("date", isLessThan: calendar.startOfDay(for: date)+86400).whereField("authorID", isEqualTo: "\(currentUID)").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let getContent = document.data()
+                    author = getContent["authorID"] as! String
+                }
+                if author == "" {
+                    //일기 없음
+                    DispatchQueue.main.async {
+                        self.writeBtn.isHidden = false
+                    }
+                }
+                else {
+                    // 일기 있음
+                    DispatchQueue.main.async {
+                        self.writeBtn.isHidden = true
+                    }
+                }
+            }
+        }
     }
 }
 
+//MARK: ------------------dateFormat
 
 func dateFormat(date:Date) -> String {
     let dateFormater = DateFormatter()
@@ -126,7 +142,7 @@ func dateFormat(date:Date) -> String {
     return result
 }
 
-// MARK: -MainCell
+// MARK: ---------------------MainCell
 
 class MainCell: ScalingCarouselCell {
     @IBOutlet weak var mainDiaryImaage: UIImageView!
@@ -178,10 +194,16 @@ extension MainVC: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let currentCenterIndex = mainCarousel.currentCenterCellIndex?.row else { return }
         //center Cell 의 documentID 저장
-        centerDocID = self.getDiaryList[currentCenterIndex]
-        centerIndex = currentCenterIndex
-        //조금이라도 움직여야만 centerDocID 출력 가능...
-        //hideWrite()
+        let oneDiaryID = self.diaryData[currentCenterIndex]
+        currentDairyId = oneDiaryID.diaryId!
+        hideWrite(date: Date())
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = UIStoryboard(name: "JungbinStoryboard", bundle: nil).instantiateViewController(identifier: "dailyView")
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion:  nil)
+        
     }
 }
 
@@ -193,5 +215,5 @@ extension ScalingCarouselFlowDelegate: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-
+    
 }

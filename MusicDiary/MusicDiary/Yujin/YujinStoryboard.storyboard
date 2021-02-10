@@ -32,7 +32,7 @@
                                 <rect key="frame" x="100" y="467" width="214" height="100"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Intro_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="W2w-G1-Bho">
-                                <rect key="frame" x="180" y="758" width="54" height="20"/>
+                                <rect key="frame" x="180" y="684" width="54" height="22"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앱 이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUM-vC-RIt">
                                 <rect key="frame" x="110" y="510" width="194" height="14.5"/>
@@ -57,7 +57,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="W2w-G1-Bho" secondAttribute="trailing" constant="160" id="cfF-oX-Vle"/>
                             <constraint firstItem="B9z-A7-Le0" firstAttribute="top" secondItem="SzH-hg-1b8" secondAttribute="topMargin" constant="690" id="fm8-CP-VwE"/>
                             <constraint firstItem="B9z-A7-Le0" firstAttribute="leading" secondItem="SzH-hg-1b8" secondAttribute="leadingMargin" constant="106" id="gPK-vr-KML"/>
-                            <constraint firstItem="W2w-G1-Bho" firstAttribute="top" secondItem="SzH-hg-1b8" secondAttribute="topMargin" constant="714" id="lAi-Ia-fOZ"/>
+                            <constraint firstItem="W2w-G1-Bho" firstAttribute="top" secondItem="SzH-hg-1b8" secondAttribute="topMargin" constant="640" id="lAi-Ia-fOZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BWg-OZ-Wsr" secondAttribute="trailing" constant="80" id="muc-wo-0ua"/>
                         </constraints>
                     </view>
@@ -121,7 +121,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="albumImage" image="Intro_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Cll-7m-EDr">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="albumImage" image="MainStandardImage" translatesAutoresizingMaskIntoConstraints="NO" id="Cll-7m-EDr">
                                                     <rect key="frame" x="26" y="16" width="71" height="71"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="71" id="0iN-7L-e6G"/>
@@ -406,9 +406,10 @@
         <image name="AppSetting_profile" width="41.5" height="41.5"/>
         <image name="AppSetting_profileOutline" width="164" height="164"/>
         <image name="AppSetting_titleBox" width="352" height="87"/>
-        <image name="Intro_arrow" width="50.5" height="20"/>
+        <image name="Intro_arrow" width="53.5" height="22"/>
         <image name="Intro_logo" width="271" height="272"/>
         <image name="Intro_titleBox" width="273" height="100"/>
+        <image name="MainStandardImage" width="150" height="150"/>
         <image name="Search_backButton" width="51" height="51"/>
         <image name="Search_background2" width="316" height="721"/>
         <image name="Search_confirmButton" width="86" height="86"/>

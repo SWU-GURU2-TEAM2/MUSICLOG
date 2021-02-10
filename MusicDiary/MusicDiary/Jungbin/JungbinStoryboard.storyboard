@@ -106,6 +106,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXe-zS-NlE">
                                 <rect key="frame" x="18" y="44" width="51" height="51"/>
                                 <state key="normal" backgroundImage="Daily_home"/>
+                                <connections>
+                                    <action selector="goMain:" destination="ovr-HE-iz2" eventType="touchUpInside" id="xky-YG-vh2"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😓 작성된 일기가 없어요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jHm-dy-ctp">
                                 <rect key="frame" x="0.0" y="676" width="414" height="29"/>
@@ -232,7 +235,7 @@
         <!--Write View Controller-->
         <scene sceneID="HHf-9j-gWu">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="VwC-qC-UUN" customClass="WriteViewController" customModule="MusicDiary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WriteView" modalPresentationStyle="fullScreen" id="VwC-qC-UUN" customClass="WriteViewController" customModule="MusicDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jVh-hj-UYx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
