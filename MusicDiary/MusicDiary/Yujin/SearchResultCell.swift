@@ -11,4 +11,5 @@ class SearchResultCell: UITableViewCell {
     @IBOutlet weak var musicArtist: UILabel!
     @IBOutlet weak var musicTitle: UILabel!
     @IBOutlet weak var musicCover: UIImageView!
+    @IBOutlet weak var dataBackground: UIImageView!
 }

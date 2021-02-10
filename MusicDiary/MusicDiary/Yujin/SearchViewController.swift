@@ -26,6 +26,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadingIndicator.hidesWhenStopped = true
+        tableView.backgroundColor = UIColor.clear
     }//viewDidLoad
     
     //searchButtonPressed
@@ -110,6 +111,9 @@ extension SearchViewController: UITableViewDataSource {
             } catch {
             }
         }
+        cell.dataBackground.layer.cornerRadius = 28
+        cell.musicCover.layer.cornerRadius = 35
+        cell.backgroundColor = .clear
         return cell
         
     }//cellForRowAt
@@ -123,9 +127,9 @@ extension SearchViewController: UITableViewDelegate{
         //세로모드, 가로 모드에 따라 한 번에 보여줄 테이블 셀 갯수 조절
         let size = tableView.frame.size
         if size.height > size.width {
-            return size.height / 10
+            return size.height / 7
         } else {
-            return size.height / 5
+            return size.height / 2
         }
     }//heightForRowAt
     
@@ -146,9 +150,12 @@ extension SearchViewController: UITableViewDelegate{
 
 class SearchBoardViewController: UIViewController{
     
-    @IBOutlet weak var searchView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let board = UIStoryboard(name: "YujinStoryboard", bundle: nil)
+        guard let vc = board.instantiateViewController(identifier: "SearchView") as? SearchViewController else {return}
+        self.present(vc, animated: true, completion: nil)
     }
     @IBAction func backButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
