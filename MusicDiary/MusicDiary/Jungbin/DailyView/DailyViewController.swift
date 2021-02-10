@@ -102,20 +102,18 @@ extension DailyViewController: UICollectionViewDataSource, UICollectionViewDeleg
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! UserCollectionViewCell
         cell.imageView.layer.cornerRadius = cell.imageView.frame.width / 2
         cell.imageView.clipsToBounds = true
-        if let url = self.newMemberList[indexPath.row].userImage {
-            do {
-                let data = try Data(contentsOf: url)
-                cell.imageView.image = UIImage(data: data)
-                
-            } catch {
+        
+        DispatchQueue.global().async { let data = try? Data(contentsOf: self.newMemberList[indexPath.row].userImage!)
+            DispatchQueue.main.async {
+                cell.imageView.image = UIImage(data: data!)
             }
         }
+        
         
         return cell
         
         
-    }
-    
+    }    
     //상하 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
