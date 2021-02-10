@@ -34,7 +34,6 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
         noDataLabel.alpha = 0
         titleLabel.numberOfLines = 6
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        //titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.alpha = 0
         goDetailBtn.alpha = 0
         calendar.delegate = self
@@ -91,7 +90,14 @@ extension DailyViewController: UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.newMemberList.count
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        currentOtehrUserID = newMemberIDList[indexPath.row]
+        print("select id: ", currentOtehrUserID)
+        
+        self.calendar.reloadData()
+        getContentsListForDaily(date: Date())
+        
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! UserCollectionViewCell
         cell.imageView.layer.cornerRadius = cell.imageView.frame.width / 2
@@ -105,15 +111,11 @@ extension DailyViewController: UICollectionViewDataSource, UICollectionViewDeleg
             }
         }
         
-        if indexPath.item == 0 {
-           cell.isSelected = true
-           collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
-         }
-        
         return cell
         
         
     }
+    
     //상하 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
