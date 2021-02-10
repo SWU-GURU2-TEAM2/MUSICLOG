@@ -19,6 +19,7 @@ class MainVC:UIViewController {
     let db = Firestore.firestore()
     var diaryData: [DiaryStructure] = []
     var getDiaryList = [String]()
+    var content_date:Date?
 
     //MARK: -IBDulet
     
@@ -27,7 +28,6 @@ class MainVC:UIViewController {
     @IBAction func moveToWrite(_ sender: UIButton) {
         
         //center Diary 해당 날짜에 콘텐츠 있으면 안보이게
-        test()
         
         
     }
@@ -61,7 +61,7 @@ class MainVC:UIViewController {
                             newDiaryData.diaryMusicTitle = dataDescriptions!["diaryMusicTitle"] as? String
                             newDiaryData.diaryMusicArtist = dataDescriptions!["diaryMusicArtist"] as? String
                             
-                            //newDiaryData.diaryImageUrl = dataDescriptions!["diaryImageUrl"] as? URL
+                            newDiaryData.diaryImageUrl = dataDescriptions!["diaryImageUrl"] as? URL
                             //newDiaryData.diaryImageUrl = URL(string: (dataDescriptions!["diaryImageUrl"] as? String)!)
                             
                             newDiaryData.date = Date(timeIntervalSince1970: TimeInterval((dataDescriptions!["date"] as! Timestamp).seconds))
@@ -80,10 +80,18 @@ class MainVC:UIViewController {
                 }
             }
         }
+        //test 중
+        let testRef = db.collection("Diary").document("hPP6YvFvsilOPYoAlmJs").collection("Contents").document("2EfFkE8a1AfBE1iC2fdB")
+        testRef.getDocument { [self] (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data()
+                self.content_date = Date(timeIntervalSince1970: TimeInterval((dataDescription!["date"] as! Timestamp).seconds))
+            } else {
+                print("Document does not exist")
+            }
+        }
 
 //        //오늘 작성한 글이 있다면 writeBtn 안 보이게
-//        let dateFormater = DateFormatter()
-//        dateFormater.dateFormat = "yyyy년 MM월 dd일"
 //        let today = dateFormater.string(from: Date())
 //        //if today == content_date {writeBtn.alpha = 0}
         
@@ -125,21 +133,6 @@ class MainVC:UIViewController {
     }
 }
 
-func test(){
-    let db = Firestore.firestore()
-    var document_date:Date?
-
-    let testRef = db.collection("Diary").document(centerDocID).collection("Contents").document(centerDocID)
-    testRef.getDocument { (document, error) in
-        if let document = document, document.exists {
-            let dataDescription = document.data()
-            document_date = dataDescription!["date"] as! Date
-            print("date : ",document_date)
-        } else {
-            print("Document does not exist")
-        }
-    }
-}
 
 func dateFormat(date:Date) -> String {
     let dateFormater = DateFormatter()
