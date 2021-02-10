@@ -148,6 +148,7 @@ extension AppSettingViewController: UIImagePickerControllerDelegate, UINavigatio
         print("OKKKKKKKKKKKK")
         self.imagePicker.dismiss(animated: true, completion: nil)
         guard let selectedImage = info[.originalImage] as? UIImage else {
+            print("no selectedImage")
             return
         }
         profileImage.image = selectedImage
@@ -161,24 +162,22 @@ extension AppSettingViewController: UIImagePickerControllerDelegate, UINavigatio
               }
               imageRef.downloadURL { (url, error) in
                 guard let downloadURL = url else {
+                    print("noURL")
                   return
+                }
+                let docRef = self.db.collection("Users").document("\(currentUID)")
+                docRef.updateData([
+                    "userImage": String(describing: downloadURL)
+                ]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Document successfully updated")
+                    }
                 }
               }//downloadURL
             }//uploadTask
         }//data
-        let docRef = db.collection("Users").document("\(currentUID)")
-        let imageRef = storage.reference(withPath: "profileImages/\(currentUID)Profile.png")
-        imageRef.downloadURL { (url, error) in
-            docRef.updateData([
-                "userImage": String(describing: url)
-            ]) { err in
-                if let err = err {
-                    print("Error updating document: \(err)")
-                } else {
-                    print("Document successfully updated")
-                }
-            }
-        }
         
     }//didFinishPickingMediaWithInfo
 }
