@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var musicView: UIView!
     @IBOutlet weak var writeView: UIView!
+    @IBOutlet weak var shareMusicView: UIView!
     var getMusic:MusicStruct!
     let db = Firestore.firestore()
     //var currentContentData = ContentData()
@@ -40,6 +41,14 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func tapSharedBtn(_ sender: Any) {
+        
+        guard let image = shareMusicView.transfromToImage() else {
+                    return
+                }
+                let vc = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+                //vc.excludedActivityTypes = [.saveToCameraRoll] //
+                present(vc, animated: true)
+        
     }
     @IBAction func tapDeleteBtn(_ sender: Any) {
         
@@ -68,4 +77,17 @@ class DetailViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
+}
+extension UIView {
+    func transfromToImage() -> UIImage? {
+            UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
+            defer {
+                UIGraphicsEndImageContext()
+            }
+            if let context = UIGraphicsGetCurrentContext() {
+                layer.render(in: context)
+                return UIGraphicsGetImageFromCurrentImageContext()
+            }
+            return nil
+        }
 }
