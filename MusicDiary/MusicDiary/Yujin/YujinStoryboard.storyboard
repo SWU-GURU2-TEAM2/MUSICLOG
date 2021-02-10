@@ -32,7 +32,7 @@
                                 <rect key="frame" x="100" y="467" width="214" height="100"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Intro_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="W2w-G1-Bho">
-                                <rect key="frame" x="200" y="758" width="14" height="20"/>
+                                <rect key="frame" x="180" y="758" width="54" height="20"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앱 이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUM-vC-RIt">
                                 <rect key="frame" x="110" y="510" width="194" height="14.5"/>
@@ -49,12 +49,12 @@
                             <constraint firstItem="qk7-Vk-15r" firstAttribute="leading" secondItem="SzH-hg-1b8" secondAttribute="leadingMargin" constant="80" id="Juh-qx-4MA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qk7-Vk-15r" secondAttribute="trailing" constant="80" id="QZe-iw-ep3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="B9z-A7-Le0" secondAttribute="trailing" constant="106" id="QwH-uO-mDn"/>
-                            <constraint firstItem="W2w-G1-Bho" firstAttribute="leading" secondItem="SzH-hg-1b8" secondAttribute="leadingMargin" constant="180" id="S7S-8R-aSi"/>
+                            <constraint firstItem="W2w-G1-Bho" firstAttribute="leading" secondItem="SzH-hg-1b8" secondAttribute="leadingMargin" constant="160" id="S7S-8R-aSi"/>
                             <constraint firstItem="BWg-OZ-Wsr" firstAttribute="leading" secondItem="SzH-hg-1b8" secondAttribute="leadingMargin" constant="80" id="Shb-l4-QBm"/>
                             <constraint firstItem="qk7-Vk-15r" firstAttribute="top" secondItem="SzH-hg-1b8" secondAttribute="topMargin" constant="234" id="UXk-WG-OEp"/>
                             <constraint firstItem="bUM-vC-RIt" firstAttribute="top" secondItem="qk7-Vk-15r" secondAttribute="bottom" constant="18" id="bOT-zK-1mo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bUM-vC-RIt" secondAttribute="trailing" constant="90" id="bQE-qF-XJP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="W2w-G1-Bho" secondAttribute="trailing" constant="180" id="cfF-oX-Vle"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="W2w-G1-Bho" secondAttribute="trailing" constant="160" id="cfF-oX-Vle"/>
                             <constraint firstItem="B9z-A7-Le0" firstAttribute="top" secondItem="SzH-hg-1b8" secondAttribute="topMargin" constant="690" id="fm8-CP-VwE"/>
                             <constraint firstItem="B9z-A7-Le0" firstAttribute="leading" secondItem="SzH-hg-1b8" secondAttribute="leadingMargin" constant="106" id="gPK-vr-KML"/>
                             <constraint firstItem="W2w-G1-Bho" firstAttribute="top" secondItem="SzH-hg-1b8" secondAttribute="topMargin" constant="714" id="lAi-Ia-fOZ"/>
@@ -121,7 +121,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="albumImage" image="spongeBob.gif" translatesAutoresizingMaskIntoConstraints="NO" id="Cll-7m-EDr">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="albumImage" image="Intro_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Cll-7m-EDr">
                                                     <rect key="frame" x="26" y="16" width="71" height="71"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="71" id="0iN-7L-e6G"/>
@@ -170,7 +170,7 @@
                                     <action selector="searchButtonPressed:" destination="IPH-9v-jSQ" eventType="touchUpInside" id="qo9-sz-fck"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="searchTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="오늘의 음악은 무엇인가요?" textAlignment="natural" minimumFontSize="17" background="Search_searchBar" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HOL-qm-71F">
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="searchTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="  오늘의 음악은 무엇인가요?" textAlignment="natural" minimumFontSize="17" background="Search_searchBar" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HOL-qm-71F">
                                 <rect key="frame" x="24" y="24" width="208" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="208" id="cwe-f9-GnA"/>
@@ -219,9 +219,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbX-gi-KIi">
-                                <rect key="frame" x="23" y="63" width="51" height="51"/>
+                                <rect key="frame" x="23" y="63" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="gbX-gi-KIi" secondAttribute="height" multiplier="1:1" id="vig-Ob-4MQ"/>
+                                    <constraint firstAttribute="height" constant="40" id="43D-Ym-ita"/>
+                                    <constraint firstAttribute="width" constant="40" id="A3r-ue-0rq"/>
                                 </constraints>
                                 <state key="normal" image="Search_backButton"/>
                                 <connections>
@@ -326,7 +327,7 @@
                                 </constraints>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppSetting_profile" translatesAutoresizingMaskIntoConstraints="NO" id="4Kl-oA-PaJ">
-                                <rect key="frame" x="153" y="211" width="108" height="108"/>
+                                <rect key="frame" x="154" y="209" width="107" height="107"/>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="4Kl-oA-PaJ" secondAttribute="height" multiplier="1:1" id="gdz-vs-2oy"/>
@@ -362,7 +363,7 @@
                             <constraint firstItem="kp3-sB-lCt" firstAttribute="top" secondItem="Lwt-68-qA7" secondAttribute="bottom" constant="-5" id="EuZ-GF-JRT"/>
                             <constraint firstItem="K3f-zZ-jlT" firstAttribute="top" secondItem="xi5-NT-rSx" secondAttribute="topMargin" constant="300" id="FnF-5r-OS1"/>
                             <constraint firstItem="K3f-zZ-jlT" firstAttribute="leading" secondItem="Tjm-NO-nG9" secondAttribute="trailing" constant="6" id="IAl-kK-a8j"/>
-                            <constraint firstItem="4Kl-oA-PaJ" firstAttribute="top" secondItem="kp3-sB-lCt" secondAttribute="bottom" constant="8" id="LDg-Ck-Qc7"/>
+                            <constraint firstItem="4Kl-oA-PaJ" firstAttribute="top" secondItem="kp3-sB-lCt" secondAttribute="bottom" constant="6" id="LDg-Ck-Qc7"/>
                             <constraint firstItem="Lwt-68-qA7" firstAttribute="top" secondItem="xi5-NT-rSx" secondAttribute="topMargin" constant="19" id="LeM-i6-0o2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kJQ-hB-GWz" secondAttribute="trailing" constant="36" id="MPo-ZT-Qq7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4Kl-oA-PaJ" secondAttribute="trailing" constant="133" id="PzX-dl-wz2"/>
@@ -375,7 +376,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="FOe-RF-OaI" secondAttribute="trailing" constant="38" id="kZP-KJ-lga"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EdH-mf-7Qw" secondAttribute="trailing" constant="114" id="paK-eA-OwT"/>
                             <constraint firstItem="kp3-sB-lCt" firstAttribute="leading" secondItem="xi5-NT-rSx" secondAttribute="leadingMargin" id="qHa-Qp-nxP"/>
-                            <constraint firstItem="4Kl-oA-PaJ" firstAttribute="leading" secondItem="xi5-NT-rSx" secondAttribute="leadingMargin" constant="133" id="qLS-9E-zph"/>
+                            <constraint firstItem="4Kl-oA-PaJ" firstAttribute="leading" secondItem="xi5-NT-rSx" secondAttribute="leadingMargin" constant="134" id="qLS-9E-zph"/>
                             <constraint firstItem="ZTS-HU-0ws" firstAttribute="top" secondItem="Tjm-NO-nG9" secondAttribute="bottom" constant="34" id="vFP-Or-dKD"/>
                             <constraint firstItem="Lwt-68-qA7" firstAttribute="leading" secondItem="xi5-NT-rSx" secondAttribute="leadingMargin" id="w6s-oD-Efd"/>
                             <constraint firstItem="EdH-mf-7Qw" firstAttribute="leading" secondItem="xi5-NT-rSx" secondAttribute="leadingMargin" constant="114" id="xP7-2N-WE3"/>
@@ -412,7 +413,6 @@
         <image name="Search_background2" width="316" height="721"/>
         <image name="Search_confirmButton" width="86" height="86"/>
         <image name="Search_searchBar" width="208" height="47"/>
-        <image name="spongeBob.gif" width="480" height="270"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

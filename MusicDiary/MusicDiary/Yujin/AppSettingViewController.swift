@@ -29,7 +29,7 @@ class AppSettingViewController: UIViewController {
         //uidSetting
         userUID.text = currentUID
         //profileImageSetting
-        profileImage.layer.cornerRadius = self.profileImage.frame.width / 2.8
+        profileImage.layer.cornerRadius = self.profileImage.frame.width / 2
         //profileImage tap action setting
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileTouched(_:)))
         profileImage.addGestureRecognizer(tapGestureRecognizer)
@@ -42,9 +42,14 @@ class AppSettingViewController: UIViewController {
                 print("success")
                 let dbName = document.get("userName")
                 self.userName.text = dbName as! String
-                let dbStorageRef = document.get("userImage")
-                let storageRef = self.storage.reference(withPath: "profileImages/\(dbStorageRef!)")
-                self.profileImage.sd_setImage(with: storageRef)
+                let dbStorageRef = document.get("userImage")!
+                let url = URL(string: "\(dbStorageRef)")
+                do {
+                    let data = try Data(contentsOf: url!)
+                    self.profileImage.image = UIImage(data: data)
+                } catch {
+                    print("noImage")
+                }
             } else {
                 print("Image does not exist")
             }

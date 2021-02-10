@@ -14,6 +14,7 @@ import FirebaseUI
 
 //centerCell docID 전달 변수
 var centerDocID:String!
+var centerIndex:Int!
 
 class MainVC:UIViewController {
     let db = Firestore.firestore()
@@ -66,24 +67,16 @@ class MainVC:UIViewController {
                             
                             self.diaryData.append(newDiaryData)
                             self.diaryData.sort {$0.date! < $1.date!}   //date에 따라 정렬
-                            //print(diaryData)
                         } else {
                             print("Document does not exist")
                             
                         }
                         self.mainCarousel.reloadData()
-                        //scrollViewDidScroll(mainCarousel)
                     }
                 }
             }
         }
-        
-        //test 중
-        
-        //        //오늘 작성한 글이 있다면 writeBtn 안 보이게
-        //        let today = dateFormater.string(from: Date())
-        //        //if today == content_date {writeBtn.alpha = 0}
-        
+        //hideWrite()
     }
     
     //MARK: -ADD Diary
@@ -92,10 +85,9 @@ class MainVC:UIViewController {
         //firebase에 다이어리 증가 + 유저 다이어리 리스트에도 추가 됨
         var ref: DocumentReference? = nil
         let date = Date()
-        
         ref = self.db.collection("Diary").addDocument(data: [
             "diaryImageUrl":"https://firebasestorage.googleapis.com/v0/b/musicdiary-a095d.appspot.com/o/defaltDiaryImg.png?alt=media&token=1556a66e-c81f-4aad-ba96-8b25d6ab5dfc",
-            "diaryName":"new Diary",
+            "diaryName":"New Diary",
             "diaryMusicTitle":"",
             "diaryMusicArtist":"",
             "memberList":[currentUID],
@@ -120,7 +112,7 @@ class MainVC:UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
         mainCarousel.deviceRotated()
     }
-    
+    //MARK: -Func
     func hideWrite () {
         
     }
@@ -187,8 +179,9 @@ extension MainVC: UICollectionViewDelegate {
         guard let currentCenterIndex = mainCarousel.currentCenterCellIndex?.row else { return }
         //center Cell 의 documentID 저장
         centerDocID = self.getDiaryList[currentCenterIndex]
+        centerIndex = currentCenterIndex
         //조금이라도 움직여야만 centerDocID 출력 가능...
-        hideWrite()
+        //hideWrite()
     }
 }
 
