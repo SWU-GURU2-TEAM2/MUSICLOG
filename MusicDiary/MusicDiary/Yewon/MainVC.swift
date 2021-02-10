@@ -172,11 +172,11 @@ extension CarouselDatasource: UICollectionViewDataSource {
         
         //Share? Single?
         let memberList = diaryData[indexPath.row].memberList!.count
-        if memberList >= 2 {
-            carouselCell.mainMemberInfo.setImage(UIImage(named: "ShareDiary.png")!)
-        } else {
-            carouselCell.mainMemberInfo.setImage(UIImage(named: "SingleDiary.png")!)
-        }
+//        if memberList >= 2 {
+//            carouselCell.mainMemberInfo.setImage(UIImage(named: "ShareDiary.png")!)
+//        } else {
+//            carouselCell.mainMemberInfo.setImage(UIImage(named: "SingleDiary.png")!)
+//        }
         
         carouselCell.setNeedsLayout()
         carouselCell.layoutIfNeeded()
