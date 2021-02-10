@@ -105,12 +105,14 @@ extension SearchViewController: UITableViewDataSource {
         cell.musicTitle.text = musicData[indexPath.row].musicTitle
         cell.musicArtist.text = musicData[indexPath.row].musicArtist
         if let url = musicData[indexPath.row].musicCoverUrl {
-            do {
-                let data = try Data(contentsOf: url)
-                cell.musicCover.image = UIImage(data: data)
-            } catch {
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: self.musicData[indexPath.row].musicCoverUrl!)
+                DispatchQueue.main.async {
+                    cell.musicCover.image = UIImage(data: data!)
+                }
             }
         }
+
         cell.dataBackground.layer.cornerRadius = 28
         cell.musicCover.layer.cornerRadius = 35
         cell.backgroundColor = .clear
