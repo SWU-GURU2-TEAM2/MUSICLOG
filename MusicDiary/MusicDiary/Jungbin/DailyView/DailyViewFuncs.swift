@@ -32,7 +32,7 @@ extension DailyViewController {
                     
                 }
                 print("today content list: ", currentContentData)
-                if currentContentData.musicTitle == "" {
+                if currentContentData.musicTitle == "" { //일기 없음
                     
                     DispatchQueue.main.async {
                         self.noDataLabel.alpha = 1
@@ -43,8 +43,9 @@ extension DailyViewController {
                     }
                 }
                 else {
-                    DispatchQueue.global().async { let data = try? Data(contentsOf: currentContentData.musicCoverUrl!)
+                    DispatchQueue.global().async { let data = try? Data(contentsOf: currentContentData.musicCoverUrl!) // 일기 있음
                         DispatchQueue.main.async {
+                            self.noDataLabel.alpha = 0
                             self.goDetailBtn.isEnabled = true
                             self.goDetailBtn.alpha = 1
                             self.titleLabel.alpha = 1

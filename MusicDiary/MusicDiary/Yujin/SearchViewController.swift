@@ -8,6 +8,9 @@
 import UIKit
 import Alamofire
 import SwiftyXMLParser
+var targetData = MusicStruct()
+var delegate: SendDataDelegate! //delegate
+
 protocol SendDataDelegate {
     func sendData(data: MusicStruct)
 }
@@ -20,7 +23,7 @@ class SearchViewController: UIViewController {
     var musicData = [MusicStruct]() //musicData
     var searchKeyword: String = "" //searchKeyword
     var selectedMusicData:MusicStruct = MusicStruct() //selectedMusicData
-    var delegate: SendDataDelegate! //delegate
+
     
     //viewDidLoad
     override func viewDidLoad() {
@@ -139,7 +142,9 @@ extension SearchViewController: UITableViewDelegate{
         selectedMusicData.musicTitle = data.musicTitle
         selectedMusicData.musicArtist = data.musicArtist
         selectedMusicData.musicCoverUrl = data.musicCoverUrl
-        delegate?.sendData(data: selectedMusicData)
+        targetData = selectedMusicData
+        delegate?.sendData(data: targetData)
+
         self.dismiss(animated: true, completion: nil)
         
 //        print(selectedMusicData.musicTitle)
@@ -150,14 +155,15 @@ extension SearchViewController: UITableViewDelegate{
 
 class SearchBoardViewController: UIViewController{
     
-    
     override func viewDidLoad() {
-        super.viewDidLoad()
+        
         let board = UIStoryboard(name: "YujinStoryboard", bundle: nil)
         guard let vc = board.instantiateViewController(identifier: "SearchView") as? SearchViewController else {return}
         self.present(vc, animated: true, completion: nil)
+        super.viewDidLoad()
     }
     @IBAction func backButtonPressed(_ sender: Any) {
+
         self.dismiss(animated: true, completion: nil)
     }
 }

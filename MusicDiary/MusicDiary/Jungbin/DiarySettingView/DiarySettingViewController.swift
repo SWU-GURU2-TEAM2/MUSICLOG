@@ -47,9 +47,9 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
     
     @IBAction func goSearchBtn(_ sender: Any) {
         let board = UIStoryboard(name: "YujinStoryboard", bundle: nil)
-        guard let vc = board.instantiateViewController(identifier: "SearchView") as? SearchViewController else {return}
+        guard let vc = board.instantiateViewController(identifier: "SearchView") as? SearchBoardViewController else {return}
         self.present(vc, animated: true, completion: nil)
-        vc.delegate = self
+        delegate = self
     }
     
     @IBAction func editDairyName(_ sender: Any) {

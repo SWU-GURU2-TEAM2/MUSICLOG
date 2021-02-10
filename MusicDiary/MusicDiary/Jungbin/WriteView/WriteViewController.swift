@@ -49,7 +49,7 @@ class WriteViewController:UIViewController, SendDataDelegate{
         var ref: DocumentReference? = nil
         
         print("newContent in Save: ", newContent)
-        ref = db.collection("Diary/hPP6YvFvsilOPYoAlmJs/Contents").addDocument(data: [
+        ref = db.collection("Diary/\(currentDairyId)/Contents").addDocument(data: [
             "authorID": "\(newContent.authorID!)",
             "contentText":"\(newContent.conentText!)",
             "date":newContent.date!,
@@ -68,9 +68,9 @@ class WriteViewController:UIViewController, SendDataDelegate{
     }
     @IBAction func goSearchBtn(_ sender: Any) {
         let board = UIStoryboard(name: "YujinStoryboard", bundle: nil)
-        guard let vc = board.instantiateViewController(identifier: "SearchView") as? SearchViewController else {return}
+        guard let vc = board.instantiateViewController(identifier: "SearchBoardView") as? SearchBoardViewController else {return}
         self.present(vc, animated: true, completion: nil)
-        vc.delegate = self
+        delegate = self
         
     }
     
@@ -80,6 +80,7 @@ class WriteViewController:UIViewController, SendDataDelegate{
     
     func sendData(data: MusicStruct) {
         getMusic = data
+        print(getMusic)
         titleLabel.text = getMusic.musicTitle
         artistLabel.text = getMusic.musicArtist
         DispatchQueue.global().async { let data = try? Data(contentsOf: self.getMusic.musicCoverUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch

@@ -67,9 +67,9 @@ class EditViewController: UIViewController, SendDataDelegate {
     }
     @IBAction func tapSearchBtn(_ sender: Any) {
         let board = UIStoryboard(name: "YujinStoryboard", bundle: nil)
-        guard let vc = board.instantiateViewController(identifier: "SearchView") as? SearchViewController else {return}
+        guard let vc = board.instantiateViewController(identifier: "SearchBoardView") as? SearchBoardViewController else {return}
         self.present(vc, animated: true, completion: nil)
-        vc.delegate = self
+        delegate = self
     }
     @IBAction func tapVIew(_ sender: Any) {
         self.dismiss(animated: true)
