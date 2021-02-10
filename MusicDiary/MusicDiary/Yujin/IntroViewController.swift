@@ -7,8 +7,6 @@
 
 import UIKit
 import FirebaseUI
-import SwiftyGif
-import FirebaseFirestore
 
 var currentUID = ""
 
@@ -55,8 +53,6 @@ class IntroViewController: UIViewController, FUIAuthDelegate, UIGestureRecognize
                     if let document = document, document.exists {
                     } else {
                         print("User does not exist")
-                        let storageRef = self.storage.reference()
-                        let imageRef = storageRef.child("profileImages/Icon material-person@3x.png")
                         self.db.collection("Users").document("\(currentUser.uid)").setData(["userDiaryList" : [],
                              "userID" : "\(currentUser.uid)",
                              "userImage" : "https://firebasestorage.googleapis.com/v0/b/musicdiary-a095d.appspot.com/o/profileImages%2FIcon%20material-person%403x.png?alt=media&token=82fd8978-badd-4b3c-b4f9-ba655408362f",
