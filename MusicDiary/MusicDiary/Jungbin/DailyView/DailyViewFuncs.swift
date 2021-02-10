@@ -23,7 +23,7 @@ extension DailyViewController {
                     let getContent = document.data()
                     currentContentData = ContentData(
                         authorID: getContent["authorID"] as! String,
-                        conentText: getContent["contentText"] as! String,
+                        conentText: getContent["contentText"] as? String,
                         musicTitle: getContent["musicTitle"] as! String,
                         musicArtist: getContent["musicArtist"] as! String,
                         musicCoverUrl: URL(string: (getContent["musicCoverUrl"]! as? String)!),

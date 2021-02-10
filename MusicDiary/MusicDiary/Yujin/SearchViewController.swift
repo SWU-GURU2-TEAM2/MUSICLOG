@@ -142,12 +142,22 @@ extension SearchViewController: UITableViewDelegate{
     
     //tableView_didSelectRowAt
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = musicData[indexPath.row]
-        selectedMusicData.musicTitle = data.musicTitle
-        selectedMusicData.musicArtist = data.musicArtist
-        selectedMusicData.musicCoverUrl = data.musicCoverUrl
-        targetData = selectedMusicData
-        delegate?.sendData(data: targetData)
+        if musicData[indexPath.row].musicCoverUrl == nil {
+            let data = musicData[indexPath.row]
+            selectedMusicData.musicTitle = data.musicTitle ?? ""
+            selectedMusicData.musicArtist = data.musicArtist ?? ""
+            selectedMusicData.musicCoverUrl = URL(string: "https://i.imgur.com/JAMAE6A.png")
+            targetData = selectedMusicData
+            delegate?.sendData(data: targetData)
+        } else {
+            let data = musicData[indexPath.row]
+            selectedMusicData.musicTitle = data.musicTitle
+            selectedMusicData.musicArtist = data.musicArtist
+            selectedMusicData.musicCoverUrl = data.musicCoverUrl
+            targetData = selectedMusicData
+            delegate?.sendData(data: targetData)
+        }
+        
 
         self.dismiss(animated: true, completion: nil)
         

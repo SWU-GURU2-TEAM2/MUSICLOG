@@ -10,7 +10,8 @@ import Photos
 import FirebaseUI
 import FirebaseFirestore
 
-class AppSettingViewController: UIViewController {
+class AppSettingViewController: UIViewController, SendDataDelegate {
+  
     
     //values
     @IBOutlet weak var userName: UILabel!
@@ -107,36 +108,61 @@ class AppSettingViewController: UIViewController {
 
 extension AppSettingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    func sendData(data: MusicStruct) {
+        do {
+            let cover = try Data(contentsOf: data.musicCoverUrl!)
+            self.profileImage.image = UIImage(data: cover)
+        } catch  {
+            print("error")
+        }
+        let docRef = self.db.collection("Users").document("\(currentUID)")
+        docRef.updateData([
+            "userImage": "\(data.musicCoverUrl!)"
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
+    
+    
     @objc func profileTouched(_ sender: Any) {
         print("touched")
         let storageRef = storage.reference()
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let actionCancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         actionSheet.addAction(actionCancel)
-        let actionGallary = UIAlertAction(title: "갤러리", style: .default) { (action) in
-            switch PHPhotoLibrary.authorizationStatus() {
-            case .authorized:
-                print("authOK")
-                self.showGallary()
-            case .notDetermined:
-                print("notDT")
-                PHPhotoLibrary.requestAuthorization(for: .readWrite) { (status) in }
-            default:
-                print("default")
-                let alertVC = UIAlertController(title: "권한 필요", message: "설정에서 변경하세요.", preferredStyle: .alert)
-                let actionSetting = UIAlertAction(title: "OK", style: .default) { (action) in
-                    print("OKSet")
-                    if let appSetting = URL(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(appSetting, options: [:], completionHandler: nil)
-                    }
-                }
-                let actionCancel = UIAlertAction(title: "CANCEL", style: .cancel) { (action) in
-                    print("cancelset")
-                }
-                alertVC.addAction(actionCancel)
-                alertVC.addAction(actionSetting)
-                self.present(alertVC, animated: true, completion: nil)
-            }
+        let actionGallary = UIAlertAction(title: "찾기", style: .default) { (action) in
+            let board = UIStoryboard(name: "YujinStoryboard", bundle: nil)
+            guard let vc = board.instantiateViewController(identifier: "SearchBoardView") as? SearchBoardViewController else {return}
+            self.present(vc, animated: true, completion: nil)
+            delegate = self
+            
+//            switch PHPhotoLibrary.authorizationStatus() {
+//            case .authorized:
+//                print("authOK")
+//                self.showGallary()
+//            case .notDetermined:
+//                print("notDT")
+//                PHPhotoLibrary.requestAuthorization(for: .readWrite) { (status) in }
+//            default:
+//                print("default")
+//                let alertVC = UIAlertController(title: "권한 필요", message: "설정에서 변경하세요.", preferredStyle: .alert)
+//                let actionSetting = UIAlertAction(title: "OK", style: .default) { (action) in
+//                    print("OKSet")
+//                    if let appSetting = URL(string: UIApplication.openSettingsURLString) {
+//                        UIApplication.shared.open(appSetting, options: [:], completionHandler: nil)
+//                    }
+//                }
+//                let actionCancel = UIAlertAction(title: "CANCEL", style: .cancel) { (action) in
+//                    print("cancelset")
+//                }
+//                alertVC.addAction(actionCancel)
+//                alertVC.addAction(actionSetting)
+//                self.present(alertVC, animated: true, completion: nil)
+//            }
         }
         actionSheet.addAction(actionGallary)
         present(actionSheet, animated: true, completion: nil)
@@ -156,33 +182,7 @@ extension AppSettingViewController: UIImagePickerControllerDelegate, UINavigatio
             print("no selectedImage")
             return
         }
-        profileImage.image = selectedImage
-        if let data = selectedImage.pngData() {
-            let imageRef = storage.reference().child("profileImages/\(currentUID)Profile.png")
-            let metadata = StorageMetadata()
-            metadata.contentType = "image/png"
-            let uploadTask = imageRef.putData(data, metadata: metadata) { (metadata, error) in
-              guard let metadata = metadata else {
-                return
-              }
-              imageRef.downloadURL { (url, error) in
-                guard let downloadURL = url else {
-                    print("noURL")
-                  return
-                }
-                let docRef = self.db.collection("Users").document("\(currentUID)")
-                docRef.updateData([
-                    "userImage": String(describing: downloadURL)
-                ]) { err in
-                    if let err = err {
-                        print("Error updating document: \(err)")
-                    } else {
-                        print("Document successfully updated")
-                    }
-                }
-              }//downloadURL
-            }//uploadTask
-        }//data
+        
         
     }//didFinishPickingMediaWithInfo
 }
