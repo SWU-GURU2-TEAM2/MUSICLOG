@@ -130,15 +130,18 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMP-2S-VWT">
-                                <rect key="frame" x="181.5" y="811" width="51" height="51"/>
-                                <state key="normal" title="Write" backgroundImage="Daily_home"/>
+                                <rect key="frame" x="161" y="770" width="92" height="92"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UMP-2S-VWT" secondAttribute="height" multiplier="53:53" id="PhP-fs-Jqc"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="MainWriteBtn"/>
                                 <connections>
                                     <action selector="moveToWrite:" destination="xHz-IV-Kcc" eventType="touchUpInside" id="pDT-sv-492"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSo-Hr-XgH">
-                                <rect key="frame" x="25" y="50" width="67" height="30"/>
-                                <state key="normal" title="Add Diary"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSo-Hr-XgH">
+                                <rect key="frame" x="25" y="50" width="51" height="51"/>
+                                <state key="normal" image="AddDiaryBtn"/>
                                 <connections>
                                     <action selector="addDiary:" destination="xHz-IV-Kcc" eventType="touchUpInside" id="PPt-WF-mTR"/>
                                 </connections>
@@ -147,13 +150,13 @@
                         <viewLayoutGuide key="safeArea" id="OLp-ow-XIG"/>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="uSo-Hr-XgH" firstAttribute="top" secondItem="OLp-ow-XIG" secondAttribute="top" constant="6" id="IBX-wG-DEP"/>
+                            <constraint firstItem="uSo-Hr-XgH" firstAttribute="top" secondItem="OLp-ow-XIG" secondAttribute="top" constant="6" id="AQG-oN-koB"/>
                             <constraint firstItem="Fyk-ZM-Zzg" firstAttribute="leading" secondItem="HeF-Fq-ui5" secondAttribute="leading" id="Mp1-bo-PUq"/>
                             <constraint firstItem="UMP-2S-VWT" firstAttribute="bottom" secondItem="OLp-ow-XIG" secondAttribute="bottom" id="RRW-5w-XTw"/>
                             <constraint firstItem="OLp-ow-XIG" firstAttribute="trailing" secondItem="GvI-L6-JJx" secondAttribute="trailing" constant="25" id="U4P-ig-H8r"/>
                             <constraint firstItem="UMP-2S-VWT" firstAttribute="centerX" secondItem="HeF-Fq-ui5" secondAttribute="centerX" id="Yiy-eK-Qbp"/>
                             <constraint firstItem="OLp-ow-XIG" firstAttribute="bottom" secondItem="Fyk-ZM-Zzg" secondAttribute="bottom" constant="150" id="d9O-aj-bRk"/>
-                            <constraint firstItem="uSo-Hr-XgH" firstAttribute="leading" secondItem="OLp-ow-XIG" secondAttribute="leading" constant="25" id="nb3-52-3fI"/>
+                            <constraint firstItem="uSo-Hr-XgH" firstAttribute="leading" secondItem="OLp-ow-XIG" secondAttribute="leading" constant="25" id="rna-sd-cX8"/>
                             <constraint firstItem="OLp-ow-XIG" firstAttribute="trailing" secondItem="Fyk-ZM-Zzg" secondAttribute="trailing" id="tQx-cn-RJp"/>
                             <constraint firstItem="Fyk-ZM-Zzg" firstAttribute="top" secondItem="OLp-ow-XIG" secondAttribute="top" constant="168" id="wN5-K9-XSA"/>
                             <constraint firstItem="GvI-L6-JJx" firstAttribute="top" secondItem="HeF-Fq-ui5" secondAttribute="top" constant="50" id="zUh-l9-lwY"/>
@@ -170,11 +173,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Daily_home" width="51" height="51"/>
+        <image name="AddDiaryBtn" width="51" height="51"/>
         <image name="Daily_setting" width="51" height="51"/>
         <image name="DiaryDateBox" width="173" height="112"/>
         <image name="DiaryNameBox" width="157" height="74"/>
         <image name="MainCell" width="268" height="509"/>
         <image name="MainCellImageOut" width="165" height="165"/>
+        <image name="MainWriteBtn" width="92" height="92"/>
     </resources>
 </document>
