@@ -13,6 +13,7 @@ var currentDairyId = "hPP6YvFvsilOPYoAlmJs"
 var currentDairyUserList:[String]!
 var currentContentData = ContentData()
 var currentContentID:String?
+var currentOtehrUserID = currentUID
 
 class DailyViewController: UIViewController, FSCalendarDelegate {
     var datesWithEvent = [Date(), Date()-86400]
@@ -21,8 +22,10 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var goDetailBtn: UIButton!
-    
-    
+    @IBOutlet weak var collectionView: UICollectionView!
+    let db = Firestore.firestore()
+    var newMemberList: [UserStructure] = []
+    var newMemberIDList: [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +39,8 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
         goDetailBtn.alpha = 0
         calendar.delegate = self
         //calendar.appearance.backgroundColors =
+        // 유저 목록 불러오기
+        presentUserList()
         getContentsListForDaily(date: Date())
         
         calendar.appearance.titleDefaultColor = .black
@@ -74,62 +79,48 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
         // 아래 그날의 글들 보여주기
         noDataLabel.alpha = 0
         print("selected date: ", date)
-        getContentsListForDaily(date: date)
+        self.getContentsListForDaily(date: date)
         
         
     }
     
-    func getContentsListForDaily(date: Date) {
-        let db = Firestore.firestore()
-        let calendar = Calendar.current
-        currentContentData.musicTitle = ""
-        // .whereField("date", isLessThan: calendar.startOfDay(for: date)+86400)
-        db.collection("Diary").document("\(currentDairyId)").collection("Contents") .whereField("date", isGreaterThanOrEqualTo: calendar.startOfDay(for: date)).whereField("date", isLessThan: calendar.startOfDay(for: date)+86400).getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    print("지금 읽어오는 문서: ", document)
-                    let getContent = document.data()
-                    currentContentData = ContentData(
-                        authorID: getContent["authorID"] as! String,
-                        conentText: getContent["contentText"] as! String,
-                        musicTitle: getContent["musicTitle"] as! String,
-                        musicArtist: getContent["musicArtist"] as! String,
-                        musicCoverUrl: URL(string: (getContent["musicCoverUrl"]! as? String)!),
-                        date: getContent["date"] as? Date)
-                    currentContentID = document.documentID
-                    
-                }
-                print("today content list: ", currentContentData)
-                if currentContentData.musicTitle == "" {
-                    
-                    DispatchQueue.main.async {
-                        self.noDataLabel.alpha = 1
-                        self.titleLabel.alpha = 0
-                        self.goDetailBtn.alpha = 0
-                        self.goDetailBtn.isEnabled = false
-                        self.imageView.alpha = 0
-                    }
-                }
-                else {
-                    DispatchQueue.global().async { let data = try? Data(contentsOf: currentContentData.musicCoverUrl!)
-                        DispatchQueue.main.async {
-                            self.goDetailBtn.isEnabled = true
-                            self.goDetailBtn.alpha = 1
-                            self.titleLabel.alpha = 1
-                            self.imageView.alpha = 1
-                            self.titleLabel.text = currentContentData.conentText
-                            self.imageView.image = UIImage(data: data!)
-                            
-                        }
-                    }
-                    
-                }
+}
+
+
+extension DailyViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.newMemberList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! UserCollectionViewCell
+        cell.imageView.layer.cornerRadius = cell.imageView.frame.width / 2
+        cell.imageView.clipsToBounds = true
+        if let url = self.newMemberList[indexPath.row].userImage {
+            do {
+                let data = try Data(contentsOf: url)
+                cell.imageView.image = UIImage(data: data)
+                
+            } catch {
             }
         }
         
+        if indexPath.item == 0 {
+           cell.isSelected = true
+           collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+         }
+        
+        return cell
+        
+        
+    }
+    //상하 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
     }
     
-    
+    //좌우 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
 }
