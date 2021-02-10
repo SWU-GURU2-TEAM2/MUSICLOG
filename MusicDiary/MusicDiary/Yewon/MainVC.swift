@@ -19,12 +19,12 @@ class MainVC:UIViewController {
     let db = Firestore.firestore()
     var diaryData: [DiaryStructure] = []
     var getDiaryList = [String]()
-    var content_date:Date?
     
     //MARK: -IBDulet
     
     @IBOutlet weak var mainCarousel: ScalingCarouselView!
     @IBOutlet weak var writeBtn: UIButton!
+    
     @IBAction func moveToWrite(_ sender: UIButton) {
         
         //center Diary 해당 날짜에 콘텐츠 있으면 안보이게
@@ -65,29 +65,20 @@ class MainVC:UIViewController {
                             newDiaryData.memberList = dataDescriptions!["memberList"] as? [String]
                             
                             self.diaryData.append(newDiaryData)
-                            //print("URL : ", URL(string: ((dataDescriptions!["diaryImageUrl"] as? String)!)))
                             self.diaryData.sort {$0.date! < $1.date!}   //date에 따라 정렬
-                            print(diaryData)
+                            //print(diaryData)
                         } else {
                             print("Document does not exist")
                             
                         }
                         self.mainCarousel.reloadData()
-                        
+                        //scrollViewDidScroll(mainCarousel)
                     }
                 }
             }
         }
+        
         //test 중
-        let testRef = db.collection("Diary").document("hPP6YvFvsilOPYoAlmJs").collection("Contents").document("2EfFkE8a1AfBE1iC2fdB")
-        testRef.getDocument { [self] (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data()
-                self.content_date = Date(timeIntervalSince1970: TimeInterval((dataDescription!["date"] as! Timestamp).seconds))
-            } else {
-                print("Document does not exist")
-            }
-        }
         
         //        //오늘 작성한 글이 있다면 writeBtn 안 보이게
         //        let today = dateFormater.string(from: Date())
@@ -129,6 +120,10 @@ class MainVC:UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
         mainCarousel.deviceRotated()
     }
+    
+    func hideWrite () {
+        
+    }
 }
 
 
@@ -163,18 +158,21 @@ extension CarouselDatasource: UICollectionViewDataSource {
         //이미지 넣기
         carouselCell.mainDiaryImaage.layer.cornerRadius = carouselCell.mainDiaryImaage.frame.width / 2
         carouselCell.mainDiaryImaage.clipsToBounds = true
-        carouselCell.mainDiaryImaage.image = UIImage(data: try! Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!))
-        DispatchQueue.global().async { let data = try? Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-            DispatchQueue.main.async { carouselCell.mainDiaryImaage.image = UIImage(data: data!) }
-        }
+        do {
+            try carouselCell.mainDiaryImaage.image = UIImage(data: try Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!))
+            DispatchQueue.global().async { let data = try? Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!)
+                //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                DispatchQueue.main.async { carouselCell.mainDiaryImaage.image = UIImage(data: data!) }
+            }
+        } catch  {        }
         
         //Share? Single?
         let memberList = diaryData[indexPath.row].memberList!.count
-        //        if memberList >= 2 {
-        //            carouselCell.mainMemberInfo.setImage(UIImage(named: "ShareDiary.png")!)
-        //        } else {
-        //            carouselCell.mainMemberInfo.setImage(UIImage(named: "SingleDiary.png")!)
-        //        }
+        if memberList >= 2 {
+            carouselCell.mainMemberInfo.image = UIImage(named: "ShareDiary.png")
+        } else {
+            carouselCell.mainMemberInfo.image = UIImage(named: "SingleDiary.png")
+        }
         
         carouselCell.setNeedsLayout()
         carouselCell.layoutIfNeeded()
@@ -190,6 +188,7 @@ extension MainVC: UICollectionViewDelegate {
         //center Cell 의 documentID 저장
         centerDocID = self.getDiaryList[currentCenterIndex]
         //조금이라도 움직여야만 centerDocID 출력 가능...
+        hideWrite()
     }
 }
 
@@ -201,4 +200,5 @@ extension ScalingCarouselFlowDelegate: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+
 }

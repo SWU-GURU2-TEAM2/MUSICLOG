@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아래로 스와이프하여 시작" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9z-A7-Le0">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위로 스와이프하여 시작" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9z-A7-Le0">
                                 <rect key="frame" x="126" y="734" width="162" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
