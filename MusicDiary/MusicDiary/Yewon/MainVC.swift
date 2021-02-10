@@ -12,21 +12,24 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseUI
 
-//center에 있는 docID 전달 변수 (수정 예정)
-var centerDocID = "IxLlj4mK2DKPIoBA9Qjp"
+//centerCell docID 전달 변수
+var centerDocID:String!
 
 class MainVC:UIViewController {
     let db = Firestore.firestore()
     var diaryData: [DiaryStructure] = []
     var getDiaryList = [String]()
+
+    //MARK: -IBDulet
     
     @IBOutlet weak var mainCarousel: ScalingCarouselView!
-    let authUI = FUIAuth.defaultAuthUI()
-    
-    
+    @IBOutlet weak var writeBtn: UIButton!
     @IBAction func moveToWrite(_ sender: UIButton) {
         
         //center Diary 해당 날짜에 콘텐츠 있으면 안보이게
+        test()
+        
+        
     }
     @IBAction func moveToSetting(_ sender: UIButton) {
         let vc = UIStoryboard(name: "YujinStoryboard", bundle: nil).instantiateViewController(identifier: "appSettingView")
@@ -34,44 +37,60 @@ class MainVC:UIViewController {
         self.present(vc, animated: true, completion:  nil)
         
     }
+    //MARK: -viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.diaryData = []
+        
         //Users에서 diaryList 필드 읽어오기
-        db.collection("Users").document("h1jETajvj6NiFtA9qSE1VRjQ7AP2").getDocument { (document, error) in
+        db.collection("Users").document(currentUID).getDocument { (document, error) in
             if let document = document, document.exists {
                 let dataDescription = document.data()
                 self.getDiaryList = (dataDescription!["userDiaryList"] as? [String])!
                 print("diary list : ", self.getDiaryList)
-                //Diary에서
+                //Diary에서 getDiaryList랑 맞는 거 읽어오기
                 for currentDId in self.getDiaryList {
                     let docRef = self.db.collection("Diary").document("\(currentDId)")
                     var newDiaryData = DiaryStructure()
-                    docRef.getDocument { (document, error) in
+                    docRef.getDocument { [self] (document, error) in
                         if let document = document, document.exists {
                             let dataDescriptions = document.data()
-                            let calendar = Calendar.current
+                            newDiaryData.diaryId = dataDescriptions!["diaryID"] as? String
                             newDiaryData.diaryName = dataDescriptions!["diaryName"] as? String
                             newDiaryData.diaryMusicTitle = dataDescriptions!["diaryMusicTitle"] as? String
                             newDiaryData.diaryMusicArtist = dataDescriptions!["diaryMusicArtist"] as? String
-                            newDiaryData.diaryImageUrl = URL(string: (dataDescriptions!["diaryImageUrl"]! as? String)!)
+                            
+                            //newDiaryData.diaryImageUrl = dataDescriptions!["diaryImageUrl"] as? URL
+                            //newDiaryData.diaryImageUrl = URL(string: (dataDescriptions!["diaryImageUrl"] as? String)!)
+                            
                             newDiaryData.date = Date(timeIntervalSince1970: TimeInterval((dataDescriptions!["date"] as! Timestamp).seconds))
                             newDiaryData.memberList = dataDescriptions!["memberList"] as? [String]
                             
                             self.diaryData.append(newDiaryData)
                             self.diaryData.sort {$0.date! < $1.date!}   //date에 따라 정렬
-                            self.mainCarousel.reloadData()
+                            print(diaryData)
                         } else {
                             print("Document does not exist")
                             
                         }
+                        self.mainCarousel.reloadData()
                         
                     }
                 }
             }
         }
+
+//        //오늘 작성한 글이 있다면 writeBtn 안 보이게
+//        let dateFormater = DateFormatter()
+//        dateFormater.dateFormat = "yyyy년 MM월 dd일"
+//        let today = dateFormater.string(from: Date())
+//        //if today == content_date {writeBtn.alpha = 0}
         
     }
+    
+    //MARK: -ADD Diary
+    
     @IBAction func addDiary(_ sender: UIButton) {
         //firebase에 다이어리 증가 + 유저 다이어리 리스트에도 추가 됨
         var ref: DocumentReference? = nil
@@ -83,15 +102,17 @@ class MainVC:UIViewController {
             "diaryMusicTitle":"",
             "diaryMusicArtist":"",
             "memberList":[currentUID],
-            "date":date
-            ]){ err in
+            "date":date,
+            "diaryID":""
+        ]){ err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
                 print("Document added with ID: \(ref!.documentID)")
                 
-                //Diary 필드에 새 다이어리 documentID 추가 update
-                
+                //Diary 필드에 새 다이어리 documentID update
+                self.db.collection("Diary").document(ref!.documentID).updateData(["diaryID":ref!.documentID])
+                //Users diaryList update
                 self.db.collection("Users").document(currentUID).updateData(["userDiaryList": FieldValue.arrayUnion([ref!.documentID])])
                 self.viewDidLoad()
             }
@@ -104,12 +125,36 @@ class MainVC:UIViewController {
     }
 }
 
+func test(){
+    let db = Firestore.firestore()
+    var document_date:Date?
 
+    let testRef = db.collection("Diary").document(centerDocID).collection("Contents").document(centerDocID)
+    testRef.getDocument { (document, error) in
+        if let document = document, document.exists {
+            let dataDescription = document.data()
+            document_date = dataDescription!["date"] as! Date
+            print("date : ",document_date)
+        } else {
+            print("Document does not exist")
+        }
+    }
+}
+
+func dateFormat(date:Date) -> String {
+    let dateFormater = DateFormatter()
+    dateFormater.dateFormat = "yyyy년 MM월 dd일"
+    let result = dateFormater.string(from: date)
+    return result
+}
+
+// MARK: -MainCell
 
 class MainCell: ScalingCarouselCell {
     @IBOutlet weak var mainDiaryImaage: UIImageView!
     @IBOutlet weak var mainDiaryName: UILabel!
     @IBOutlet weak var mainStartDate: UILabel!
+    @IBOutlet weak var mainMemberInfo: UIImageView!
 }
 
 typealias CarouselDatasource = MainVC
@@ -120,22 +165,26 @@ extension CarouselDatasource: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let carouselCell = collectionView.dequeueReusableCell(withReuseIdentifier: "carouselCell", for: indexPath) as! MainCell
-        //let diaryCount = diaryData[indexPath.row]
-        //let data0Fdiary = diaryCount.data()
-        //diary name insert
         carouselCell.mainDiaryName.text = diaryData[indexPath.row].diaryName
         
-        //이미지 넣기, 날짜 넣기
-        
+        let start_date = dateFormat(date: self.diaryData[indexPath.row].date!)
+        carouselCell.mainStartDate.text = start_date
+        //이미지 넣기
+        carouselCell.mainDiaryImaage.layer.cornerRadius = carouselCell.mainDiaryImaage.frame.width / 2
+        carouselCell.mainDiaryImaage.clipsToBounds = true
         //carouselCell.mainDiaryImaage.image = UIImage(data: try! Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!))
-//        DispatchQueue.global().async { let data = try? Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-//            DispatchQueue.main.async { carouselCell.mainDiaryImaage.image = UIImage(data: data!) }
-//            }
-        //date insert 0000년 00일 00일 형식으로 지정 필요
-       // let starDate = data0Fdiary["date"]
-        //image insert
-        //print("Image Url : \(data0Fdiary["diaryImageUrl"])")
-        //carouselCell.mainStartDate.text = startDate
+        //        DispatchQueue.global().async { let data = try? Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+        //            DispatchQueue.main.async { carouselCell.mainDiaryImaage.image = UIImage(data: data!) }
+        //            }
+        
+        //Share? Single?
+        let memberList = diaryData[indexPath.row].memberList!.count
+        if memberList >= 2 {
+            carouselCell.mainMemberInfo.setImage(UIImage(named: "ShareDiary.png")!)
+        } else {
+            carouselCell.mainMemberInfo.setImage(UIImage(named: "SingleDiary.png")!)
+        }
+        
         carouselCell.setNeedsLayout()
         carouselCell.layoutIfNeeded()
         
@@ -147,8 +196,9 @@ typealias CarouselDelegate = MainVC
 extension MainVC: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let currentCenterIndex = mainCarousel.currentCenterCellIndex?.row else { return }
-        //center Cell 의 documentID 저장해둬야함
-        //self.diaryData[currentCenterIndex]
+        //center Cell 의 documentID 저장
+        centerDocID = self.getDiaryList[currentCenterIndex]
+        //조금이라도 움직여야만 centerDocID 출력 가능...
     }
 }
 
