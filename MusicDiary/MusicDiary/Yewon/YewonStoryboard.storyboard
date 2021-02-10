@@ -161,6 +161,7 @@
                     </view>
                     <connections>
                         <outlet property="mainCarousel" destination="Fyk-ZM-Zzg" id="tdA-mu-o59"/>
+                        <outlet property="writeBtn" destination="UMP-2S-VWT" id="De3-jn-0fZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRO-vn-es0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
