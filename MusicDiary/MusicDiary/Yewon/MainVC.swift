@@ -32,12 +32,20 @@ class MainVC:UIViewController {
         self.present(vc, animated: true, completion:  nil)
     }
     //MARK: ----------------viewDidLoad
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        loadDiaryData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.diaryData = []
-        
+        loadDiaryData()
+        self.mainCarousel.reloadData()
         //Users에서 diaryList 필드 읽어오기
+        
+    }
+    func loadDiaryData(){
+        self.diaryData = []
         db.collection("Users").document(currentUID).getDocument { (document, error) in
             if let document = document, document.exists {
                 let dataDescription = document.data()
@@ -166,10 +174,14 @@ extension CarouselDatasource: UICollectionViewDataSource {
         //이미지 넣기
         carouselCell.mainDiaryImaage.layer.cornerRadius = carouselCell.mainDiaryImaage.frame.width / 2
         carouselCell.mainDiaryImaage.clipsToBounds = true
+        
+        
+        
+        
+        
         do {
             try carouselCell.mainDiaryImaage.image = UIImage(data: try Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!))
             DispatchQueue.global().async { let data = try? Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!)
-                //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                 DispatchQueue.main.async { carouselCell.mainDiaryImaage.image = UIImage(data: data!) }
             }
         } catch  {        }
