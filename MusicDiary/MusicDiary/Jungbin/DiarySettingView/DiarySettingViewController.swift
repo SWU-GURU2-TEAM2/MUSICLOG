@@ -10,18 +10,28 @@ import Firebase
 
 class DiarySettingViewController: UIViewController, SendDataDelegate {
     func sendData(data: MusicStruct) {
-            getMusic = data
-            titleLabel.text = getMusic.musicTitle
-            artistLabel.text = getMusic.musicArtist
-            DispatchQueue.global().async { let data = try? Data(contentsOf: self.getMusic.musicCoverUrl!)
-                DispatchQueue.main.async {
-                    self.imageView.image = UIImage(data: data!)
-                    self.db.collection("Diary").document(currentDairyId).updateData(["diaryMusicTitle" : self.getMusic.musicTitle])
-                    self.db.collection("Diary").document(currentDairyId).updateData(["diaryMusicArtist" : self.getMusic.musicArtist])
-                    self.db.collection("Diary").document(currentDairyId).updateData(["diaryImageUrl" : data!])
-                }
-            }          
-            
+        getMusic = data
+        titleLabel.text = getMusic.musicTitle
+        artistLabel.text = getMusic.musicArtist
+        DispatchQueue.global().async { let data = try? Data(contentsOf: self.getMusic.musicCoverUrl!)
+            DispatchQueue.main.async {
+                self.imageView.image = UIImage(data: data!)
+                print("*** getMusic: ", self.getMusic)
+                
+            }
+        }
+        let docRef = self.db.collection("Diary").document("\(currentDairyId)")
+        docRef.updateData([
+                            "diaryMusicTitle" : self.getMusic.musicTitle!,
+                            "diaryMusicArtist" : self.getMusic.musicArtist!,
+                            "diaryImageUrl" : "\(self.getMusic.musicCoverUrl!)"]) {err in
+            if let err = err{
+                print("Error updating document: \(err)")
+            } else {
+                print("Document sucessfully updated")
+            }
+        }
+        
     }
     
     let db = Firestore.firestore()
