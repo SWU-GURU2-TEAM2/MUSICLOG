@@ -118,8 +118,6 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
                             let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                             print("그런 유저 있음!")
                             self.addUser(targetID: friendID)
-                            self.tableView.reloadData()
-                            self.viewDidLoad()
                         } else {
                             print("그런 유저 없음")
                             let notUser = UIAlertController(title: "⁉️", message: "존재하지 않는 유저입니다 🥲\n다시 검색해 볼까요?", preferredStyle: UIAlertController.Style.alert)
@@ -137,6 +135,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
     func addUser(targetID: String) {
         db.collection("Diary").document(currentDairyId).updateData(["memberList" : FieldValue.arrayUnion([targetID])])
         db.collection("Users").document(targetID).updateData(["userDiaryList" : FieldValue.arrayUnion([currentDairyId])])
+        presentDiaryDataForSetting()
     }
     func presentDiaryDataForSetting() { // 다이어리 '한개!!!' 의 다어어리 정보 가져오는거임!!!
         var docRef = db.collection("Diary").document("\(currentDairyId)")
@@ -154,7 +153,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
 
                 print("new data: ", self.newDiaryData)
                 
-                
+                self.newMemberList = []
                 for member in self.newDiaryData.memberList! {
                     self.db.collection("Users").document("\(member)").getDocument { (document, error) in
                         if let newdoc = document, ((document?.exists) != nil) {
@@ -165,6 +164,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
                                                         userImage: URL(string: (newDescription!["userImage"]! as? String)!),
                                                         userDiaryList: newDescription!["userDiaryList"]! as? [String]))
                             print("new member list: ", self.newMemberList)
+                            self.newMemberList.sort{$0.userName! < $1.userName!} 
                             self.tableView.reloadData()
 
                         } else{
