@@ -26,6 +26,9 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
     let db = Firestore.firestore()
     var newMemberList: [UserStructure] = []
     var newMemberIDList: [String] = []
+    override func viewWillAppear(_ animated: Bool) {
+        getContentsListForDaily(date: Date())
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -98,9 +101,10 @@ extension DailyViewController: UICollectionViewDataSource, UICollectionViewDeleg
         currentOtehrUserID = newMemberList[indexPath.row].userId!
         print("select id: ", currentOtehrUserID)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        self.calendar.reloadData()
-        getContentsListForDaily(date: Date())
         
+        getContentsListForDaily(date: Date())
+        self.calendar.select(calendar.today)
+        self.calendar.reloadData()
         
         
     }
