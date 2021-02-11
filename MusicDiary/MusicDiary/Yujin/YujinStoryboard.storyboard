@@ -21,48 +21,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위로 스와이프하여 시작" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9z-A7-Le0">
-                                <rect key="frame" x="126" y="734" width="162" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Intro_logo" translatesAutoresizingMaskIntoConstraints="NO" id="qk7-Vk-15r">
-                                <rect key="frame" x="68" y="269" width="279" height="241"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Intro_logo" translatesAutoresizingMaskIntoConstraints="NO" id="qk7-Vk-15r">
+                                <rect key="frame" x="68" y="269" width="278" height="240"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="qk7-Vk-15r" secondAttribute="height" multiplier="1:1" id="Ti0-10-z70"/>
+                                    <constraint firstAttribute="width" secondItem="qk7-Vk-15r" secondAttribute="height" multiplier="1:1" constant="38" id="Ti0-10-z70"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Intro_titleBox" translatesAutoresizingMaskIntoConstraints="NO" id="BWg-OZ-Wsr">
-                                <rect key="frame" x="100" y="467" width="214" height="100"/>
+                                <rect key="frame" x="100" y="466" width="214" height="101"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Intro_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="W2w-G1-Bho">
                                 <rect key="frame" x="180" y="684" width="54" height="22"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앱 이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUM-vC-RIt">
-                                <rect key="frame" x="110" y="510" width="194" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="music log" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUM-vC-RIt">
+                                <rect key="frame" x="110" y="502" width="194" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="AMb-dM-iCq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="19"/>
                                 <nil key="textColor"/>
+                                <color key="highlightedColor" red="0.96855288743972778" green="0.96897071599960327" blue="0.95681661367416382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위로 스와이프하여 시작" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9z-A7-Le0">
+                                <rect key="frame" x="112" y="732" width="192" height="17"/>
+                                <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="r4X-DU-ZQq"/>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="bUM-vC-RIt" firstAttribute="leading" secondItem="SzH-hg-1b8" secondAttribute="leadingMargin" constant="90" id="AW9-Py-Ikz"/>
-                            <constraint firstItem="BWg-OZ-Wsr" firstAttribute="top" secondItem="qk7-Vk-15r" secondAttribute="bottom" constant="-25" id="IVT-P3-Bat"/>
-                            <constraint firstItem="qk7-Vk-15r" firstAttribute="leading" secondItem="SzH-hg-1b8" secondAttribute="leadingMargin" constant="80" id="Juh-qx-4MA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qk7-Vk-15r" secondAttribute="trailing" constant="80" id="QZe-iw-ep3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="B9z-A7-Le0" secondAttribute="trailing" constant="106" id="QwH-uO-mDn"/>
+                            <constraint firstItem="bUM-vC-RIt" firstAttribute="top" secondItem="r4X-DU-ZQq" secondAttribute="top" constant="458" id="1HG-kd-ZqO"/>
+                            <constraint firstItem="qk7-Vk-15r" firstAttribute="centerX" secondItem="bUM-vC-RIt" secondAttribute="centerX" id="36L-vx-ufb"/>
+                            <constraint firstItem="BWg-OZ-Wsr" firstAttribute="top" secondItem="qk7-Vk-15r" secondAttribute="bottom" constant="-43" id="IVT-P3-Bat"/>
+                            <constraint firstItem="qk7-Vk-15r" firstAttribute="leading" secondItem="r4X-DU-ZQq" secondAttribute="leading" constant="68" id="Mc9-iT-SzS"/>
+                            <constraint firstItem="bUM-vC-RIt" firstAttribute="trailing" secondItem="B9z-A7-Le0" secondAttribute="trailing" id="NqJ-gA-Zkb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="B9z-A7-Le0" secondAttribute="trailing" constant="90" id="QwH-uO-mDn"/>
                             <constraint firstItem="W2w-G1-Bho" firstAttribute="leading" secondItem="SzH-hg-1b8" secondAttribute="leadingMargin" constant="160" id="S7S-8R-aSi"/>
                             <constraint firstItem="BWg-OZ-Wsr" firstAttribute="leading" secondItem="SzH-hg-1b8" secondAttribute="leadingMargin" constant="80" id="Shb-l4-QBm"/>
-                            <constraint firstItem="qk7-Vk-15r" firstAttribute="top" secondItem="SzH-hg-1b8" secondAttribute="topMargin" constant="234" id="UXk-WG-OEp"/>
-                            <constraint firstItem="bUM-vC-RIt" firstAttribute="top" secondItem="qk7-Vk-15r" secondAttribute="bottom" constant="18" id="bOT-zK-1mo"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bUM-vC-RIt" secondAttribute="trailing" constant="90" id="bQE-qF-XJP"/>
+                            <constraint firstItem="qk7-Vk-15r" firstAttribute="top" secondItem="SzH-hg-1b8" secondAttribute="topMargin" constant="225" id="UXk-WG-OEp"/>
+                            <constraint firstItem="bUM-vC-RIt" firstAttribute="centerY" secondItem="BWg-OZ-Wsr" secondAttribute="centerY" id="byO-64-ta7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="W2w-G1-Bho" secondAttribute="trailing" constant="160" id="cfF-oX-Vle"/>
-                            <constraint firstItem="B9z-A7-Le0" firstAttribute="top" secondItem="SzH-hg-1b8" secondAttribute="topMargin" constant="690" id="fm8-CP-VwE"/>
-                            <constraint firstItem="B9z-A7-Le0" firstAttribute="leading" secondItem="SzH-hg-1b8" secondAttribute="leadingMargin" constant="106" id="gPK-vr-KML"/>
+                            <constraint firstItem="B9z-A7-Le0" firstAttribute="top" secondItem="SzH-hg-1b8" secondAttribute="topMargin" constant="688" id="fm8-CP-VwE"/>
+                            <constraint firstItem="B9z-A7-Le0" firstAttribute="leading" secondItem="SzH-hg-1b8" secondAttribute="leadingMargin" constant="92" id="gPK-vr-KML"/>
                             <constraint firstItem="W2w-G1-Bho" firstAttribute="top" secondItem="SzH-hg-1b8" secondAttribute="topMargin" constant="640" id="lAi-Ia-fOZ"/>
+                            <constraint firstItem="bUM-vC-RIt" firstAttribute="centerX" secondItem="BWg-OZ-Wsr" secondAttribute="centerX" id="lja-1b-qpk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BWg-OZ-Wsr" secondAttribute="trailing" constant="80" id="muc-wo-0ua"/>
                         </constraints>
                     </view>
