@@ -36,32 +36,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7G-p6-pjL">
-                                <rect key="frame" x="195" y="819" width="43" height="43"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="q7G-p6-pjL" secondAttribute="height" multiplier="1:1" id="4LQ-ae-vvX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="write">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="black">
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                    </preferredSymbolConfiguration>
-                                </state>
-                                <connections>
-                                    <segue destination="VwC-qC-UUN" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Q6X-m6-3fa"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAl-Ck-bEM">
-                                <rect key="frame" x="348" y="816" width="46" height="30"/>
-                                <state key="normal" title="Edit"/>
-                                <connections>
-                                    <segue destination="d7d-rI-jWH" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="HF6-mW-mnZ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZbY-AK-8Dn">
-                                <rect key="frame" x="345" y="44" width="52" height="51"/>
+                                <rect key="frame" x="346" y="44" width="51" height="51"/>
                                 <state key="normal" backgroundImage="Daily_setting"/>
                                 <connections>
                                     <segue destination="4mU-Ws-LEl" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="Bc8-vS-320"/>
@@ -193,30 +169,22 @@
                             <constraint firstItem="ZbY-AK-8Dn" firstAttribute="firstBaseline" secondItem="JXe-zS-NlE" secondAttribute="firstBaseline" id="1V9-EY-A4H"/>
                             <constraint firstItem="320-oe-fxE" firstAttribute="top" secondItem="mXS-M6-D5H" secondAttribute="top" constant="148" id="4NP-6o-wFd"/>
                             <constraint firstItem="ZbY-AK-8Dn" firstAttribute="centerY" secondItem="JXe-zS-NlE" secondAttribute="centerY" id="DMx-58-TYc"/>
-                            <constraint firstItem="mXS-M6-D5H" firstAttribute="bottom" secondItem="GAl-Ck-bEM" secondAttribute="bottom" constant="16" id="Eqn-rR-0mF"/>
                             <constraint firstItem="JXe-zS-NlE" firstAttribute="leading" secondItem="mXS-M6-D5H" secondAttribute="leading" constant="18" id="GdH-qR-fNT"/>
-                            <constraint firstItem="q7G-p6-pjL" firstAttribute="top" secondItem="Gv6-so-eqH" secondAttribute="bottom" constant="58" id="Ig5-eV-0h4"/>
                             <constraint firstItem="JXe-zS-NlE" firstAttribute="baseline" secondItem="ZbY-AK-8Dn" secondAttribute="baseline" id="K2v-q1-Zwv"/>
                             <constraint firstItem="mXS-M6-D5H" firstAttribute="trailing" secondItem="Nod-Az-GxQ" secondAttribute="trailing" constant="51" id="NHo-9n-fX7"/>
                             <constraint firstItem="ZbY-AK-8Dn" firstAttribute="baseline" secondItem="JXe-zS-NlE" secondAttribute="baseline" id="NO8-gR-OtI"/>
                             <constraint firstItem="Nod-Az-GxQ" firstAttribute="leading" secondItem="mXS-M6-D5H" secondAttribute="leading" constant="51" id="QEx-tb-U1H"/>
                             <constraint firstItem="Nod-Az-GxQ" firstAttribute="top" secondItem="ZbY-AK-8Dn" secondAttribute="bottom" constant="18" id="RBS-y9-5JF"/>
                             <constraint firstItem="320-oe-fxE" firstAttribute="leading" secondItem="mXS-M6-D5H" secondAttribute="leading" constant="20" id="RDm-5A-511"/>
-                            <constraint firstItem="GAl-Ck-bEM" firstAttribute="leading" secondItem="q7G-p6-pjL" secondAttribute="trailing" constant="110" id="SWp-YV-RL6"/>
-                            <constraint firstItem="q7G-p6-pjL" firstAttribute="top" secondItem="Gv6-so-eqH" secondAttribute="bottom" constant="58" id="Sax-Kv-aap"/>
-                            <constraint firstItem="mXS-M6-D5H" firstAttribute="trailing" secondItem="q7G-p6-pjL" secondAttribute="trailing" constant="176" id="T90-1J-n5H"/>
-                            <constraint firstItem="q7G-p6-pjL" firstAttribute="bottom" secondItem="mXS-M6-D5H" secondAttribute="bottom" id="X4P-ch-Z6F"/>
                             <constraint firstItem="mXS-M6-D5H" firstAttribute="trailing" secondItem="ZbY-AK-8Dn" secondAttribute="trailing" constant="17" id="bSh-fa-cVk"/>
-                            <constraint firstItem="mXS-M6-D5H" firstAttribute="trailing" secondItem="GAl-Ck-bEM" secondAttribute="trailing" constant="20" id="d5I-7P-eL3"/>
+                            <constraint firstItem="mXS-M6-D5H" firstAttribute="bottom" secondItem="Gv6-so-eqH" secondAttribute="bottom" constant="101" id="d1K-is-xue"/>
                             <constraint firstItem="JXe-zS-NlE" firstAttribute="top" secondItem="mXS-M6-D5H" secondAttribute="top" id="dYc-2l-0Gp"/>
                             <constraint firstItem="JXe-zS-NlE" firstAttribute="firstBaseline" secondItem="ZbY-AK-8Dn" secondAttribute="firstBaseline" id="f7R-Jf-RfU"/>
                             <constraint firstItem="mXS-M6-D5H" firstAttribute="trailing" secondItem="Gv6-so-eqH" secondAttribute="trailing" constant="66" id="fMG-cT-yi0"/>
                             <constraint firstItem="IbN-vm-OAh" firstAttribute="top" secondItem="320-oe-fxE" secondAttribute="bottom" constant="56" id="gJV-gi-MmT"/>
                             <constraint firstAttribute="bottom" secondItem="320-oe-fxE" secondAttribute="bottom" constant="329" id="i3g-kh-boP"/>
                             <constraint firstItem="mXS-M6-D5H" firstAttribute="trailing" secondItem="320-oe-fxE" secondAttribute="trailing" constant="20" id="kum-DE-1bn"/>
-                            <constraint firstItem="mXS-M6-D5H" firstAttribute="trailing" secondItem="Gv6-so-eqH" secondAttribute="trailing" constant="66" id="p5m-C3-HNb"/>
                             <constraint firstItem="IbN-vm-OAh" firstAttribute="leading" secondItem="mXS-M6-D5H" secondAttribute="leading" constant="43" id="qEK-NY-6Nj"/>
-                            <constraint firstItem="ZbY-AK-8Dn" firstAttribute="centerX" secondItem="GAl-Ck-bEM" secondAttribute="centerX" id="zCH-LH-o4z"/>
                         </constraints>
                     </view>
                     <connections>
@@ -883,9 +851,6 @@
             <point key="canvasLocation" x="386.95652173913044" y="-539.0625"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="HF6-mW-mnZ"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="AppSetting_backButton" width="51" height="51"/>
         <image name="Daily_calendarBG" width="316" height="219"/>
