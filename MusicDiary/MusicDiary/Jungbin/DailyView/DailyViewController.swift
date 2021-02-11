@@ -9,7 +9,7 @@ import UIKit
 import FSCalendar
 import Firebase
 
-var currentDairyId = "hPP6YvFvsilOPYoAlmJs"
+
 var currentDairyUserList:[String]!
 var currentContentData = ContentData()
 var currentContentID:String?
@@ -26,6 +26,11 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
     let db = Firestore.firestore()
     var newMemberList: [UserStructure] = []
     var newMemberIDList: [String] = []
+    var list:[Date] = []
+    override func viewWillAppear(_ animated: Bool) {
+        getContentsListForDaily(date: Date())
+        loadDateForCalendar()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,15 +49,14 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
         
         calendar.appearance.titleDefaultColor = .black
         calendar.appearance.titleWeekendColor = .black
-        // 달력의 맨 위의 년도, 월의 색깔
         calendar.appearance.headerTitleColor = .black
-        // 달력의 요일 글자 색깔
         calendar.appearance.weekdayTextColor = .black
-        //년 월 custom
         calendar.appearance.headerDateFormat = "MMM"
         calendar.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.backgroundColor = UIColor.white.withAlphaComponent(0)
+        calendar.appearance.eventDefaultColor = .gray
+        calendar.appearance.eventSelectionColor = .gray
         
     }
     
@@ -85,20 +89,45 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
         
         
     }
-    
+//MARK: loadDateForCalendar()
+    func loadDateForCalendar(){
+        let calendar = Calendar.current
+        currentContentData.musicTitle = ""
+        var dateList:[Date] = []
+        // 다이어리내용 불러오기
+        db.collection("Diary").document("\(currentDairyId)").collection("Contents").whereField("authorID", isEqualTo: "\(currentOtehrUserID)").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let getContent = document.data()
+                    
+                    dateList.append(Date(timeIntervalSince1970: TimeInterval((getContent["date"] as! Timestamp).seconds)))
+                    print("date list!! ",dateList)
+                    
+                }
+                self.list = dateList
+                self.calendar.reloadData()
+            }
+        }
+    }
 }
 
 
 extension DailyViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.newMemberList.count
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        currentOtehrUserID = newMemberIDList[indexPath.row]
+        currentOtehrUserID = newMemberList[indexPath.row].userId!
         print("select id: ", currentOtehrUserID)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
-        self.calendar.reloadData()
         getContentsListForDaily(date: Date())
+        self.calendar.select(calendar.today)
+        self.calendar.reloadData()
+        
         
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -116,14 +145,19 @@ extension DailyViewController: UICollectionViewDataSource, UICollectionViewDeleg
         return cell
         
         
-    }    
-    //상하 간격
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
     }
-    
     //좌우 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 10
+    }
+}
+extension DailyViewController: FSCalendarDataSource{
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        if list.contains(date){
+            print("true")
+            return 1
+        }
+        return 0
+        
     }
 }

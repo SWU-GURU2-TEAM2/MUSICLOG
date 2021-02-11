@@ -9,6 +9,8 @@ import UIKit
 import ScalingCarousel
 import FirebaseFirestore
 
+var currentDairyId = ""
+
 class MainVC:UIViewController {
     let db = Firestore.firestore()
     var diaryData: [DiaryStructure] = []
@@ -32,12 +34,19 @@ class MainVC:UIViewController {
         self.present(vc, animated: true, completion:  nil)
     }
     //MARK: ----------------viewDidLoad
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        loadDiaryData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.diaryData = []
-        
+        self.mainCarousel.reloadData()
         //Users에서 diaryList 필드 읽어오기
+        
+    }
+    func loadDiaryData(){
+        self.diaryData = []
         db.collection("Users").document(currentUID).getDocument { (document, error) in
             if let document = document, document.exists {
                 let dataDescription = document.data()
@@ -59,26 +68,32 @@ class MainVC:UIViewController {
                             newDiaryData.memberList = dataDescriptions!["memberList"] as? [String]
                             
                             self.diaryData.append(newDiaryData)
-                            self.diaryData.sort {$0.date! < $1.date!}   //date에 따라 정렬
+                            self.diaryData.sort {$0.date! < $1.date!}
+                            //self.mainCarousel.reloadData()//date에 따라 정렬
                         } else {
                             print("Document does not exist")
                             
                         }
                         self.mainCarousel.reloadData()
+                        let currentCenterIndex = 0
+                        let oneDiaryID = self.diaryData[currentCenterIndex]
+                        currentDairyId = oneDiaryID.diaryId!
+                        hideWrite(date: Date())
+                        
                     }
                 }
             }
         }
     }
     
-    //MARK: ------------------ADD Diary
+    //MARK: --------- ADD Diary
     
     @IBAction func addDiary(_ sender: UIButton) {
         //firebase에 다이어리 증가 + 유저 다이어리 리스트에도 추가 됨
         var ref: DocumentReference? = nil
         let date = Date()
         ref = self.db.collection("Diary").addDocument(data: [
-            "diaryImageUrl":"https://firebasestorage.googleapis.com/v0/b/musicdiary-a095d.appspot.com/o/defaltDiaryImg.png?alt=media&token=1556a66e-c81f-4aad-ba96-8b25d6ab5dfc",
+            "diaryImageUrl":"https://i.imgur.com/JAMAE6A.png",
             "diaryName":"New Diary",
             "diaryMusicTitle":"",
             "diaryMusicArtist":"",
@@ -95,7 +110,9 @@ class MainVC:UIViewController {
                 self.db.collection("Diary").document(ref!.documentID).updateData(["diaryID":ref!.documentID])
                 //Users diaryList update
                 self.db.collection("Users").document(currentUID).updateData(["userDiaryList": FieldValue.arrayUnion([ref!.documentID])])
-                self.viewDidLoad()
+//                self.loadDiaryData()
+//                //self.mainCarousel.reloadData()
+//                self.hideWrite(date: Date())
             }
         }
     }
@@ -166,10 +183,14 @@ extension CarouselDatasource: UICollectionViewDataSource {
         //이미지 넣기
         carouselCell.mainDiaryImaage.layer.cornerRadius = carouselCell.mainDiaryImaage.frame.width / 2
         carouselCell.mainDiaryImaage.clipsToBounds = true
+        
+        
+        
+        
+        
         do {
             try carouselCell.mainDiaryImaage.image = UIImage(data: try Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!))
             DispatchQueue.global().async { let data = try? Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!)
-                //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                 DispatchQueue.main.async { carouselCell.mainDiaryImaage.image = UIImage(data: data!) }
             }
         } catch  {        }

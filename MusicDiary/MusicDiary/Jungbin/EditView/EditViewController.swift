@@ -22,6 +22,7 @@ class EditViewController: UIViewController, SendDataDelegate {
                 newCD.musicCoverUrl = self.getMusic.musicCoverUrl!
             }
         }
+        self.writeView.frame.origin.y = self.originY
         
     }
     
@@ -32,6 +33,8 @@ class EditViewController: UIViewController, SendDataDelegate {
     @IBOutlet weak var musicView: UIView!
     @IBOutlet weak var writeView: UIView!
     var getMusic:MusicStruct!
+    var originY:CGFloat!
+
     let db = Firestore.firestore()
     
     
@@ -43,8 +46,11 @@ class EditViewController: UIViewController, SendDataDelegate {
         imageVIew.layer.cornerRadius = imageVIew.frame.width / 2
         imageVIew.clipsToBounds = true
         writeView.backgroundColor = UIColor(patternImage: UIImage(named: "Write_underBG")!)
+        originY = self.writeView.frame.origin.y
+
         presentData()
-//        placeholderSetting()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification , object: nil)
         
     }
     @IBAction func tapSaveBtn(_ sender: Any) {
@@ -65,15 +71,24 @@ class EditViewController: UIViewController, SendDataDelegate {
         self.dismiss(animated: true)
         
     }
+    @IBAction func goBack(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     @IBAction func tapSearchBtn(_ sender: Any) {
         let board = UIStoryboard(name: "YujinStoryboard", bundle: nil)
         guard let vc = board.instantiateViewController(identifier: "SearchBoardView") as? SearchBoardViewController else {return}
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
         delegate = self
     }
-    @IBAction func tapVIew(_ sender: Any) {
-        self.dismiss(animated: true)
+//MARK: 키보드 올라오고 내려올 때
+    @objc func keyboardWillAppear(_ sender: NotificationCenter){
+        self.writeView.frame.origin.y = self.originY
+        self.writeView.frame.origin.y -= 190
     }
+    @objc func keyboardWillDisappear(_ sender: NotificationCenter){
+        self.writeView.frame.origin.y = 355
+        }
     func presentData() {
         let docRef = db.collection("Diary").document("\(currentDairyId)").collection("Contents").document("\(currentContentID!)")
         
@@ -108,6 +123,9 @@ class EditViewController: UIViewController, SendDataDelegate {
     
 }
 extension EditViewController: UITextViewDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.textView.resignFirstResponder()
+        }
     func placeholderSetting() {
         textView.delegate = self // txtvReview가 유저가 선언한 outlet
         textView.text = "오늘의 감상, 기분, 일기를 기록하세요. 📝"

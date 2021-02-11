@@ -16,13 +16,18 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var musicView: UIView!
     @IBOutlet weak var writeView: UIView!
     @IBOutlet weak var shareMusicView: UIView!
+    @IBOutlet weak var editBtn: UIButton!
+    @IBOutlet weak var deleteBtn: UIButton!
     var getMusic:MusicStruct!
     let db = Firestore.firestore()
     //var currentContentData = ContentData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if currentUID != currentContentData.authorID {
+            editBtn.isHidden = true
+            deleteBtn.isHidden = true
+        }
         DispatchQueue.global().async { let data = try? Data(contentsOf: currentContentData.musicCoverUrl!)
             
             DispatchQueue.main.async {
@@ -40,6 +45,9 @@ class DetailViewController: UIViewController {
         
     }
     
+    @IBAction func tapGoMain(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     @IBAction func tapSharedBtn(_ sender: Any) {
         
         guard let image = shareMusicView.transfromToImage() else {
@@ -55,8 +63,9 @@ class DetailViewController: UIViewController {
         let alert = UIAlertController(title: "삭제", message: "정말로 삭제하시겠어요? 💁🏻", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "안 할래요 📛", style: .cancel)
         let ok = UIAlertAction(title: "삭제할래요", style: .default) { (_) in
-            var docRef = self.db.collection("Diary").document("\(currentDairyId)").collection("Contents").document("\(currentContentID)")
-            docRef.delete() { err in
+            print("삭제들어옴")
+            print("\(currentContentID)")
+            self.db.collection("Diary").document(currentDairyId).collection("Contents").document(currentContentID!).delete() { err in
                 if let err = err {
                     print("Error removing document: \(err)")
                 } else {
@@ -72,9 +81,6 @@ class DetailViewController: UIViewController {
         
       
         
-    }
-    @IBAction func tapVIew(_ sender: Any) {
-        self.dismiss(animated: true)
     }
     
 }

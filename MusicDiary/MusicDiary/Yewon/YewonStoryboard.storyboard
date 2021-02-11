@@ -7,6 +7,11 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="GmarketSansTTFLight.ttf">
+            <string>GmarketSansTTFLight</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--MainVC-->
         <scene sceneID="JtY-oq-1Zf">
@@ -56,14 +61,14 @@
                                                     <rect key="frame" x="52.5" y="235" width="163" height="74"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diary Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoy-mq-mEZ">
-                                                    <rect key="frame" x="0.0" y="262" width="268" height="14.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <rect key="frame" x="0.0" y="266" width="268" height="12"/>
+                                                    <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCz-Vz-2kg">
-                                                    <rect key="frame" x="0.0" y="304.5" width="268" height="12"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <rect key="frame" x="0.0" y="306" width="268" height="12"/>
+                                                    <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -91,7 +96,7 @@
                                                 <constraint firstItem="Wcx-2e-Q2a" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="47.5" id="ZSd-t9-rQY"/>
                                                 <constraint firstItem="SI3-gY-rRK" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="51.5" id="a00-1F-gJS"/>
                                                 <constraint firstAttribute="trailing" secondItem="Wcx-2e-Q2a" secondAttribute="trailing" constant="47.5" id="asE-ft-auk"/>
-                                                <constraint firstItem="Yoy-mq-mEZ" firstAttribute="top" secondItem="Wd1-Uq-q59" secondAttribute="bottom" constant="59" id="bVY-OD-Jia"/>
+                                                <constraint firstItem="Yoy-mq-mEZ" firstAttribute="top" secondItem="Wd1-Uq-q59" secondAttribute="bottom" constant="63" id="bVY-OD-Jia"/>
                                                 <constraint firstItem="bwL-il-o4M" firstAttribute="top" secondItem="Wcx-2e-Q2a" secondAttribute="bottom" constant="21" id="btE-sv-zTB"/>
                                                 <constraint firstItem="VbI-iQ-63S" firstAttribute="top" secondItem="iCV-Go-Ppk" secondAttribute="top" constant="235" id="faq-ue-T9k"/>
                                                 <constraint firstItem="VbI-iQ-63S" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="52.5" id="j2h-9V-cgX"/>

@@ -11,7 +11,7 @@
 		17BF998125C25E8C0041CBF4 /* YewonStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17BF998025C25E8C0041CBF4 /* YewonStoryboard.storyboard */; };
 		5C0DC0EE25C67E2500D766FB /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC0ED25C67E2500D766FB /* WriteViewController.swift */; };
 		5C0DC0F125C67E4F00D766FB /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC0F025C67E4F00D766FB /* DailyViewController.swift */; };
-		5C0DC10525C69DC800D766FB /* UserStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC10425C69DC800D766FB /* UserStructure.swift */; };
+		5C0DC10525C69DC800D766FB /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC10425C69DC800D766FB /* DataStructures.swift */; };
 		5C2A1BE425CF9A320044E10C /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A1BE325CF9A320044E10C /* EditViewController.swift */; };
 		5C2A1BF125D025460044E10C /* DiarySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A1BF025D025460044E10C /* DiarySettingViewController.swift */; };
 		5C93B36E25C051400067A723 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C93B36D25C051400067A723 /* AppDelegate.swift */; };
@@ -23,12 +23,12 @@
 		5C93B37D25C051440067A723 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C93B37B25C051440067A723 /* LaunchScreen.storyboard */; };
 		5C93B3C525C308060067A723 /* JungbinStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C93B3C425C308060067A723 /* JungbinStoryboard.storyboard */; };
 		5C93B3C825C3092C0067A723 /* VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C93B3C725C3092C0067A723 /* VC.swift */; };
-		5C94BC7C25C7AD1E0088B534 /* DiaryStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C94BC7B25C7AD1E0088B534 /* DiaryStructure.swift */; };
-		5C94BC7F25C7AE2F0088B534 /* ContentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C94BC7E25C7AE2F0088B534 /* ContentData.swift */; };
 		5CE28FC125D1BA0100BFFC8A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE28FC025D1BA0100BFFC8A /* DetailViewController.swift */; };
 		5CE28FCD25D27D2A00BFFC8A /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE28FCC25D27D2900BFFC8A /* UserTableViewCell.swift */; };
 		5CE28FD425D3846900BFFC8A /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE28FD325D3846900BFFC8A /* UserCollectionViewCell.swift */; };
 		5CE28FD725D38A3300BFFC8A /* DailyViewFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE28FD625D38A3300BFFC8A /* DailyViewFuncs.swift */; };
+		5CE28FDD25D52D5D00BFFC8A /* GmarketSansTTFLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CE28FDC25D52D5C00BFFC8A /* GmarketSansTTFLight.ttf */; };
+		5CE28FE425D52F9800BFFC8A /* FontSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE28FE325D52F9800BFFC8A /* FontSetup.swift */; };
 		6A00EFB225CC1F9100E09D7F /* MusicStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A00EFB125CC1F9100E09D7F /* MusicStructure.swift */; };
 		6A23217025C6F0E40079A482 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A23216F25C6F0E40079A482 /* GoogleService-Info.plist */; };
 		6A2321E125C6F1E80079A482 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2321E025C6F1E80079A482 /* IntroViewController.swift */; };
@@ -45,7 +45,7 @@
 		17BF998025C25E8C0041CBF4 /* YewonStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = YewonStoryboard.storyboard; sourceTree = "<group>"; };
 		5C0DC0ED25C67E2500D766FB /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		5C0DC0F025C67E4F00D766FB /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
-		5C0DC10425C69DC800D766FB /* UserStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStructure.swift; sourceTree = "<group>"; };
+		5C0DC10425C69DC800D766FB /* DataStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures.swift; sourceTree = "<group>"; };
 		5C2A1BE325CF9A320044E10C /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		5C2A1BF025D025460044E10C /* DiarySettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiarySettingViewController.swift; sourceTree = "<group>"; };
 		5C93B36A25C051400067A723 /* MusicDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,12 +59,12 @@
 		5C93B37E25C051440067A723 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C93B3C425C308060067A723 /* JungbinStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JungbinStoryboard.storyboard; sourceTree = "<group>"; };
 		5C93B3C725C3092C0067A723 /* VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.swift; sourceTree = "<group>"; };
-		5C94BC7B25C7AD1E0088B534 /* DiaryStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStructure.swift; sourceTree = "<group>"; };
-		5C94BC7E25C7AE2F0088B534 /* ContentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentData.swift; sourceTree = "<group>"; };
 		5CE28FC025D1BA0100BFFC8A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5CE28FCC25D27D2900BFFC8A /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		5CE28FD325D3846900BFFC8A /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		5CE28FD625D38A3300BFFC8A /* DailyViewFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewFuncs.swift; sourceTree = "<group>"; };
+		5CE28FDC25D52D5C00BFFC8A /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFLight.ttf; sourceTree = "<group>"; };
+		5CE28FE325D52F9800BFFC8A /* FontSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSetup.swift; sourceTree = "<group>"; };
 		6A00EFB125CC1F9100E09D7F /* MusicStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicStructure.swift; sourceTree = "<group>"; };
 		6A23216F25C6F0E40079A482 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		6A2321E025C6F1E80079A482 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
@@ -155,9 +155,8 @@
 		5C93B36C25C051400067A723 /* MusicDiary */ = {
 			isa = PBXGroup;
 			children = (
-				5C0DC10425C69DC800D766FB /* UserStructure.swift */,
-				5C94BC7B25C7AD1E0088B534 /* DiaryStructure.swift */,
-				5C94BC7E25C7AE2F0088B534 /* ContentData.swift */,
+				5CE28FDF25D52D6200BFFC8A /* Font */,
+				5C0DC10425C69DC800D766FB /* DataStructures.swift */,
 				5C93B3C125C3074C0067A723 /* Jungbin */,
 				5C93B3C225C307580067A723 /* Yujin */,
 				17BF997E25C25DC30041CBF4 /* Yewon */,
@@ -208,6 +207,15 @@
 				5CE28FC025D1BA0100BFFC8A /* DetailViewController.swift */,
 			);
 			path = DetailView;
+			sourceTree = "<group>";
+		};
+		5CE28FDF25D52D6200BFFC8A /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				5CE28FDC25D52D5C00BFFC8A /* GmarketSansTTFLight.ttf */,
+				5CE28FE325D52F9800BFFC8A /* FontSetup.swift */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		66435E30D67DD25C48A47B4A /* Pods */ = {
@@ -290,6 +298,7 @@
 				5C93B37D25C051440067A723 /* LaunchScreen.storyboard in Resources */,
 				17BF998125C25E8C0041CBF4 /* YewonStoryboard.storyboard in Resources */,
 				5C93B37A25C051440067A723 /* Assets.xcassets in Resources */,
+				5CE28FDD25D52D5D00BFFC8A /* GmarketSansTTFLight.ttf in Resources */,
 				5C93B3C525C308060067A723 /* JungbinStoryboard.storyboard in Resources */,
 				5C93B37525C051400067A723 /* Main.storyboard in Resources */,
 				6AC0A2C325C3EB4B0062E5A8 /* YujinStoryboard.storyboard in Resources */,
@@ -368,7 +377,7 @@
 				6A2321E125C6F1E80079A482 /* IntroViewController.swift in Sources */,
 				5C93B37225C051400067A723 /* ViewController.swift in Sources */,
 				5C93B37825C051400067A723 /* MusicDiary.xcdatamodeld in Sources */,
-				5C0DC10525C69DC800D766FB /* UserStructure.swift in Sources */,
+				5C0DC10525C69DC800D766FB /* DataStructures.swift in Sources */,
 				5CE28FD725D38A3300BFFC8A /* DailyViewFuncs.swift in Sources */,
 				5C2A1BF125D025460044E10C /* DiarySettingViewController.swift in Sources */,
 				5C93B3C825C3092C0067A723 /* VC.swift in Sources */,
@@ -377,11 +386,10 @@
 				5C93B36E25C051400067A723 /* AppDelegate.swift in Sources */,
 				6A00EFB225CC1F9100E09D7F /* MusicStructure.swift in Sources */,
 				6A270A2E25C785B000434321 /* SearchResultCell.swift in Sources */,
-				5C94BC7F25C7AE2F0088B534 /* ContentData.swift in Sources */,
-				5C94BC7C25C7AD1E0088B534 /* DiaryStructure.swift in Sources */,
 				6A5613B625C7097700EC48E3 /* SearchViewController.swift in Sources */,
 				17731DD525C2607C00A16494 /* MainVC.swift in Sources */,
 				5CE28FCD25D27D2A00BFFC8A /* UserTableViewCell.swift in Sources */,
+				5CE28FE425D52F9800BFFC8A /* FontSetup.swift in Sources */,
 				5C93B37025C051400067A723 /* SceneDelegate.swift in Sources */,
 				5C0DC0F125C67E4F00D766FB /* DailyViewController.swift in Sources */,
 				5C0DC0EE25C67E2500D766FB /* WriteViewController.swift in Sources */,

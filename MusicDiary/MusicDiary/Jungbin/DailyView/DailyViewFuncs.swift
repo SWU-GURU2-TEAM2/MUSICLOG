@@ -82,6 +82,7 @@ extension DailyViewController {
                                                         userImage: URL(string: (newDescription!["userImage"]! as? String)!),
                                                         userDiaryList: newDescription!["userDiaryList"]! as? [String]))
                             print("new member name: ", self.newMemberList)
+                            self.newMemberList.sort{$0.userName! < $1.userName!} 
                             self.collectionView.reloadData()
                             
                         } else{

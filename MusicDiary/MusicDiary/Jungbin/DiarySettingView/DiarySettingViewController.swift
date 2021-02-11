@@ -10,18 +10,28 @@ import Firebase
 
 class DiarySettingViewController: UIViewController, SendDataDelegate {
     func sendData(data: MusicStruct) {
-            getMusic = data
-            titleLabel.text = getMusic.musicTitle
-            artistLabel.text = getMusic.musicArtist
-            DispatchQueue.global().async { let data = try? Data(contentsOf: self.getMusic.musicCoverUrl!)
-                DispatchQueue.main.async {
-                    self.imageView.image = UIImage(data: data!)
-                    self.db.collection("Diary").document(currentDairyId).updateData(["diaryMusicTitle" : self.getMusic.musicTitle])
-                    self.db.collection("Diary").document(currentDairyId).updateData(["diaryMusicArtist" : self.getMusic.musicArtist])
-                    self.db.collection("Diary").document(currentDairyId).updateData(["diaryImageUrl" : data!])
-                }
-            }          
-            
+        getMusic = data
+        titleLabel.text = getMusic.musicTitle
+        artistLabel.text = getMusic.musicArtist
+        DispatchQueue.global().async { let data = try? Data(contentsOf: self.getMusic.musicCoverUrl!)
+            DispatchQueue.main.async {
+                self.imageView.image = UIImage(data: data!)
+                print("*** getMusic: ", self.getMusic)
+                
+            }
+        }
+        let docRef = self.db.collection("Diary").document("\(currentDairyId)")
+        docRef.updateData([
+                            "diaryMusicTitle" : self.getMusic.musicTitle!,
+                            "diaryMusicArtist" : self.getMusic.musicArtist!,
+                            "diaryImageUrl" : "\(self.getMusic.musicCoverUrl!)"]) {err in
+            if let err = err{
+                print("Error updating document: \(err)")
+            } else {
+                print("Document sucessfully updated")
+            }
+        }
+        
     }
     
     let db = Firestore.firestore()
@@ -47,7 +57,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
     
     @IBAction func goSearchBtn(_ sender: Any) {
         let board = UIStoryboard(name: "YujinStoryboard", bundle: nil)
-        guard let vc = board.instantiateViewController(identifier: "SearchView") as? SearchBoardViewController else {return}
+        guard let vc = board.instantiateViewController(identifier: "SearchBoardView") as? SearchBoardViewController else {return}
         self.present(vc, animated: true, completion: nil)
         delegate = self
     }
@@ -108,8 +118,6 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
                             let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                             print("그런 유저 있음!")
                             self.addUser(targetID: friendID)
-                            self.tableView.reloadData()
-                            self.viewDidLoad()
                         } else {
                             print("그런 유저 없음")
                             let notUser = UIAlertController(title: "⁉️", message: "존재하지 않는 유저입니다 🥲\n다시 검색해 볼까요?", preferredStyle: UIAlertController.Style.alert)
@@ -127,6 +135,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
     func addUser(targetID: String) {
         db.collection("Diary").document(currentDairyId).updateData(["memberList" : FieldValue.arrayUnion([targetID])])
         db.collection("Users").document(targetID).updateData(["userDiaryList" : FieldValue.arrayUnion([currentDairyId])])
+        presentDiaryDataForSetting()
     }
     func presentDiaryDataForSetting() { // 다이어리 '한개!!!' 의 다어어리 정보 가져오는거임!!!
         var docRef = db.collection("Diary").document("\(currentDairyId)")
@@ -144,7 +153,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
 
                 print("new data: ", self.newDiaryData)
                 
-                
+                self.newMemberList = []
                 for member in self.newDiaryData.memberList! {
                     self.db.collection("Users").document("\(member)").getDocument { (document, error) in
                         if let newdoc = document, ((document?.exists) != nil) {
@@ -155,6 +164,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
                                                         userImage: URL(string: (newDescription!["userImage"]! as? String)!),
                                                         userDiaryList: newDescription!["userDiaryList"]! as? [String]))
                             print("new member list: ", self.newMemberList)
+                            self.newMemberList.sort{$0.userName! < $1.userName!} 
                             self.tableView.reloadData()
 
                         } else{
@@ -164,8 +174,6 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
                     }
 
                 }
-                
-                
                 DispatchQueue.global().async { let data = try? Data(contentsOf: self.newDiaryData.diaryImageUrl!)
                     DispatchQueue.main.async {
                         self.imageView.image = UIImage(data: data!)
