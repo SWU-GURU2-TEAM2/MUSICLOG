@@ -310,8 +310,8 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="uid" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTS-HU-0ws">
-                                <rect key="frame" x="306" y="397" width="24" height="15"/>
-                                <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="15"/>
+                                <rect key="frame" x="309" y="400" width="21" height="13"/>
+                                <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -382,7 +382,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="EdH-mf-7Qw" secondAttribute="trailing" constant="114" id="paK-eA-OwT"/>
                             <constraint firstItem="kp3-sB-lCt" firstAttribute="leading" secondItem="xi5-NT-rSx" secondAttribute="leadingMargin" id="qHa-Qp-nxP"/>
                             <constraint firstItem="4Kl-oA-PaJ" firstAttribute="leading" secondItem="xi5-NT-rSx" secondAttribute="leadingMargin" constant="134" id="qLS-9E-zph"/>
-                            <constraint firstItem="ZTS-HU-0ws" firstAttribute="top" secondItem="Tjm-NO-nG9" secondAttribute="bottom" constant="34" id="vFP-Or-dKD"/>
+                            <constraint firstItem="ZTS-HU-0ws" firstAttribute="top" secondItem="Tjm-NO-nG9" secondAttribute="bottom" constant="37" id="vFP-Or-dKD"/>
                             <constraint firstItem="Lwt-68-qA7" firstAttribute="leading" secondItem="xi5-NT-rSx" secondAttribute="leadingMargin" id="w6s-oD-Efd"/>
                             <constraint firstItem="EdH-mf-7Qw" firstAttribute="leading" secondItem="xi5-NT-rSx" secondAttribute="leadingMargin" constant="114" id="xP7-2N-WE3"/>
                             <constraint firstItem="EdH-mf-7Qw" firstAttribute="top" secondItem="kp3-sB-lCt" secondAttribute="bottom" constant="-14" id="zr6-X5-YZy"/>
