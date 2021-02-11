@@ -359,9 +359,6 @@
                             <constraint firstItem="ybs-pF-mdf" firstAttribute="top" secondItem="GxM-Hv-SBS" secondAttribute="bottom" constant="8" symbolic="YES" id="uMl-0E-T7a"/>
                             <constraint firstItem="GxM-Hv-SBS" firstAttribute="leading" secondItem="ybs-pF-mdf" secondAttribute="leading" id="yec-mH-Tzr"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="e8p-p3-tfC" appends="YES" id="SzQ-co-kBq"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="aJw-5Y-krV"/>
                     <connections>
@@ -374,11 +371,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5uo-oS-PK7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="e8p-p3-tfC">
-                    <connections>
-                        <action selector="tapView:" destination="VwC-qC-UUN" id="3p5-GT-1mb"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="e8p-p3-tfC"/>
             </objects>
             <point key="canvasLocation" x="1113.0434782608697" y="68.973214285714278"/>
         </scene>
@@ -476,15 +469,27 @@
                                     <action selector="tapSearchBtn:" destination="d7d-rI-jWH" eventType="touchUpInside" id="9cD-2O-L92"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMj-l0-Eg0">
+                                <rect key="frame" x="20" y="44" width="51" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="sMj-l0-Eg0" secondAttribute="height" multiplier="1:1" id="7hY-BZ-LFg"/>
+                                </constraints>
+                                <state key="normal" image="AppSetting_backButton"/>
+                                <connections>
+                                    <action selector="goBack:" destination="d7d-rI-jWH" eventType="touchUpInside" id="Ytb-4T-Qmk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XFC-rE-eC5"/>
                         <color key="backgroundColor" red="0.96855288743972778" green="0.96897071599960327" blue="0.95681661367416382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6hy-xr-bK9" firstAttribute="centerX" secondItem="gFh-dE-Q9R" secondAttribute="centerX" id="3lQ-NG-s13"/>
+                            <constraint firstItem="sMj-l0-Eg0" firstAttribute="leading" secondItem="XFC-rE-eC5" secondAttribute="leading" constant="20" id="6Ql-MY-y0Q"/>
                             <constraint firstItem="6hy-xr-bK9" firstAttribute="centerX" secondItem="iuU-bp-B0u" secondAttribute="centerX" id="6nK-Vv-eVr"/>
                             <constraint firstItem="R9p-0p-TRi" firstAttribute="top" secondItem="6hy-xr-bK9" secondAttribute="bottom" constant="8" symbolic="YES" id="Cx6-fI-FsZ"/>
                             <constraint firstItem="iuU-bp-B0u" firstAttribute="top" secondItem="XFC-rE-eC5" secondAttribute="top" constant="54" id="QB1-cw-Abg"/>
+                            <constraint firstItem="sMj-l0-Eg0" firstAttribute="width" secondItem="sMj-l0-Eg0" secondAttribute="height" multiplier="1:1" id="Xak-UZ-DWh"/>
                             <constraint firstItem="6hy-xr-bK9" firstAttribute="top" secondItem="PAd-VE-dzh" secondAttribute="top" constant="219" id="Xu0-uQ-kxP"/>
                             <constraint firstItem="Uax-pK-h8X" firstAttribute="top" secondItem="XFC-rE-eC5" secondAttribute="top" constant="61" id="Zgq-Xt-2rN"/>
                             <constraint firstItem="XFC-rE-eC5" firstAttribute="bottom" secondItem="R9p-0p-TRi" secondAttribute="bottom" constant="53" id="aqY-S2-rQ1"/>
@@ -494,11 +499,9 @@
                             <constraint firstItem="6hy-xr-bK9" firstAttribute="centerX" secondItem="PAd-VE-dzh" secondAttribute="centerX" id="hYJ-No-BQV"/>
                             <constraint firstItem="6hy-xr-bK9" firstAttribute="centerX" secondItem="Uax-pK-h8X" secondAttribute="centerX" id="hp5-fS-2qe"/>
                             <constraint firstItem="iuU-bp-B0u" firstAttribute="leading" secondItem="XFC-rE-eC5" secondAttribute="leading" constant="74" id="nkX-WD-h8p"/>
+                            <constraint firstItem="sMj-l0-Eg0" firstAttribute="top" secondItem="XFC-rE-eC5" secondAttribute="top" id="ttT-nS-Ha2"/>
                             <constraint firstAttribute="bottom" secondItem="6hy-xr-bK9" secondAttribute="bottom" constant="549" id="tys-eY-l21"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Ccu-0Y-R72" appends="YES" id="yVk-va-NKh"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="fK1-y9-cEK"/>
                     <connections>
@@ -511,11 +514,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ep4-Kb-TsX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Ccu-0Y-R72">
-                    <connections>
-                        <action selector="tapVIew:" destination="d7d-rI-jWH" id="nXf-ap-oHL"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Ccu-0Y-R72"/>
             </objects>
             <point key="canvasLocation" x="387" y="818"/>
         </scene>

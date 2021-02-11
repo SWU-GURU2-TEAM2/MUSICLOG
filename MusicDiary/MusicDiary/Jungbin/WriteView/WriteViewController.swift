@@ -19,22 +19,23 @@ class WriteViewController:UIViewController, SendDataDelegate{
     @IBOutlet weak var underView: UIView!
     @IBOutlet weak var topView: UIView!
     var getMusic:MusicStruct!
-
+    var originY:CGFloat!
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         imageView.layer.cornerRadius = imageView.frame.width / 2
         imageView.clipsToBounds = true
-        //topView.backgroundColor = UIColor(patternImage: UIImage(named: "Write_topBG")!)
         placeholderSetting()
         underView.backgroundColor = UIColor(patternImage: UIImage(named: "Write_underBG")!)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification , object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification , object: nil)
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        originY = self.underView.frame.origin.y
     }
     
     @IBAction func tapSaveBtn(_ sender: Any) {
@@ -66,9 +67,12 @@ class WriteViewController:UIViewController, SendDataDelegate{
         self.dismiss(animated: true)
         
     }
+//MARK: goSearchBtn
+    
     @IBAction func goSearchBtn(_ sender: Any) {
         let board = UIStoryboard(name: "YujinStoryboard", bundle: nil)
         guard let vc = board.instantiateViewController(identifier: "SearchBoardView") as? SearchBoardViewController else {return}
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
         delegate = self
         
@@ -80,34 +84,37 @@ class WriteViewController:UIViewController, SendDataDelegate{
     }
     
   
-    
-    @IBAction func tapView(_ sender: Any) {
-    }
-    
+//MARK: sendData
     func sendData(data: MusicStruct) {
         getMusic = data
         print(getMusic)
         titleLabel.text = getMusic.musicTitle
         artistLabel.text = getMusic.musicArtist
-        DispatchQueue.global().async { let data = try? Data(contentsOf: self.getMusic.musicCoverUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-            DispatchQueue.main.async { self.imageView.image = UIImage(data: data!) }
+        DispatchQueue.global().async { let data = try? Data(contentsOf: self.getMusic.musicCoverUrl!)
+            DispatchQueue.main.async { self.imageView.image = UIImage(data: data!)
+                
+            }
         }
+
         self.viewDidLoad()
-        
+        self.underView.frame.origin.y = self.originY
+
         newContent.musicArtist = getMusic.musicArtist
         newContent.musicTitle = getMusic.musicTitle
         newContent.musicCoverUrl = getMusic.musicCoverUrl
         
         
     }
+//MARK: 키보드 올라오고 내려올 때
     @objc func keyboardWillAppear(_ sender: NotificationCenter){
-        self.view.frame.origin.y -= 130
+        self.underView.frame.origin.y = self.originY
+        self.underView.frame.origin.y -= 190
     }
     @objc func keyboardWillDisappear(_ sender: NotificationCenter){
-        self.view.frame.origin.y += 130
+        self.underView.frame.origin.y = 353
     }
 }
-
+//MARK: 텍스트뷰 델리게이트
 extension WriteViewController: UITextViewDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             self.textView.resignFirstResponder()
