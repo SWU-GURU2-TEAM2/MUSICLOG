@@ -39,7 +39,6 @@ class MainVC:UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadDiaryData()
         self.mainCarousel.reloadData()
         //Users에서 diaryList 필드 읽어오기
         
