@@ -28,6 +28,7 @@
 		5CE28FD425D3846900BFFC8A /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE28FD325D3846900BFFC8A /* UserCollectionViewCell.swift */; };
 		5CE28FD725D38A3300BFFC8A /* DailyViewFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE28FD625D38A3300BFFC8A /* DailyViewFuncs.swift */; };
 		5CE28FDD25D52D5D00BFFC8A /* GmarketSansTTFLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CE28FDC25D52D5C00BFFC8A /* GmarketSansTTFLight.ttf */; };
+		5CE28FE425D52F9800BFFC8A /* FontSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE28FE325D52F9800BFFC8A /* FontSetup.swift */; };
 		6A00EFB225CC1F9100E09D7F /* MusicStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A00EFB125CC1F9100E09D7F /* MusicStructure.swift */; };
 		6A23217025C6F0E40079A482 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A23216F25C6F0E40079A482 /* GoogleService-Info.plist */; };
 		6A2321E125C6F1E80079A482 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2321E025C6F1E80079A482 /* IntroViewController.swift */; };
@@ -63,6 +64,7 @@
 		5CE28FD325D3846900BFFC8A /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		5CE28FD625D38A3300BFFC8A /* DailyViewFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewFuncs.swift; sourceTree = "<group>"; };
 		5CE28FDC25D52D5C00BFFC8A /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFLight.ttf; sourceTree = "<group>"; };
+		5CE28FE325D52F9800BFFC8A /* FontSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSetup.swift; sourceTree = "<group>"; };
 		6A00EFB125CC1F9100E09D7F /* MusicStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicStructure.swift; sourceTree = "<group>"; };
 		6A23216F25C6F0E40079A482 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		6A2321E025C6F1E80079A482 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				5CE28FDC25D52D5C00BFFC8A /* GmarketSansTTFLight.ttf */,
+				5CE28FE325D52F9800BFFC8A /* FontSetup.swift */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				6A5613B625C7097700EC48E3 /* SearchViewController.swift in Sources */,
 				17731DD525C2607C00A16494 /* MainVC.swift in Sources */,
 				5CE28FCD25D27D2A00BFFC8A /* UserTableViewCell.swift in Sources */,
+				5CE28FE425D52F9800BFFC8A /* FontSetup.swift in Sources */,
 				5C93B37025C051400067A723 /* SceneDelegate.swift in Sources */,
 				5C0DC0F125C67E4F00D766FB /* DailyViewController.swift in Sources */,
 				5C0DC0EE25C67E2500D766FB /* WriteViewController.swift in Sources */,
