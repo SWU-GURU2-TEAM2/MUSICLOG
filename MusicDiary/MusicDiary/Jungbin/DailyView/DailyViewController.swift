@@ -90,15 +90,18 @@ class DailyViewController: UIViewController, FSCalendarDelegate {
 
 
 extension DailyViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.newMemberList.count
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        currentOtehrUserID = newMemberIDList[indexPath.row]
+        currentOtehrUserID = newMemberList[indexPath.row].userId!
         print("select id: ", currentOtehrUserID)
         
         self.calendar.reloadData()
         getContentsListForDaily(date: Date())
+        
+        
         
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -119,11 +122,11 @@ extension DailyViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }    
     //상하 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 0
     }
     
     //좌우 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 0
     }
 }

@@ -47,7 +47,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
     
     @IBAction func goSearchBtn(_ sender: Any) {
         let board = UIStoryboard(name: "YujinStoryboard", bundle: nil)
-        guard let vc = board.instantiateViewController(identifier: "SearchView") as? SearchBoardViewController else {return}
+        guard let vc = board.instantiateViewController(identifier: "SearchBoardView") as? SearchBoardViewController else {return}
         self.present(vc, animated: true, completion: nil)
         delegate = self
     }
@@ -164,8 +164,6 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
                     }
 
                 }
-                
-                
                 DispatchQueue.global().async { let data = try? Data(contentsOf: self.newDiaryData.diaryImageUrl!)
                     DispatchQueue.main.async {
                         self.imageView.image = UIImage(data: data!)

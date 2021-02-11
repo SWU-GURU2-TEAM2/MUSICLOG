@@ -71,14 +71,14 @@ class MainVC:UIViewController {
         }
     }
     
-    //MARK: ------------------ADD Diary
+    //MARK: --------- ADD Diary
     
     @IBAction func addDiary(_ sender: UIButton) {
         //firebase에 다이어리 증가 + 유저 다이어리 리스트에도 추가 됨
         var ref: DocumentReference? = nil
         let date = Date()
         ref = self.db.collection("Diary").addDocument(data: [
-            "diaryImageUrl":"https://firebasestorage.googleapis.com/v0/b/musicdiary-a095d.appspot.com/o/defaltDiaryImg.png?alt=media&token=1556a66e-c81f-4aad-ba96-8b25d6ab5dfc",
+            "diaryImageUrl":"https://i.imgur.com/JAMAE6A.png",
             "diaryName":"New Diary",
             "diaryMusicTitle":"",
             "diaryMusicArtist":"",
