@@ -9,6 +9,8 @@ import UIKit
 import ScalingCarousel
 import FirebaseFirestore
 
+var currentDairyId = ""
+
 class MainVC:UIViewController {
     let db = Firestore.firestore()
     var diaryData: [DiaryStructure] = []
@@ -66,12 +68,18 @@ class MainVC:UIViewController {
                             newDiaryData.memberList = dataDescriptions!["memberList"] as? [String]
                             
                             self.diaryData.append(newDiaryData)
-                            self.diaryData.sort {$0.date! < $1.date!}   //date에 따라 정렬
+                            self.diaryData.sort {$0.date! < $1.date!}
+                            //self.mainCarousel.reloadData()//date에 따라 정렬
                         } else {
                             print("Document does not exist")
                             
                         }
                         self.mainCarousel.reloadData()
+                        let currentCenterIndex = 0
+                        let oneDiaryID = self.diaryData[currentCenterIndex]
+                        currentDairyId = oneDiaryID.diaryId!
+                        hideWrite(date: Date())
+                        
                     }
                 }
             }
@@ -102,7 +110,9 @@ class MainVC:UIViewController {
                 self.db.collection("Diary").document(ref!.documentID).updateData(["diaryID":ref!.documentID])
                 //Users diaryList update
                 self.db.collection("Users").document(currentUID).updateData(["userDiaryList": FieldValue.arrayUnion([ref!.documentID])])
-                self.viewDidLoad()
+//                self.loadDiaryData()
+//                //self.mainCarousel.reloadData()
+//                self.hideWrite(date: Date())
             }
         }
     }
