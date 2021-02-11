@@ -15,7 +15,7 @@ class UserCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool{
         didSet{
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {
-                self.transform = self.isSelected ? CGAffineTransform(scaleX: 1.1, y: 1.1) : CGAffineTransform.identity
+                self.transform = self.isSelected ? CGAffineTransform(scaleX: 1.4, y: 1.4) : CGAffineTransform.identity
             }, completion: nil)
 
         }
