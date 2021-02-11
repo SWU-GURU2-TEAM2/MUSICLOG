@@ -74,8 +74,14 @@ class WriteViewController:UIViewController, SendDataDelegate{
         
     }
     
-    @IBAction func tapView(_ sender: Any) {
+    @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: true)
+
+    }
+    
+  
+    
+    @IBAction func tapView(_ sender: Any) {
     }
     
     func sendData(data: MusicStruct) {
@@ -103,6 +109,10 @@ class WriteViewController:UIViewController, SendDataDelegate{
 }
 
 extension WriteViewController: UITextViewDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.textView.resignFirstResponder()
+        }
+
     func placeholderSetting() {
         textView.delegate = self // txtvReview가 유저가 선언한 outlet
         textView.text = "오늘의 감상, 기분, 일기를 기록하세요. 📝"
