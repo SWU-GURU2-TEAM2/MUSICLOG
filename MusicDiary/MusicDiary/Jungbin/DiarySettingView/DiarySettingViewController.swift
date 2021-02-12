@@ -58,6 +58,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
     @IBAction func goSearchBtn(_ sender: Any) {
         let board = UIStoryboard(name: "YujinStoryboard", bundle: nil)
         guard let vc = board.instantiateViewController(identifier: "SearchBoardView") as? SearchBoardViewController else {return}
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
         delegate = self
     }

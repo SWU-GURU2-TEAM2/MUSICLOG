@@ -19,7 +19,6 @@ extension DailyViewController {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    print("지금 읽어오는 문서: ", document)
                     let getContent = document.data()
                     currentContentData = ContentData(
                         authorID: getContent["authorID"] as! String,
@@ -68,10 +67,6 @@ extension DailyViewController {
             if let document = document, document.exists {
                 let dataDescription = document.data()
                 self.newMemberIDList = (dataDescription!["memberList"] as? [String])!
-                
-                print("member list: ", self.newMemberIDList)
-                
-                
                 for member in self.newMemberIDList {
                     self.db.collection("Users").document("\(member)").getDocument { (document, error) in
                         if let newdoc = document, ((document?.exists) != nil) {
@@ -81,7 +76,6 @@ extension DailyViewController {
                                                         userId: newDescription!["userID"] as? String,
                                                         userImage: URL(string: (newDescription!["userImage"]! as? String)!),
                                                         userDiaryList: newDescription!["userDiaryList"]! as? [String]))
-                            print("new member name: ", self.newMemberList)
                             self.newMemberList.sort{$0.userName! < $1.userName!} 
                             self.collectionView.reloadData()
                             
