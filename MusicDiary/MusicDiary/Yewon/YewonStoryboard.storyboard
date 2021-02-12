@@ -61,13 +61,13 @@
                                                     <rect key="frame" x="52.5" y="235" width="163" height="74"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diary Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoy-mq-mEZ">
-                                                    <rect key="frame" x="0.0" y="266" width="268" height="12"/>
+                                                    <rect key="frame" x="0.0" y="262" width="268" height="20"/>
                                                     <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCz-Vz-2kg">
-                                                    <rect key="frame" x="0.0" y="306" width="268" height="12"/>
+                                                    <rect key="frame" x="0.0" y="303" width="268" height="20"/>
                                                     <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -81,14 +81,13 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="gY5-Fl-BN1" secondAttribute="bottom" id="2vp-qt-k13"/>
-                                                <constraint firstAttribute="trailing" secondItem="Yoy-mq-mEZ" secondAttribute="trailing" id="5cM-VW-iHB"/>
                                                 <constraint firstAttribute="trailing" secondItem="SI3-gY-rRK" secondAttribute="trailing" constant="51.5" id="9qC-ER-wiC"/>
+                                                <constraint firstItem="fCz-Vz-2kg" firstAttribute="top" secondItem="Yoy-mq-mEZ" secondAttribute="bottom" constant="21" id="Bgf-E8-upo"/>
                                                 <constraint firstItem="Wd1-Uq-q59" firstAttribute="top" secondItem="iCV-Go-Ppk" secondAttribute="top" constant="56" id="DgZ-Ke-UGN"/>
                                                 <constraint firstItem="SI3-gY-rRK" firstAttribute="top" secondItem="iCV-Go-Ppk" secondAttribute="top" constant="47" id="FD0-JQ-Lmq"/>
-                                                <constraint firstItem="fCz-Vz-2kg" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" id="I1D-nL-Azu"/>
-                                                <constraint firstItem="Yoy-mq-mEZ" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" id="K6V-qo-ucf"/>
                                                 <constraint firstItem="gY5-Fl-BN1" firstAttribute="top" secondItem="iCV-Go-Ppk" secondAttribute="top" id="N4n-OM-lr8"/>
                                                 <constraint firstAttribute="trailing" secondItem="Wd1-Uq-q59" secondAttribute="trailing" constant="60.5" id="QOO-6E-bKf"/>
+                                                <constraint firstItem="fCz-Vz-2kg" firstAttribute="leading" secondItem="Yoy-mq-mEZ" secondAttribute="leading" id="RM1-cs-xfr"/>
                                                 <constraint firstAttribute="trailing" secondItem="gY5-Fl-BN1" secondAttribute="trailing" id="SYP-0e-Iq0"/>
                                                 <constraint firstItem="bwL-il-o4M" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="95" id="Xms-uE-I5J"/>
                                                 <constraint firstItem="Wd1-Uq-q59" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="60.5" id="Y9I-4U-nQh"/>
@@ -96,15 +95,18 @@
                                                 <constraint firstItem="Wcx-2e-Q2a" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="47.5" id="ZSd-t9-rQY"/>
                                                 <constraint firstItem="SI3-gY-rRK" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="51.5" id="a00-1F-gJS"/>
                                                 <constraint firstAttribute="trailing" secondItem="Wcx-2e-Q2a" secondAttribute="trailing" constant="47.5" id="asE-ft-auk"/>
-                                                <constraint firstItem="Yoy-mq-mEZ" firstAttribute="top" secondItem="Wd1-Uq-q59" secondAttribute="bottom" constant="63" id="bVY-OD-Jia"/>
                                                 <constraint firstItem="bwL-il-o4M" firstAttribute="top" secondItem="Wcx-2e-Q2a" secondAttribute="bottom" constant="21" id="btE-sv-zTB"/>
                                                 <constraint firstItem="VbI-iQ-63S" firstAttribute="top" secondItem="iCV-Go-Ppk" secondAttribute="top" constant="235" id="faq-ue-T9k"/>
+                                                <constraint firstItem="Yoy-mq-mEZ" firstAttribute="top" secondItem="SI3-gY-rRK" secondAttribute="bottom" constant="50" id="g7V-tN-nUr"/>
+                                                <constraint firstItem="fCz-Vz-2kg" firstAttribute="trailing" secondItem="Yoy-mq-mEZ" secondAttribute="trailing" id="hTG-gg-gHF"/>
                                                 <constraint firstItem="VbI-iQ-63S" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="52.5" id="j2h-9V-cgX"/>
                                                 <constraint firstAttribute="trailing" secondItem="bwL-il-o4M" secondAttribute="trailing" constant="95" id="nPN-nL-M6C"/>
+                                                <constraint firstItem="bwL-il-o4M" firstAttribute="top" secondItem="fCz-Vz-2kg" secondAttribute="bottom" constant="34" id="pEr-c0-mWn"/>
                                                 <constraint firstItem="gY5-Fl-BN1" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" id="qIS-Bw-GdO"/>
-                                                <constraint firstAttribute="trailing" secondItem="fCz-Vz-2kg" secondAttribute="trailing" id="wIc-hI-gWF"/>
+                                                <constraint firstItem="Yoy-mq-mEZ" firstAttribute="centerY" secondItem="VbI-iQ-63S" secondAttribute="centerY" id="qjQ-P0-PzH"/>
+                                                <constraint firstItem="fCz-Vz-2kg" firstAttribute="trailing" secondItem="gY5-Fl-BN1" secondAttribute="trailing" id="uvC-kT-fwh"/>
                                                 <constraint firstItem="Wcx-2e-Q2a" firstAttribute="top" secondItem="Wd1-Uq-q59" secondAttribute="bottom" constant="21" id="wXd-Q8-sXe"/>
-                                                <constraint firstItem="fCz-Vz-2kg" firstAttribute="top" secondItem="Yoy-mq-mEZ" secondAttribute="bottom" constant="28" id="yPw-Tf-RAN"/>
+                                                <constraint firstItem="fCz-Vz-2kg" firstAttribute="leading" secondItem="gY5-Fl-BN1" secondAttribute="leading" id="ygb-7u-hBM"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="268" height="509"/>
