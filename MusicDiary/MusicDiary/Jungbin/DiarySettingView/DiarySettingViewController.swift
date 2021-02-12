@@ -198,8 +198,10 @@ extension DiarySettingViewController:  UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as! UserTableViewCell
+       
         cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.width / 2
         cell.profileImageView.clipsToBounds = true
+        cell.profileImageView.image = nil
         cell.userNameLabel.text = newMemberList[indexPath.row].userName
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         

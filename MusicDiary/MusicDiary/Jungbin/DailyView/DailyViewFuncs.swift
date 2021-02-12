@@ -59,9 +59,21 @@ extension DailyViewController {
             }
         }
     }
+    func currentSelectedUserName(){
+        let docRef = db.collection("Users").document("\(currentOtehrUserID)")
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                print("success")
+                let dbName = document.get("userName")
+                self.nameLabel.text = dbName as? String
+            } else {
+                print("no name")
+            }
+        }
+    }
     
     func presentUserList() { // 다이어리 '한개!!!' 의 다어어리 정보 가져오는거임!!!
-        var docRef = db.collection("Diary").document("\(currentDairyId)")
+        let docRef = db.collection("Diary").document("\(currentDairyId)")
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {

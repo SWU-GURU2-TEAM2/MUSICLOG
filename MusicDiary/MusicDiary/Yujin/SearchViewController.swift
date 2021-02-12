@@ -107,6 +107,7 @@ extension SearchViewController: UITableViewDataSource {
         }
         cell.musicTitle.text = musicData[indexPath.row].musicTitle
         cell.musicArtist.text = musicData[indexPath.row].musicArtist
+        cell.musicCover.image = nil
         if let url = musicData[indexPath.row].musicCoverUrl {
             DispatchQueue.global().async {
                 let data = try? Data(contentsOf: url)

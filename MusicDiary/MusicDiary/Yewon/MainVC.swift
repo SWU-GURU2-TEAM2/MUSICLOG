@@ -110,8 +110,8 @@ class MainVC:UIViewController {
                 self.db.collection("Diary").document(ref!.documentID).updateData(["diaryID":ref!.documentID])
                 //Users diaryList update
                 self.db.collection("Users").document(currentUID).updateData(["userDiaryList": FieldValue.arrayUnion([ref!.documentID])])
-//                self.loadDiaryData()
-//                //self.mainCarousel.reloadData()
+                self.loadDiaryData()
+ //               self.mainCarousel.reloadData()
 //                self.hideWrite(date: Date())
             }
         }
@@ -180,6 +180,7 @@ extension CarouselDatasource: UICollectionViewDataSource {
         
         let start_date = dateFormat(date: self.diaryData[indexPath.row].date!)
         carouselCell.mainStartDate.text = start_date
+        carouselCell.mainDiaryImaage.image = nil
         //이미지 넣기
         carouselCell.mainDiaryImaage.layer.cornerRadius = carouselCell.mainDiaryImaage.frame.width / 2
         carouselCell.mainDiaryImaage.clipsToBounds = true
