@@ -14,6 +14,12 @@ class UserCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
+
+    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        imageView.image = nil
+
     }
     override var isSelected: Bool{
         didSet{

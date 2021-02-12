@@ -205,11 +205,9 @@ extension DiarySettingViewController:  UITableViewDelegate, UITableViewDataSourc
         cell.userNameLabel.text = newMemberList[indexPath.row].userName
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
-        DispatchQueue.global().async { let data = try? Data(contentsOf: self.newMemberList[indexPath.row].userImage!)
-            DispatchQueue.main.async {
-                cell.profileImageView.image = UIImage(data: data!)
-            }
-        }
+        DispatchQueue.main.async(execute: {
+            cell.profileImageView.image = UIImage(data:  try! Data(contentsOf: self.newMemberList[indexPath.row].userImage!))
+        })
         
         
         return cell

@@ -38,10 +38,11 @@ class MainVC:UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadDiaryData()
+        self.mainCarousel.reloadData()
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mainCarousel.reloadData()
         //Users에서 diaryList 필드 읽어오기
         
     }
@@ -188,11 +189,6 @@ extension CarouselDatasource: UICollectionViewDataSource {
         //이미지 넣기
         carouselCell.mainDiaryImaage.layer.cornerRadius = carouselCell.mainDiaryImaage.frame.width / 2
         carouselCell.mainDiaryImaage.clipsToBounds = true
-        
-        
-        
-        
-        
         do {
             try carouselCell.mainDiaryImaage.image = UIImage(data: try Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!))
             DispatchQueue.global().async { let data = try? Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!)

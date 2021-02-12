@@ -14,4 +14,9 @@ class UserTableViewCell: UITableViewCell {
         super.prepareForReuse()
         profileImageView.image = nil
     }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        profileImageView.image = nil
+
+    }
 }

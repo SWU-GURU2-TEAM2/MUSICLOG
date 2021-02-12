@@ -155,11 +155,9 @@ extension DailyViewController: UICollectionViewDataSource, UICollectionViewDeleg
         cell.imageView.clipsToBounds = true
         cell.imageView.image = nil
         
-        DispatchQueue.global().async { let data = try? Data(contentsOf: self.newMemberList[indexPath.row].userImage!)
-            DispatchQueue.main.async {
-                cell.imageView.image = UIImage(data: data!)
-            }
-        }
+        DispatchQueue.main.async(execute: {
+            cell.imageView.image = UIImage(data:  try! Data(contentsOf: self.newMemberList[indexPath.row].userImage!))
+        })
         
         
         return cell
