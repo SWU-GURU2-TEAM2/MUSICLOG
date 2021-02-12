@@ -11,7 +11,10 @@ class UserCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     // 유저 목록 불러오기
-   
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+    }
     override var isSelected: Bool{
         didSet{
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {

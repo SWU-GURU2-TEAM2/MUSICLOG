@@ -73,6 +73,7 @@ extension DailyViewController {
     }
     
     func presentUserList() { // 다이어리 '한개!!!' 의 다어어리 정보 가져오는거임!!!
+        newMemberList = []
         let docRef = db.collection("Diary").document("\(currentDairyId)")
         
         docRef.getDocument { (document, error) in

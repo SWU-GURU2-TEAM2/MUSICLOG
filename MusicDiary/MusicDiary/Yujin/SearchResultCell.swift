@@ -12,4 +12,8 @@ class SearchResultCell: UITableViewCell {
     @IBOutlet weak var musicTitle: UILabel!
     @IBOutlet weak var musicCover: UIImageView!
     @IBOutlet weak var dataBackground: UIImageView!
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        musicCover.image = nil
+    }
 }

@@ -166,6 +166,10 @@ class MainCell: ScalingCarouselCell {
     @IBOutlet weak var mainDiaryName: UILabel!
     @IBOutlet weak var mainStartDate: UILabel!
     @IBOutlet weak var mainMemberInfo: UIImageView!
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        mainDiaryImaage.image = nil
+    }
 }
 
 typealias CarouselDatasource = MainVC

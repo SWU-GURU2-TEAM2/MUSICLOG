@@ -153,7 +153,6 @@ extension AppSettingViewController: UIImagePickerControllerDelegate, UINavigatio
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        print("OKKKKKKKKKKKK")
         self.imagePicker.dismiss(animated: true, completion: nil)
         guard let selectedImage = info[.originalImage] as? UIImage else {
             print("no selectedImage")
