@@ -140,29 +140,6 @@ extension AppSettingViewController: UIImagePickerControllerDelegate, UINavigatio
             self.present(vc, animated: true, completion: nil)
             delegate = self
             
-//            switch PHPhotoLibrary.authorizationStatus() {
-//            case .authorized:
-//                print("authOK")
-//                self.showGallary()
-//            case .notDetermined:
-//                print("notDT")
-//                PHPhotoLibrary.requestAuthorization(for: .readWrite) { (status) in }
-//            default:
-//                print("default")
-//                let alertVC = UIAlertController(title: "권한 필요", message: "설정에서 변경하세요.", preferredStyle: .alert)
-//                let actionSetting = UIAlertAction(title: "OK", style: .default) { (action) in
-//                    print("OKSet")
-//                    if let appSetting = URL(string: UIApplication.openSettingsURLString) {
-//                        UIApplication.shared.open(appSetting, options: [:], completionHandler: nil)
-//                    }
-//                }
-//                let actionCancel = UIAlertAction(title: "CANCEL", style: .cancel) { (action) in
-//                    print("cancelset")
-//                }
-//                alertVC.addAction(actionCancel)
-//                alertVC.addAction(actionSetting)
-//                self.present(alertVC, animated: true, completion: nil)
-//            }
         }
         actionSheet.addAction(actionGallary)
         present(actionSheet, animated: true, completion: nil)
@@ -176,7 +153,6 @@ extension AppSettingViewController: UIImagePickerControllerDelegate, UINavigatio
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        print("OKKKKKKKKKKKK")
         self.imagePicker.dismiss(animated: true, completion: nil)
         guard let selectedImage = info[.originalImage] as? UIImage else {
             print("no selectedImage")

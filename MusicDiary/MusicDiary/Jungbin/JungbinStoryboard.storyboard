@@ -170,10 +170,28 @@
                                     <outlet property="delegate" destination="ovr-HE-iz2" id="GZb-80-CRo"/>
                                 </connections>
                             </collectionView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DiaryNameBox" translatesAutoresizingMaskIntoConstraints="NO" id="Nne-3X-NVQ">
+                                <rect key="frame" x="112" y="758" width="190" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="JQj-g5-sRG"/>
+                                    <constraint firstAttribute="width" constant="190" id="K5a-2s-evn"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yh-Sa-EZF">
+                                <rect key="frame" x="144" y="782" width="126" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="126" id="DLt-6H-6Ef"/>
+                                    <constraint firstAttribute="height" constant="21" id="qO4-AV-So1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mXS-M6-D5H"/>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Nne-3X-NVQ" firstAttribute="top" secondItem="jHm-dy-ctp" secondAttribute="bottom" constant="53" id="1Kv-Ze-igE"/>
                             <constraint firstItem="ZbY-AK-8Dn" firstAttribute="firstBaseline" secondItem="JXe-zS-NlE" secondAttribute="firstBaseline" id="1V9-EY-A4H"/>
                             <constraint firstItem="320-oe-fxE" firstAttribute="top" secondItem="mXS-M6-D5H" secondAttribute="top" constant="148" id="4NP-6o-wFd"/>
                             <constraint firstItem="ZbY-AK-8Dn" firstAttribute="centerY" secondItem="JXe-zS-NlE" secondAttribute="centerY" id="DMx-58-TYc"/>
@@ -184,14 +202,19 @@
                             <constraint firstItem="Nod-Az-GxQ" firstAttribute="leading" secondItem="mXS-M6-D5H" secondAttribute="leading" constant="51" id="QEx-tb-U1H"/>
                             <constraint firstItem="Nod-Az-GxQ" firstAttribute="top" secondItem="ZbY-AK-8Dn" secondAttribute="bottom" constant="18" id="RBS-y9-5JF"/>
                             <constraint firstItem="320-oe-fxE" firstAttribute="leading" secondItem="mXS-M6-D5H" secondAttribute="leading" constant="20" id="RDm-5A-511"/>
+                            <constraint firstItem="mXS-M6-D5H" firstAttribute="trailing" secondItem="4yh-Sa-EZF" secondAttribute="trailing" constant="144" id="VVa-l5-EOQ"/>
+                            <constraint firstItem="4yh-Sa-EZF" firstAttribute="top" secondItem="Gv6-so-eqH" secondAttribute="bottom" constant="21" id="aak-Ig-KI6"/>
                             <constraint firstItem="mXS-M6-D5H" firstAttribute="trailing" secondItem="ZbY-AK-8Dn" secondAttribute="trailing" constant="17" id="bSh-fa-cVk"/>
                             <constraint firstItem="mXS-M6-D5H" firstAttribute="bottom" secondItem="Gv6-so-eqH" secondAttribute="bottom" constant="101" id="d1K-is-xue"/>
                             <constraint firstItem="JXe-zS-NlE" firstAttribute="top" secondItem="mXS-M6-D5H" secondAttribute="top" id="dYc-2l-0Gp"/>
                             <constraint firstItem="JXe-zS-NlE" firstAttribute="firstBaseline" secondItem="ZbY-AK-8Dn" secondAttribute="firstBaseline" id="f7R-Jf-RfU"/>
                             <constraint firstItem="mXS-M6-D5H" firstAttribute="trailing" secondItem="Gv6-so-eqH" secondAttribute="trailing" constant="66" id="fMG-cT-yi0"/>
                             <constraint firstItem="IbN-vm-OAh" firstAttribute="top" secondItem="320-oe-fxE" secondAttribute="bottom" constant="56" id="gJV-gi-MmT"/>
+                            <constraint firstItem="4yh-Sa-EZF" firstAttribute="leading" secondItem="mXS-M6-D5H" secondAttribute="leading" constant="144" id="get-Ut-bdA"/>
                             <constraint firstAttribute="bottom" secondItem="320-oe-fxE" secondAttribute="bottom" constant="329" id="i3g-kh-boP"/>
+                            <constraint firstItem="Nne-3X-NVQ" firstAttribute="leading" secondItem="mXS-M6-D5H" secondAttribute="leading" constant="112" id="kBt-kJ-Ila"/>
                             <constraint firstItem="mXS-M6-D5H" firstAttribute="trailing" secondItem="320-oe-fxE" secondAttribute="trailing" constant="20" id="kum-DE-1bn"/>
+                            <constraint firstItem="mXS-M6-D5H" firstAttribute="trailing" secondItem="Nne-3X-NVQ" secondAttribute="trailing" constant="112" id="nG5-05-qXk"/>
                             <constraint firstItem="IbN-vm-OAh" firstAttribute="leading" secondItem="mXS-M6-D5H" secondAttribute="leading" constant="43" id="qEK-NY-6Nj"/>
                         </constraints>
                     </view>
@@ -200,6 +223,7 @@
                         <outlet property="collectionView" destination="Nod-Az-GxQ" id="cji-YL-CW3"/>
                         <outlet property="goDetailBtn" destination="cYE-9a-C0d" id="qUJ-7l-5am"/>
                         <outlet property="imageView" destination="IbN-vm-OAh" id="6SM-wf-7x3"/>
+                        <outlet property="nameLabel" destination="4yh-Sa-EZF" id="h1K-l9-DZB"/>
                         <outlet property="noDataLabel" destination="jHm-dy-ctp" id="kf5-pg-EhO"/>
                         <outlet property="titleLabel" destination="Gv6-so-eqH" id="z7j-WT-31m"/>
                     </connections>
@@ -872,6 +896,7 @@
         <image name="Detail_editBtn" width="74" height="74"/>
         <image name="Detail_removeBtn" width="74" height="74"/>
         <image name="Detail_shareBtn" width="74" height="74"/>
+        <image name="DiaryNameBox" width="157" height="74"/>
         <image name="DiarySetting_BG" width="346" height="405"/>
         <image name="DiarySetting_addUserBtn" width="72" height="72"/>
         <image name="DiarySetting_backBtn" width="51" height="51"/>

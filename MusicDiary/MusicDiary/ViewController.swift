@@ -20,11 +20,9 @@ class ViewController: UIViewController {
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        print("open")
         let vc = UIStoryboard(name: "YujinStoryboard", bundle: nil).instantiateViewController(identifier: "IntroView")
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion:  nil)
-        print("wan")
     }
     
 

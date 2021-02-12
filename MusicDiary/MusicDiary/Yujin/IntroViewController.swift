@@ -23,7 +23,6 @@ class IntroViewController: UIViewController, FUIAuthDelegate, UIGestureRecognize
     //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hi there")
         //swipeGestureControl
         let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeGestured(_:)))
         swipeGestureRecognizer.direction = UISwipeGestureRecognizer.Direction.up

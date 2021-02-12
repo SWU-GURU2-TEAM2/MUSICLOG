@@ -19,7 +19,6 @@ extension DailyViewController {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    print("지금 읽어오는 문서: ", document)
                     let getContent = document.data()
                     currentContentData = ContentData(
                         authorID: getContent["authorID"] as! String,
@@ -60,18 +59,27 @@ extension DailyViewController {
             }
         }
     }
+    func currentSelectedUserName(){
+        let docRef = db.collection("Users").document("\(currentOtehrUserID)")
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                print("success")
+                let dbName = document.get("userName")
+                self.nameLabel.text = dbName as? String
+            } else {
+                print("no name")
+            }
+        }
+    }
     
     func presentUserList() { // 다이어리 '한개!!!' 의 다어어리 정보 가져오는거임!!!
-        var docRef = db.collection("Diary").document("\(currentDairyId)")
+        newMemberList = []
+        let docRef = db.collection("Diary").document("\(currentDairyId)")
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 let dataDescription = document.data()
                 self.newMemberIDList = (dataDescription!["memberList"] as? [String])!
-                
-                print("member list: ", self.newMemberIDList)
-                
-                
                 for member in self.newMemberIDList {
                     self.db.collection("Users").document("\(member)").getDocument { (document, error) in
                         if let newdoc = document, ((document?.exists) != nil) {
@@ -81,7 +89,6 @@ extension DailyViewController {
                                                         userId: newDescription!["userID"] as? String,
                                                         userImage: URL(string: (newDescription!["userImage"]! as? String)!),
                                                         userDiaryList: newDescription!["userDiaryList"]! as? [String]))
-                            print("new member name: ", self.newMemberList)
                             self.newMemberList.sort{$0.userName! < $1.userName!} 
                             self.collectionView.reloadData()
                             

@@ -38,10 +38,11 @@ class MainVC:UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadDiaryData()
+        self.mainCarousel.reloadData()
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mainCarousel.reloadData()
         //Users에서 diaryList 필드 읽어오기
         
     }
@@ -110,8 +111,8 @@ class MainVC:UIViewController {
                 self.db.collection("Diary").document(ref!.documentID).updateData(["diaryID":ref!.documentID])
                 //Users diaryList update
                 self.db.collection("Users").document(currentUID).updateData(["userDiaryList": FieldValue.arrayUnion([ref!.documentID])])
-//                self.loadDiaryData()
-//                //self.mainCarousel.reloadData()
+                self.loadDiaryData()
+ //               self.mainCarousel.reloadData()
 //                self.hideWrite(date: Date())
             }
         }
@@ -166,6 +167,10 @@ class MainCell: ScalingCarouselCell {
     @IBOutlet weak var mainDiaryName: UILabel!
     @IBOutlet weak var mainStartDate: UILabel!
     @IBOutlet weak var mainMemberInfo: UIImageView!
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        mainDiaryImaage.image = nil
+    }
 }
 
 typealias CarouselDatasource = MainVC
@@ -180,14 +185,10 @@ extension CarouselDatasource: UICollectionViewDataSource {
         
         let start_date = dateFormat(date: self.diaryData[indexPath.row].date!)
         carouselCell.mainStartDate.text = start_date
+        carouselCell.mainDiaryImaage.image = nil
         //이미지 넣기
         carouselCell.mainDiaryImaage.layer.cornerRadius = carouselCell.mainDiaryImaage.frame.width / 2
         carouselCell.mainDiaryImaage.clipsToBounds = true
-        
-        
-        
-        
-        
         do {
             try carouselCell.mainDiaryImaage.image = UIImage(data: try Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!))
             DispatchQueue.global().async { let data = try? Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!)

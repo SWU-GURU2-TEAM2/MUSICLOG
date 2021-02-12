@@ -58,6 +58,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
     @IBAction func goSearchBtn(_ sender: Any) {
         let board = UIStoryboard(name: "YujinStoryboard", bundle: nil)
         guard let vc = board.instantiateViewController(identifier: "SearchBoardView") as? SearchBoardViewController else {return}
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
         delegate = self
     }
@@ -197,16 +198,16 @@ extension DiarySettingViewController:  UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as! UserTableViewCell
+       
         cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.width / 2
         cell.profileImageView.clipsToBounds = true
+        cell.profileImageView.image = nil
         cell.userNameLabel.text = newMemberList[indexPath.row].userName
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
-        DispatchQueue.global().async { let data = try? Data(contentsOf: self.newMemberList[indexPath.row].userImage!)
-            DispatchQueue.main.async {
-                cell.profileImageView.image = UIImage(data: data!)
-            }
-        }
+        DispatchQueue.main.async(execute: {
+            cell.profileImageView.image = UIImage(data:  try! Data(contentsOf: self.newMemberList[indexPath.row].userImage!))
+        })
         
         
         return cell

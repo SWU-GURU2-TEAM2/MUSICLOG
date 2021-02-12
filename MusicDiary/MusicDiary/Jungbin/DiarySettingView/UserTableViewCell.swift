@@ -10,4 +10,13 @@ class UserTableViewCell: UITableViewCell {
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        profileImageView.image = nil
+    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        profileImageView.image = nil
+
+    }
 }
