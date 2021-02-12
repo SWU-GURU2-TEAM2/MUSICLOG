@@ -1,4 +1,4 @@
-# 2021 SWU GURU2 Hackathon
+# 2021 SWU GURU2 Hackathon (iOS) - 2조
 # MUSIC LOG
 오늘의 음악을 선택하여 나만의 다이어리 혹은 공유 다이어리를 작성하세요!
 
