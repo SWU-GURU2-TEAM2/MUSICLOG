@@ -65,7 +65,7 @@ class DetailViewController: UIViewController {
         let ok = UIAlertAction(title: "삭제할래요", style: .default) { (_) in
             print("삭제들어옴")
             print("\(currentContentID)")
-            self.db.collection("Diary").document(currentDairyId).collection("Contents").document(currentContentID!).delete() { err in
+            self.db.collection("Diary").document(daily_currentDiaryID).collection("Contents").document(currentContentID!).delete() { err in
                 if let err = err {
                     print("Error removing document: \(err)")
                 } else {
