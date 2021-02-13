@@ -30,10 +30,10 @@ class DailyViewController: UIViewController, FSCalendarDelegate, FSCalendarDataS
     var newMemberIDList: [String] = []
     var result = 0
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(true)
         presentUserList()
         getContentsListForDaily(date: Date())
-
+        collectionView.reloadData()
         
     }
     override func viewDidLoad() {

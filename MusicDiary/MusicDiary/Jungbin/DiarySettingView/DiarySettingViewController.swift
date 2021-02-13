@@ -46,6 +46,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
     var getMusic:MusicStruct!
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("current diary id: ", currentDairyId)
         tableView.dataSource = self
         tableView.delegate = self
         imageView.layer.cornerRadius = imageView.frame.width / 2
