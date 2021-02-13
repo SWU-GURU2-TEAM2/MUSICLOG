@@ -43,7 +43,7 @@ class SearchViewController: UIViewController {
         //텍스트필드의 값 확인
         searchKeyword = searchTextField.text ?? ""
         if searchKeyword != "" {
-            searchKeyword = searchKeyword.replacingOccurrences(of: " ", with: "%20")
+            searchKeyword = searchKeyword.replacingOccurrences(of: " ", with: "")
             let urlString = "http://www.maniadb.com/api/search/\(searchKeyword)/?sr=song&display=100&key=jgkyj@naver.com&v=0.5"
             let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             let convertedUrl = URL(string: encodedString)!
@@ -119,7 +119,6 @@ extension SearchViewController: UITableViewDataSource {
             }
         }
 
-        cell.dataBackground.layer.cornerRadius = 28
         cell.musicCover.layer.cornerRadius = 35
         cell.backgroundColor = .clear
         return cell

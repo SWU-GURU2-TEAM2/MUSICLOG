@@ -106,32 +106,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="316" height="121"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JSi-hG-RsN">
-                                                    <rect key="frame" x="112" y="16" width="178" height="71"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="0.19299245670141763" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search_cellBG" translatesAutoresizingMaskIntoConstraints="NO" id="JSi-hG-RsN">
+                                                    <rect key="frame" x="105" y="16" width="195" height="71"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="178" id="6LT-2c-ddO"/>
+                                                        <constraint firstAttribute="width" constant="195" id="6LT-2c-ddO"/>
                                                         <constraint firstAttribute="height" constant="71" id="M9Z-li-jMm"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="songName" text="노래제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auB-wO-glD">
-                                                    <rect key="frame" x="127" y="33" width="150" height="15"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="MrM-3v-X6W"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="artist" text="가수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wax-zq-b5b">
-                                                    <rect key="frame" x="127" y="50" width="150" height="15"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="w6y-S6-dEb"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="albumImage" image="MainStandardImage" translatesAutoresizingMaskIntoConstraints="NO" id="Cll-7m-EDr">
                                                     <rect key="frame" x="26" y="16" width="71" height="71"/>
                                                     <constraints>
@@ -139,8 +120,25 @@
                                                         <constraint firstAttribute="width" constant="71" id="VZp-oz-oF0"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="songName" text="노래제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auB-wO-glD">
+                                                    <rect key="frame" x="127" y="35" width="150" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="MrM-3v-X6W"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="artist" text="가수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wax-zq-b5b">
+                                                    <rect key="frame" x="127" y="52" width="150" height="13"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="w6y-S6-dEb"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="Cll-7m-EDr" firstAttribute="leading" secondItem="G1h-jo-oVv" secondAttribute="leadingMargin" constant="10" id="3Dq-4P-3TM"/>
                                                 <constraint firstItem="Wax-zq-b5b" firstAttribute="leading" secondItem="Cll-7m-EDr" secondAttribute="trailing" constant="30" id="OMb-vM-BVZ"/>
@@ -148,8 +146,8 @@
                                                 <constraint firstItem="Wax-zq-b5b" firstAttribute="top" secondItem="auB-wO-glD" secondAttribute="bottom" constant="2" id="Wl6-Ie-IhX"/>
                                                 <constraint firstItem="auB-wO-glD" firstAttribute="leading" secondItem="Cll-7m-EDr" secondAttribute="trailing" constant="30" id="dRu-65-IEr"/>
                                                 <constraint firstItem="JSi-hG-RsN" firstAttribute="top" secondItem="G1h-jo-oVv" secondAttribute="topMargin" constant="5" id="gca-Lp-vBD"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="JSi-hG-RsN" secondAttribute="trailing" constant="10" id="jPU-Wj-hmR"/>
-                                                <constraint firstItem="auB-wO-glD" firstAttribute="top" secondItem="G1h-jo-oVv" secondAttribute="topMargin" constant="22" id="qju-Ti-EL2"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="JSi-hG-RsN" secondAttribute="trailing" id="jPU-Wj-hmR"/>
+                                                <constraint firstItem="auB-wO-glD" firstAttribute="top" secondItem="G1h-jo-oVv" secondAttribute="topMargin" constant="24" id="qju-Ti-EL2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -189,9 +187,9 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="searchTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  오늘의 음악은 무엇인가요?" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HOL-qm-71F">
-                                <rect key="frame" x="34" y="24" width="188" height="47"/>
+                                <rect key="frame" x="43" y="24" width="179" height="47"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="188" id="cwe-f9-GnA"/>
+                                    <constraint firstAttribute="width" constant="179" id="cwe-f9-GnA"/>
                                     <constraint firstAttribute="height" constant="47" id="e11-jy-4bs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="13"/>
@@ -215,7 +213,7 @@
                             <constraint firstItem="ip0-IC-WwC" firstAttribute="leading" secondItem="Say-IT-0HO" secondAttribute="leading" id="h9Q-jL-TZZ"/>
                             <constraint firstItem="ip0-IC-WwC" firstAttribute="trailing" secondItem="Say-IT-0HO" secondAttribute="trailing" id="is8-QT-iho"/>
                             <constraint firstItem="7vD-6G-MFr" firstAttribute="leading" secondItem="Say-IT-0HO" secondAttribute="leading" constant="24" id="mdJ-BL-odE"/>
-                            <constraint firstItem="HOL-qm-71F" firstAttribute="leading" secondItem="Say-IT-0HO" secondAttribute="leading" constant="34" id="mxf-fY-koU"/>
+                            <constraint firstItem="HOL-qm-71F" firstAttribute="leading" secondItem="Say-IT-0HO" secondAttribute="leading" constant="43" id="mxf-fY-koU"/>
                             <constraint firstItem="7vD-6G-MFr" firstAttribute="top" secondItem="Gdu-Q0-s9v" secondAttribute="top" constant="22" id="rNK-Py-PzC"/>
                             <constraint firstItem="MrJ-09-Cb1" firstAttribute="trailing" secondItem="Say-IT-0HO" secondAttribute="trailing" id="vJ7-fV-g7O"/>
                             <constraint firstItem="cC7-r0-zRs" firstAttribute="centerX" secondItem="F10-QX-onl" secondAttribute="centerX" id="xvV-cA-h1D"/>
@@ -433,6 +431,7 @@
         <image name="MainStandardImage" width="150" height="150"/>
         <image name="Search_backButton" width="51" height="51"/>
         <image name="Search_background2" width="316" height="721"/>
+        <image name="Search_cellBG" width="178" height="73"/>
         <image name="Search_confirmButton" width="86" height="86"/>
         <image name="Search_searchBar" width="208" height="47"/>
         <image name="logo" width="273" height="272"/>
