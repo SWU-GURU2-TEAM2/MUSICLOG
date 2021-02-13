@@ -3,7 +3,6 @@
 //  MusicDiary
 //
 //  Created by 1v1 on 2021/02/07.
-// 다이어리 세팅 다이어리 음악 추가 버튼 작동. 유저 추가 새로고침
 
 import UIKit
 import Firebase
@@ -20,7 +19,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
                 
             }
         }
-        let docRef = self.db.collection("Diary").document("\(currentDairyId)")
+        let docRef = self.db.collection("Diary").document("\(daily_currentDiaryID)")
         docRef.updateData([
                             "diaryMusicTitle" : self.getMusic.musicTitle!,
                             "diaryMusicArtist" : self.getMusic.musicArtist!,
@@ -46,7 +45,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
     var getMusic:MusicStruct!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("current diary id: ", currentDairyId)
+        print("current diary id: ", daily_currentDiaryID)
         tableView.dataSource = self
         tableView.delegate = self
         imageView.layer.cornerRadius = imageView.frame.width / 2
@@ -72,7 +71,7 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
         }//addTextField
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
             if let changedName = alert.textFields![0].text, changedName != ""{
-                let docRef = self.db.collection("Diary").document("\(currentDairyId)")
+                let docRef = self.db.collection("Diary").document("\(daily_currentDiaryID)")
                 docRef.updateData([
                     "diaryName": "\(changedName)"
                 ]) { err in
@@ -135,12 +134,12 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
         self.present(alert, animated: false, completion: nil)
     }
     func addUser(targetID: String) {
-        db.collection("Diary").document(currentDairyId).updateData(["memberList" : FieldValue.arrayUnion([targetID])])
-        db.collection("Users").document(targetID).updateData(["userDiaryList" : FieldValue.arrayUnion([currentDairyId])])
+        db.collection("Diary").document(daily_currentDiaryID).updateData(["memberList" : FieldValue.arrayUnion([targetID])])
+        db.collection("Users").document(targetID).updateData(["userDiaryList" : FieldValue.arrayUnion([daily_currentDiaryID])])
         presentDiaryDataForSetting()
     }
     func presentDiaryDataForSetting() { // 다이어리 '한개!!!' 의 다어어리 정보 가져오는거임!!!
-        var docRef = db.collection("Diary").document("\(currentDairyId)")
+        let docRef = db.collection("Diary").document("\(daily_currentDiaryID)")
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {

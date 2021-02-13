@@ -13,8 +13,8 @@ import Firebase
 var currentDairyUserList:[String]!
 var currentContentData = ContentData()
 var currentContentID:String?
-var currentOtehrUserID = currentUID
 var events:[Date] = []
+var daily_currentDiaryID = currentDairyId
 
 class DailyViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
     var datesWithEvent = [Date(), Date()-86400]
@@ -29,18 +29,25 @@ class DailyViewController: UIViewController, FSCalendarDelegate, FSCalendarDataS
     var newMemberList: [UserStructure] = []
     var newMemberIDList: [String] = []
     var result = 0
+    var currentotherUserID = currentUID
+
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        daily_currentDiaryID = currentDairyId
         presentUserList()
         getContentsListForDaily(date: Date())
+        loadDateForCalendar()
+        currentSelectedUserName()
         collectionView.reloadData()
+        calendar.reloadData()
+        print("current diary id in Daily: ", daily_currentDiaryID)
         
     }
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        loadDateForCalendar()
-        currentSelectedUserName()
+
         imageView.layer.cornerRadius = imageView.frame.width / 2
         imageView.clipsToBounds = true
         noDataLabel.alpha = 0
@@ -66,9 +73,6 @@ class DailyViewController: UIViewController, FSCalendarDelegate, FSCalendarDataS
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func goDetail(_ sender: Any) {
-        print("go detail")
-        
-        
     }
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         return UIImage(contentsOfFile: "Daily_calendarHeader")
@@ -92,11 +96,9 @@ class DailyViewController: UIViewController, FSCalendarDelegate, FSCalendarDataS
     }
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         if events.contains(date){
-            print("result: ",self.result)
             return 1
         }
         else {
-            print("result: ",self.result)
             return 0
         }
         
@@ -109,7 +111,7 @@ class DailyViewController: UIViewController, FSCalendarDelegate, FSCalendarDataS
         let calendar = Calendar.current
         currentContentData.musicTitle = ""
         DispatchQueue.global().sync {
-            self.db.collection("Diary").document("\(currentDairyId)").collection("Contents").whereField("authorID", isEqualTo: "\(currentOtehrUserID)").getDocuments() { (querySnapshot, err) in
+            self.db.collection("Diary").document("\(daily_currentDiaryID)").collection("Contents").whereField("authorID", isEqualTo: "\(currentotherUserID)").getDocuments() { (querySnapshot, err) in
                         if let err = err {
                             print("Error getting documents: \(err)")
                         } else {
@@ -119,7 +121,6 @@ class DailyViewController: UIViewController, FSCalendarDelegate, FSCalendarDataS
                                     let getContent = document.data()
                                     events.append(calendar.startOfDay(for: Date(timeIntervalSince1970: TimeInterval((getContent["date"] as! Timestamp).seconds))))
                                 }
-                                print("엘스 안에서 이벤트: ", events)
                                 self.calendar.reloadData()
                                 
                             }
@@ -139,8 +140,8 @@ extension DailyViewController: UICollectionViewDataSource, UICollectionViewDeleg
         return self.newMemberList.count
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        currentOtehrUserID = newMemberList[indexPath.row].userId!
-        print("select id: ", currentOtehrUserID)
+        currentotherUserID = newMemberList[indexPath.row].userId!
+        print("select id: ", currentotherUserID)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
         getContentsListForDaily(date: Date())

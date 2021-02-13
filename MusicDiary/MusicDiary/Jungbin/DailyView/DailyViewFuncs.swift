@@ -14,7 +14,7 @@ extension DailyViewController {
         currentContentData.musicTitle = ""
         
         // 다이어리내용 불러오기
-        db.collection("Diary").document("\(currentDairyId)").collection("Contents") .whereField("date", isGreaterThanOrEqualTo: calendar.startOfDay(for: date)).whereField("date", isLessThan: calendar.startOfDay(for: date)+86400).whereField("authorID", isEqualTo: "\(currentOtehrUserID)").getDocuments() { (querySnapshot, err) in
+        db.collection("Diary").document("\(daily_currentDiaryID)").collection("Contents") .whereField("date", isGreaterThanOrEqualTo: calendar.startOfDay(for: date)).whereField("date", isLessThan: calendar.startOfDay(for: date)+86400).whereField("authorID", isEqualTo: "\(currentotherUserID)").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -60,7 +60,7 @@ extension DailyViewController {
         }
     }
     func currentSelectedUserName(){
-        let docRef = db.collection("Users").document("\(currentOtehrUserID)")
+        let docRef = db.collection("Users").document("\(currentotherUserID)")
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 print("success")
@@ -74,7 +74,7 @@ extension DailyViewController {
     
     func presentUserList() { // 다이어리 '한개!!!' 의 다어어리 정보 가져오는거임!!!
         newMemberList = []
-        let docRef = db.collection("Diary").document("\(currentDairyId)")
+        let docRef = db.collection("Diary").document("\(daily_currentDiaryID)")
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {

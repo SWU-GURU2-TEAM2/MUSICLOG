@@ -39,7 +39,7 @@ class EditViewController: UIViewController, SendDataDelegate {
     
     
     override func viewDidLoad() {
-        print("current Diary id: ", currentDairyId)
+        print("current Diary id: ", daily_currentDiaryID)
         print("current content id: ", currentContentID!)
        
         super.viewDidLoad()
@@ -54,7 +54,7 @@ class EditViewController: UIViewController, SendDataDelegate {
         
     }
     @IBAction func tapSaveBtn(_ sender: Any) {
-        let docRef = db.collection("Diary").document("\(currentDairyId)").collection("Contents").document("\(currentContentID!)")
+        let docRef = db.collection("Diary").document("\(daily_currentDiaryID)").collection("Contents").document("\(currentContentID!)")
 
         docRef.updateData( [
             "contentText":"\(textView.text!)",
@@ -90,7 +90,7 @@ class EditViewController: UIViewController, SendDataDelegate {
         self.writeView.frame.origin.y = 355
         }
     func presentData() {
-        let docRef = db.collection("Diary").document("\(currentDairyId)").collection("Contents").document("\(currentContentID!)")
+        let docRef = db.collection("Diary").document("\(daily_currentDiaryID)").collection("Contents").document("\(currentContentID!)")
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
