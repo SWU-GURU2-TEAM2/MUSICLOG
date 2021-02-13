@@ -38,7 +38,7 @@ class IntroViewController: UIViewController, FUIAuthDelegate, UIGestureRecognize
     
     //swipeGesture
     @objc func swipeGestured(_ sender: Any) {
-        print("swiped")
+        
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             //만약 로그인 했다면
             if let currentUser = auth.currentUser {

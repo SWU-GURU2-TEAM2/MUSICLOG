@@ -15,8 +15,6 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
         DispatchQueue.global().async { let data = try? Data(contentsOf: self.getMusic.musicCoverUrl!)
             DispatchQueue.main.async {
                 self.imageView.image = UIImage(data: data!)
-                print("*** getMusic: ", self.getMusic)
-                
             }
         }
         let docRef = self.db.collection("Diary").document("\(daily_currentDiaryID)")
@@ -45,7 +43,6 @@ class DiarySettingViewController: UIViewController, SendDataDelegate {
     var getMusic:MusicStruct!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("current diary id: ", daily_currentDiaryID)
         tableView.dataSource = self
         tableView.delegate = self
         imageView.layer.cornerRadius = imageView.frame.width / 2

@@ -41,7 +41,6 @@ class DailyViewController: UIViewController, FSCalendarDelegate, FSCalendarDataS
         currentSelectedUserName()
         collectionView.reloadData()
         calendar.reloadData()
-        print("current diary id in Daily: ", daily_currentDiaryID)
         
     }
     override func viewDidLoad() {
@@ -141,7 +140,6 @@ extension DailyViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         currentotherUserID = newMemberList[indexPath.row].userId!
-        print("select id: ", currentotherUserID)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
         getContentsListForDaily(date: Date())

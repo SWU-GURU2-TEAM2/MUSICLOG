@@ -48,13 +48,12 @@ class MainVC:UIViewController {
     }
     func loadDiaryData(){
         let currentCenterIndex = 0
-        print("current센터인덱스 초기화")
         self.diaryData = []
         db.collection("Users").document(currentUID).getDocument { (document, error) in
             if let document = document, document.exists {
                 let dataDescription = document.data()
                 self.getDiaryList = (dataDescription!["userDiaryList"] as? [String])!
-                print("diary list : ", self.getDiaryList)
+                
                 //Diary에서 getDiaryList랑 맞는 거 읽어오기
                 for currentDId in self.getDiaryList {
                     let docRef = self.db.collection("Diary").document("\(currentDId)")
@@ -78,7 +77,7 @@ class MainVC:UIViewController {
                             
                         }
                         let oneDiaryID = self.diaryData[currentCenterIndex]
-                        print("curr 왓더 여기니: ", currentCenterIndex)
+                        
                         currentDairyId = oneDiaryID.diaryId!
                         hideWrite(date: Date())
                         self.mainCarousel.reloadData()
@@ -220,8 +219,7 @@ extension MainVC: UICollectionViewDelegate {
         //center Cell 의 documentID 저장
         
         currentDairyId = self.diaryData[currentCenterIndex].diaryId!
-        print("curr지금이거: ", currentCenterIndex)
-        print("currendDiaryID: ", self.diaryData[currentCenterIndex].diaryId!)
+        
         hideWrite(date: Date())
     }
     
