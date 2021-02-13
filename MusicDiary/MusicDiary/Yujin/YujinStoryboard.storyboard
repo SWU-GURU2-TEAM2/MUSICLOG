@@ -108,7 +108,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JSi-hG-RsN">
                                                     <rect key="frame" x="112" y="16" width="178" height="71"/>
-                                                    <color key="backgroundColor" red="0.66274509803921566" green="0.6588235294117647" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="0.19299245670141763" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="178" id="6LT-2c-ddO"/>
                                                         <constraint firstAttribute="height" constant="71" id="M9Z-li-jMm"/>
@@ -171,6 +171,13 @@
                                     <constraint firstAttribute="width" secondItem="cC7-r0-zRs" secondAttribute="height" multiplier="1:1" id="twy-em-Zdr"/>
                                 </constraints>
                             </activityIndicatorView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search_searchBar" translatesAutoresizingMaskIntoConstraints="NO" id="7vD-6G-MFr">
+                                <rect key="frame" x="24" y="22" width="208" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="W1X-a7-vLT"/>
+                                    <constraint firstAttribute="width" constant="208" id="mwl-KG-cHc"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrJ-09-Cb1">
                                 <rect key="frame" x="230" y="0.0" width="86" height="86"/>
                                 <constraints>
@@ -181,10 +188,10 @@
                                     <action selector="searchButtonPressed:" destination="IPH-9v-jSQ" eventType="touchUpInside" id="qo9-sz-fck"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="searchTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="  오늘의 음악은 무엇인가요?" textAlignment="natural" minimumFontSize="17" background="Search_searchBar" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HOL-qm-71F">
-                                <rect key="frame" x="24" y="24" width="208" height="47"/>
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="searchTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  오늘의 음악은 무엇인가요?" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HOL-qm-71F">
+                                <rect key="frame" x="34" y="24" width="188" height="47"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="208" id="cwe-f9-GnA"/>
+                                    <constraint firstAttribute="width" constant="188" id="cwe-f9-GnA"/>
                                     <constraint firstAttribute="height" constant="47" id="e11-jy-4bs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="13"/>
@@ -195,6 +202,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cC7-r0-zRs" firstAttribute="leading" secondItem="Say-IT-0HO" secondAttribute="leading" constant="116" id="CGL-Hz-DJ1"/>
+                            <constraint firstItem="Say-IT-0HO" firstAttribute="trailing" secondItem="7vD-6G-MFr" secondAttribute="trailing" constant="84" id="Etd-Dh-g0r"/>
                             <constraint firstItem="HOL-qm-71F" firstAttribute="top" secondItem="Gdu-Q0-s9v" secondAttribute="top" constant="24" id="Pib-5f-6Cj"/>
                             <constraint firstItem="Say-IT-0HO" firstAttribute="bottom" secondItem="cC7-r0-zRs" secondAttribute="bottom" constant="300" id="Q2x-Ib-oQU"/>
                             <constraint firstItem="F10-QX-onl" firstAttribute="leading" secondItem="ip0-IC-WwC" secondAttribute="leading" id="T5S-E4-PBV"/>
@@ -206,7 +214,9 @@
                             <constraint firstItem="F10-QX-onl" firstAttribute="bottom" secondItem="ip0-IC-WwC" secondAttribute="bottom" id="fET-Kv-j8f"/>
                             <constraint firstItem="ip0-IC-WwC" firstAttribute="leading" secondItem="Say-IT-0HO" secondAttribute="leading" id="h9Q-jL-TZZ"/>
                             <constraint firstItem="ip0-IC-WwC" firstAttribute="trailing" secondItem="Say-IT-0HO" secondAttribute="trailing" id="is8-QT-iho"/>
-                            <constraint firstItem="HOL-qm-71F" firstAttribute="leading" secondItem="Say-IT-0HO" secondAttribute="leading" constant="24" id="mxf-fY-koU"/>
+                            <constraint firstItem="7vD-6G-MFr" firstAttribute="leading" secondItem="Say-IT-0HO" secondAttribute="leading" constant="24" id="mdJ-BL-odE"/>
+                            <constraint firstItem="HOL-qm-71F" firstAttribute="leading" secondItem="Say-IT-0HO" secondAttribute="leading" constant="34" id="mxf-fY-koU"/>
+                            <constraint firstItem="7vD-6G-MFr" firstAttribute="top" secondItem="Gdu-Q0-s9v" secondAttribute="top" constant="22" id="rNK-Py-PzC"/>
                             <constraint firstItem="MrJ-09-Cb1" firstAttribute="trailing" secondItem="Say-IT-0HO" secondAttribute="trailing" id="vJ7-fV-g7O"/>
                             <constraint firstItem="cC7-r0-zRs" firstAttribute="centerX" secondItem="F10-QX-onl" secondAttribute="centerX" id="xvV-cA-h1D"/>
                         </constraints>
@@ -282,17 +292,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4EQ-Pi-dCF">
-                                <rect key="frame" x="0.0" y="335" width="414" height="94"/>
+                                <rect key="frame" x="0.0" y="335" width="414" height="145"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppSetting_barName" translatesAutoresizingMaskIntoConstraints="NO" id="XMl-iI-J8t">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppSetting_barID" translatesAutoresizingMaskIntoConstraints="NO" id="lZh-8J-GcL">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                        <rect key="frame" x="0.0" y="51" width="414" height="43"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppSetting_barLogout" translatesAutoresizingMaskIntoConstraints="NO" id="GtB-k7-b0Z">
-                                        <rect key="frame" x="0.0" y="51" width="414" height="43"/>
+                                        <rect key="frame" x="0.0" y="102" width="414" height="43"/>
                                     </imageView>
                                 </subviews>
                             </stackView>

@@ -173,8 +173,7 @@ class MainCell: ScalingCarouselCell {
     }
 }
 
-typealias CarouselDatasource = MainVC
-extension CarouselDatasource: UICollectionViewDataSource {
+extension MainVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return diaryData.count
     }
@@ -189,19 +188,21 @@ extension CarouselDatasource: UICollectionViewDataSource {
         //이미지 넣기
         carouselCell.mainDiaryImaage.layer.cornerRadius = carouselCell.mainDiaryImaage.frame.width / 2
         carouselCell.mainDiaryImaage.clipsToBounds = true
-        do {
-            try carouselCell.mainDiaryImaage.image = UIImage(data: try Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!))
-            DispatchQueue.global().async { let data = try? Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!)
-                DispatchQueue.main.async { carouselCell.mainDiaryImaage.image = UIImage(data: data!) }
-            }
-        } catch  {        }
+        
+        DispatchQueue.main.async(execute: {
+            carouselCell.mainDiaryImaage.image = UIImage(data:  try! Data(contentsOf: self.diaryData[indexPath.row].diaryImageUrl!))
+        })
         
         //Share? Single?
         let memberList = diaryData[indexPath.row].memberList!.count
         if memberList >= 2 {
-            carouselCell.mainMemberInfo.image = UIImage(named: "ShareDiary.png")
+            DispatchQueue.main.async(execute: {
+                carouselCell.mainMemberInfo.image = UIImage(named: "ShareDiary.png")
+            })
         } else {
-            carouselCell.mainMemberInfo.image = UIImage(named: "SingleDiary.png")
+            DispatchQueue.main.async(execute: {
+                carouselCell.mainMemberInfo.image = UIImage(named: "SingleDiary.png")
+            })
         }
         
         carouselCell.setNeedsLayout()
@@ -211,7 +212,6 @@ extension CarouselDatasource: UICollectionViewDataSource {
     }
 }
 
-typealias CarouselDelegate = MainVC
 extension MainVC: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let currentCenterIndex = mainCarousel.currentCenterCellIndex?.row else { return }
