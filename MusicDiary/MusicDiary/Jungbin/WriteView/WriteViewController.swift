@@ -96,7 +96,6 @@ class WriteViewController:UIViewController, SendDataDelegate{
             }
         }
 
-        self.viewDidLoad()
         self.underView.frame.origin.y = self.originY
 
         newContent.musicArtist = getMusic.musicArtist
