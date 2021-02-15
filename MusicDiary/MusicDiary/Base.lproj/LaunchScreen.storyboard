@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Intro_logo" translatesAutoresizingMaskIntoConstraints="NO" id="j0P-Nb-EGX">
+                                <rect key="frame" x="52" y="312" width="310" height="272"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="272" id="TuO-bP-Ucc"/>
+                                    <constraint firstAttribute="width" constant="310" id="bD9-DY-fvM"/>
+                                    <constraint firstAttribute="width" secondItem="j0P-Nb-EGX" secondAttribute="height" multiplier="1:1" constant="38" id="dMx-mL-3IV"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="rl4-3x-q2W">
+                                <rect key="frame" x="117" y="360" width="177" height="177"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="177" id="5qM-lr-Sjv"/>
+                                    <constraint firstAttribute="width" constant="177" id="Kwy-bO-oUP"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.96855288743972778" green="0.96897071599960327" blue="0.95681661367416382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="j0P-Nb-EGX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="52" id="5jN-V6-iRB"/>
+                            <constraint firstItem="rl4-3x-q2W" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="117" id="IPC-aB-NW0"/>
+                            <constraint firstItem="j0P-Nb-EGX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="268" id="Y3U-TD-aRl"/>
+                            <constraint firstItem="rl4-3x-q2W" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="316" id="mXF-lQ-bCB"/>
+                            <constraint firstItem="j0P-Nb-EGX" firstAttribute="width" secondItem="j0P-Nb-EGX" secondAttribute="height" multiplier="1:1" constant="38" id="z3I-vc-7jL"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Intro_logo" width="271" height="272"/>
+        <image name="logo" width="273" height="272"/>
+    </resources>
+</document>

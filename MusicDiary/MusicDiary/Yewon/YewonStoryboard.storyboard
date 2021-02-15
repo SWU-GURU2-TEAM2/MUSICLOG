@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="GmarketSansTTFLight.ttf">
+            <string>GmarketSansTTFLight</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--MainVC-->
+        <scene sceneID="JtY-oq-1Zf">
+            <objects>
+                <viewController storyboardIdentifier="YewonMainView" id="xHz-IV-Kcc" customClass="MainVC" customModule="MusicDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HeF-Fq-ui5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Fyk-ZM-Zzg" customClass="ScalingCarouselView" customModule="ScalingCarousel">
+                                <rect key="frame" x="0.0" y="212" width="414" height="500"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="k6W-WE-KgN">
+                                    <size key="itemSize" width="206" height="327"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="carouselCell" reuseIdentifier="carouselCell" id="V8O-iX-Tad" customClass="MainCell" customModule="MusicDiary" customModuleProvider="target">
+                                        <rect key="frame" x="73" y="0.0" width="268" height="509"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="iCV-Go-Ppk">
+                                            <rect key="frame" x="0.0" y="0.0" width="268" height="509"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainCell" translatesAutoresizingMaskIntoConstraints="NO" id="gY5-Fl-BN1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="268" height="509"/>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainCellImageOut" translatesAutoresizingMaskIntoConstraints="NO" id="SI3-gY-rRK">
+                                                    <rect key="frame" x="51.5" y="47" width="165" height="165"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="SI3-gY-rRK" secondAttribute="height" multiplier="1:1" id="iXd-Oy-5Pn"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wd1-Uq-q59">
+                                                    <rect key="frame" x="60.5" y="56" width="147" height="147"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Wd1-Uq-q59" secondAttribute="height" multiplier="1:1" id="N5e-tJ-Wf6"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DiaryDateBox" translatesAutoresizingMaskIntoConstraints="NO" id="Wcx-2e-Q2a">
+                                                    <rect key="frame" x="47.5" y="224" width="173" height="112"/>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DiaryNameBox" translatesAutoresizingMaskIntoConstraints="NO" id="VbI-iQ-63S">
+                                                    <rect key="frame" x="52.5" y="235" width="163" height="74"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diary Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoy-mq-mEZ">
+                                                    <rect key="frame" x="0.0" y="262" width="268" height="20"/>
+                                                    <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCz-Vz-2kg">
+                                                    <rect key="frame" x="0.0" y="303" width="268" height="20"/>
+                                                    <fontDescription key="fontDescription" name="GmarketSansTTFLight" family="Gmarket Sans TTF" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bwL-il-o4M">
+                                                    <rect key="frame" x="95" y="357" width="78" height="78"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="bwL-il-o4M" secondAttribute="height" multiplier="49:49" id="MtS-4s-kNX"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="gY5-Fl-BN1" secondAttribute="bottom" id="2vp-qt-k13"/>
+                                                <constraint firstAttribute="trailing" secondItem="SI3-gY-rRK" secondAttribute="trailing" constant="51.5" id="9qC-ER-wiC"/>
+                                                <constraint firstItem="fCz-Vz-2kg" firstAttribute="top" secondItem="Yoy-mq-mEZ" secondAttribute="bottom" constant="21" id="Bgf-E8-upo"/>
+                                                <constraint firstItem="Wd1-Uq-q59" firstAttribute="top" secondItem="iCV-Go-Ppk" secondAttribute="top" constant="56" id="DgZ-Ke-UGN"/>
+                                                <constraint firstItem="SI3-gY-rRK" firstAttribute="top" secondItem="iCV-Go-Ppk" secondAttribute="top" constant="47" id="FD0-JQ-Lmq"/>
+                                                <constraint firstItem="gY5-Fl-BN1" firstAttribute="top" secondItem="iCV-Go-Ppk" secondAttribute="top" id="N4n-OM-lr8"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wd1-Uq-q59" secondAttribute="trailing" constant="60.5" id="QOO-6E-bKf"/>
+                                                <constraint firstItem="fCz-Vz-2kg" firstAttribute="leading" secondItem="Yoy-mq-mEZ" secondAttribute="leading" id="RM1-cs-xfr"/>
+                                                <constraint firstAttribute="trailing" secondItem="gY5-Fl-BN1" secondAttribute="trailing" id="SYP-0e-Iq0"/>
+                                                <constraint firstItem="bwL-il-o4M" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="95" id="Xms-uE-I5J"/>
+                                                <constraint firstItem="Wd1-Uq-q59" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="60.5" id="Y9I-4U-nQh"/>
+                                                <constraint firstAttribute="trailing" secondItem="VbI-iQ-63S" secondAttribute="trailing" constant="52.5" id="YZf-O3-9pY"/>
+                                                <constraint firstItem="Wcx-2e-Q2a" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="47.5" id="ZSd-t9-rQY"/>
+                                                <constraint firstItem="SI3-gY-rRK" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="51.5" id="a00-1F-gJS"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wcx-2e-Q2a" secondAttribute="trailing" constant="47.5" id="asE-ft-auk"/>
+                                                <constraint firstItem="bwL-il-o4M" firstAttribute="top" secondItem="Wcx-2e-Q2a" secondAttribute="bottom" constant="21" id="btE-sv-zTB"/>
+                                                <constraint firstItem="VbI-iQ-63S" firstAttribute="top" secondItem="iCV-Go-Ppk" secondAttribute="top" constant="235" id="faq-ue-T9k"/>
+                                                <constraint firstItem="Yoy-mq-mEZ" firstAttribute="top" secondItem="SI3-gY-rRK" secondAttribute="bottom" constant="50" id="g7V-tN-nUr"/>
+                                                <constraint firstItem="fCz-Vz-2kg" firstAttribute="trailing" secondItem="Yoy-mq-mEZ" secondAttribute="trailing" id="hTG-gg-gHF"/>
+                                                <constraint firstItem="VbI-iQ-63S" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" constant="52.5" id="j2h-9V-cgX"/>
+                                                <constraint firstAttribute="trailing" secondItem="bwL-il-o4M" secondAttribute="trailing" constant="95" id="nPN-nL-M6C"/>
+                                                <constraint firstItem="bwL-il-o4M" firstAttribute="top" secondItem="fCz-Vz-2kg" secondAttribute="bottom" constant="34" id="pEr-c0-mWn"/>
+                                                <constraint firstItem="gY5-Fl-BN1" firstAttribute="leading" secondItem="iCV-Go-Ppk" secondAttribute="leading" id="qIS-Bw-GdO"/>
+                                                <constraint firstItem="Yoy-mq-mEZ" firstAttribute="centerY" secondItem="VbI-iQ-63S" secondAttribute="centerY" id="qjQ-P0-PzH"/>
+                                                <constraint firstItem="fCz-Vz-2kg" firstAttribute="trailing" secondItem="gY5-Fl-BN1" secondAttribute="trailing" id="uvC-kT-fwh"/>
+                                                <constraint firstItem="Wcx-2e-Q2a" firstAttribute="top" secondItem="Wd1-Uq-q59" secondAttribute="bottom" constant="21" id="wXd-Q8-sXe"/>
+                                                <constraint firstItem="fCz-Vz-2kg" firstAttribute="leading" secondItem="gY5-Fl-BN1" secondAttribute="leading" id="ygb-7u-hBM"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="268" height="509"/>
+                                        <connections>
+                                            <outlet property="mainDiaryImaage" destination="Wd1-Uq-q59" id="aBx-2E-IzD"/>
+                                            <outlet property="mainDiaryName" destination="Yoy-mq-mEZ" id="Ag9-38-3M1"/>
+                                            <outlet property="mainMemberInfo" destination="bwL-il-o4M" id="S69-yR-z8o"/>
+                                            <outlet property="mainStartDate" destination="fCz-Vz-2kg" id="9RA-TO-9zL"/>
+                                            <outlet property="mainView" destination="iCV-Go-Ppk" id="T7W-JC-hBZ"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="inset">
+                                        <real key="value" value="70"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="xHz-IV-Kcc" id="Z96-mQ-Ihc"/>
+                                    <outlet property="delegate" destination="xHz-IV-Kcc" id="lgC-Ej-vge"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GvI-L6-JJx">
+                                <rect key="frame" x="338" y="50" width="51" height="51"/>
+                                <state key="normal" backgroundImage="Daily_setting"/>
+                                <connections>
+                                    <action selector="moveToSetting:" destination="xHz-IV-Kcc" eventType="touchUpInside" id="goM-Zy-iPM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMP-2S-VWT">
+                                <rect key="frame" x="161" y="770" width="92" height="92"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UMP-2S-VWT" secondAttribute="height" multiplier="53:53" id="PhP-fs-Jqc"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="MainWriteBtn"/>
+                                <connections>
+                                    <action selector="moveToWrite:" destination="xHz-IV-Kcc" eventType="touchUpInside" id="pDT-sv-492"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSo-Hr-XgH">
+                                <rect key="frame" x="25" y="50" width="51" height="51"/>
+                                <state key="normal" image="AddDiaryBtn"/>
+                                <connections>
+                                    <action selector="addDiary:" destination="xHz-IV-Kcc" eventType="touchUpInside" id="PPt-WF-mTR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OLp-ow-XIG"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="uSo-Hr-XgH" firstAttribute="top" secondItem="OLp-ow-XIG" secondAttribute="top" constant="6" id="AQG-oN-koB"/>
+                            <constraint firstItem="Fyk-ZM-Zzg" firstAttribute="leading" secondItem="HeF-Fq-ui5" secondAttribute="leading" id="Mp1-bo-PUq"/>
+                            <constraint firstItem="UMP-2S-VWT" firstAttribute="bottom" secondItem="OLp-ow-XIG" secondAttribute="bottom" id="RRW-5w-XTw"/>
+                            <constraint firstItem="OLp-ow-XIG" firstAttribute="trailing" secondItem="GvI-L6-JJx" secondAttribute="trailing" constant="25" id="U4P-ig-H8r"/>
+                            <constraint firstItem="UMP-2S-VWT" firstAttribute="centerX" secondItem="HeF-Fq-ui5" secondAttribute="centerX" id="Yiy-eK-Qbp"/>
+                            <constraint firstItem="OLp-ow-XIG" firstAttribute="bottom" secondItem="Fyk-ZM-Zzg" secondAttribute="bottom" constant="150" id="d9O-aj-bRk"/>
+                            <constraint firstItem="uSo-Hr-XgH" firstAttribute="leading" secondItem="OLp-ow-XIG" secondAttribute="leading" constant="25" id="rna-sd-cX8"/>
+                            <constraint firstItem="OLp-ow-XIG" firstAttribute="trailing" secondItem="Fyk-ZM-Zzg" secondAttribute="trailing" id="tQx-cn-RJp"/>
+                            <constraint firstItem="Fyk-ZM-Zzg" firstAttribute="top" secondItem="OLp-ow-XIG" secondAttribute="top" constant="168" id="wN5-K9-XSA"/>
+                            <constraint firstItem="GvI-L6-JJx" firstAttribute="top" secondItem="HeF-Fq-ui5" secondAttribute="top" constant="50" id="zUh-l9-lwY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mainCarousel" destination="Fyk-ZM-Zzg" id="tdA-mu-o59"/>
+                        <outlet property="writeBtn" destination="UMP-2S-VWT" id="De3-jn-0fZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kRO-vn-es0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="155.07246376811597" y="-3.3482142857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="AddDiaryBtn" width="51" height="51"/>
+        <image name="Daily_setting" width="51" height="51"/>
+        <image name="DiaryDateBox" width="173" height="112"/>
+        <image name="DiaryNameBox" width="157" height="74"/>
+        <image name="MainCell" width="268" height="509"/>
+        <image name="MainCellImageOut" width="165" height="165"/>
+        <image name="MainWriteBtn" width="92" height="92"/>
+    </resources>
+</document>
