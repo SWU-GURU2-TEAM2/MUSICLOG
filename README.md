@@ -1,14 +1,31 @@
-# 2021 SWU GURU2 Hackathon (iOS) - 2조
-# MUSIC LOG
-오늘의 음악을 선택하여 나만의 다이어리 혹은 공유 다이어리를 작성하세요!
+<div align="center">
 
+### 2021 SWU GURU2 Hackathon (iOS) - 2조
+# ***MUSIC LOG***
+
+</div>
+ 
+<div align="center">
+ 
+ 오늘의 음악을 선택하여 나만의 다이어리 혹은 공유 다이어리를 작성하세요!   
+ 아래의 이미지를 클릭해 소개 영상을 보실 수 있습니다. 😉
+
+[![image](https://user-images.githubusercontent.com/86394389/148339518-11bb0abb-0616-440b-8658-88770aa7d20b.png)](https://www.youtube.com/watch?v=u2LGrY_loBo "Click to Watch!")
+
+<!--
+<iframe width="640" height="360" src="https://www.youtube.com/watch?v=u2LGrY_loBo" frameborder="0" gesture="media" allowfullscreen=""></iframe>
+-->
+ 
+</div>
+
+ 
 ## 👩‍👩‍👧‍👧 저희 팀은요!
 
 | 역할    	    | 이름                                |기술 스택|
 |--------------|---------------------------------------|:--------:|
-| front-end | [정정빈](https://github.com/lollin0) |<img src="https://firebasestorage.googleapis.com/v0/b/firestorage-test-c9b9a.appspot.com/o/images%2FSwift-Logo.png?alt=media&token=b49ec577-5b11-4489-a891-e4bb94117ce8" alt="Swift" width="100px">|
-| front-end | [강예원]() |<img src="https://firebasestorage.googleapis.com/v0/b/firestorage-test-c9b9a.appspot.com/o/images%2FSwift-Logo.png?alt=media&token=b49ec577-5b11-4489-a891-e4bb94117ce8" alt="Swift" width="100px">|
-| front-end| [강유진]()|<img src="https://firebasestorage.googleapis.com/v0/b/firestorage-test-c9b9a.appspot.com/o/images%2FSwift-Logo.png?alt=media&token=b49ec577-5b11-4489-a891-e4bb94117ce8" alt="Swift" width="100px">|
+| front-end | [정정빈](https://github.com/lollin0) |<img src="https://developer.apple.com/swift/images/swift-logo.svg" alt="Swift" width="100px">|
+| front-end | [강예원]() |<img src="https://developer.apple.com/swift/images/swift-logo.svg" alt="Swift" width="100px">|
+| front-end| [강유진](https://github.com/Hamthoven)|<img src="https://developer.apple.com/swift/images/swift-logo.svg" alt="Swift" width="100px">|
 | design   	  | [박세희]()|<img src="https://i.imgur.com/hSLnAb7.png" alt="XD" width="100px">||
 
 ## 서비스 개요
