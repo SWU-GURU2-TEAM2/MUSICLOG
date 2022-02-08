@@ -42,7 +42,7 @@ class SearchViewController: UIViewController {
         tableView.reloadData()
         //텍스트필드의 값 확인
         searchKeyword = searchTextField.text ?? ""
-        if searchKeyword != "" {
+        if !searchKeyword.isEmpty {
             searchKeyword = searchKeyword.replacingOccurrences(of: " ", with: "")
             let urlString = "http://www.maniadb.com/api/search/\(searchKeyword)/?sr=song&display=100&key=jgkyj@naver.com&v=0.5"
             let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -56,8 +56,7 @@ class SearchViewController: UIViewController {
                     let xml = XML.parse(data)
                     print("songDataLoaded")
                     //전체 검색 결과가 0개면 출력 안함.
-                    //현재 한국어 검색 X, 띄어쓰기 포함하면 X
-                    if let totalResult = Int(xml["rss", "channel", "total"].text!), totalResult  != 0{
+                    if let totalResult = Int(xml["rss", "channel", "total"].text!), totalResult != 0{
                         for index in 0...totalResult - 1 {
                             let musicID = xml["rss", "channel", "item", index].attributes["id"]
                             let musicName = xml["rss", "channel", "item", index, "title"].text

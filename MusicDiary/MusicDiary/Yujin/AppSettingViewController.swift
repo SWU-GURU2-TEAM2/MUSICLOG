@@ -112,8 +112,10 @@ extension AppSettingViewController: UIImagePickerControllerDelegate, UINavigatio
         do {
             let cover = try Data(contentsOf: data.musicCoverUrl!)
             self.profileImage.image = UIImage(data: cover)
-        } catch  {
-            print("error")
+        } catch {
+            let alert = UIAlertController(title: "이미지가 없습니다.", message: "다시 검색하여 새로운 곡을 선택해주세요.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: false, completion: nil)
         }
         let docRef = self.db.collection("Users").document("\(currentUID)")
         docRef.updateData([
