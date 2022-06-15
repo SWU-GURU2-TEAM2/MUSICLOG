@@ -7,7 +7,7 @@
 
 import UIKit
 import FSCalendar
-import Firebase
+import FirebaseFirestore
 
 
 var currentDairyUserList:[String]!

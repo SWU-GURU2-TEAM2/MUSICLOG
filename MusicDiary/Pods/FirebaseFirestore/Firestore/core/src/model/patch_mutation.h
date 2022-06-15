@@ -17,13 +17,13 @@
 #ifndef FIRESTORE_CORE_SRC_MODEL_PATCH_MUTATION_H_
 #define FIRESTORE_CORE_SRC_MODEL_PATCH_MUTATION_H_
 
+#include <map>
 #include <memory>
 #include <string>
 #include <utility>
 #include <vector>
 
 #include "Firestore/core/src/model/field_mask.h"
-#include "Firestore/core/src/model/field_value.h"
 #include "Firestore/core/src/model/model_fwd.h"
 #include "Firestore/core/src/model/mutation.h"
 
@@ -102,12 +102,19 @@ class PatchMutation : public Mutation {
       return mask_;
     }
 
-    MaybeDocument ApplyToRemoteDocument(
-        const absl::optional<MaybeDocument>& maybe_doc,
+    /**
+     * Returns this patch mutation as a list of field paths to values (or
+     * nullopt for deletes).
+     */
+    TransformMap GetPatch() const;
+
+    void ApplyToRemoteDocument(
+        MutableDocument& document,
         const MutationResult& mutation_result) const override;
 
-    absl::optional<MaybeDocument> ApplyToLocalView(
-        const absl::optional<MaybeDocument>& maybe_doc,
+    absl::optional<FieldMask> ApplyToLocalView(
+        MutableDocument& document,
+        absl::optional<FieldMask> previous_mask,
         const Timestamp& local_write_time) const override;
 
     bool Equals(const Mutation::Rep& other) const override;
@@ -117,12 +124,6 @@ class PatchMutation : public Mutation {
     std::string ToString() const override;
 
    private:
-    ObjectValue PatchDocument(
-        const absl::optional<MaybeDocument>& maybe_doc,
-        const std::vector<FieldValue>& transform_results) const;
-
-    ObjectValue PatchObject(ObjectValue obj) const;
-
     ObjectValue value_;
     FieldMask mask_;
   };

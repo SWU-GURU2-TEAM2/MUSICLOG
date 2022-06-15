@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseFirestore
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!

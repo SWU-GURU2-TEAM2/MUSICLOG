@@ -5,7 +5,7 @@
 //  Created by 1v1 on 2021/02/07.
 
 import UIKit
-import Firebase
+import FirebaseFirestore
 
 class DiarySettingViewController: UIViewController, SendDataDelegate {
     func sendData(data: MusicStruct) {

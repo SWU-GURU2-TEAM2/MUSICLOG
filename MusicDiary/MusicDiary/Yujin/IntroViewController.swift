@@ -6,7 +6,10 @@
 //
 
 import UIKit
-import FirebaseUI
+import FirebaseStorage
+import FirebaseAuthUI
+import FirebaseFirestore
+import FirebaseGoogleAuthUI
 
 var currentUID = ""
 

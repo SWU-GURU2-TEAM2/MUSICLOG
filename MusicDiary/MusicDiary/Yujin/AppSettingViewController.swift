@@ -7,8 +7,9 @@
 
 import UIKit
 import Photos
-import FirebaseUI
+import FirebaseAuthUI
 import FirebaseFirestore
+import FirebaseStorage
 
 class AppSettingViewController: UIViewController, SendDataDelegate {
   
